@@ -25,8 +25,8 @@ GameObject:
   - component: {fileID: 114587342930587408}
   - component: {fileID: 54964978044217300}
   - component: {fileID: 114275681581673810}
-  - component: {fileID: 114847581912051510}
   - component: {fileID: 114103115408590594}
+  - component: {fileID: 114810353182818096}
   m_Layer: 0
   m_Name: Knight with Network Identity
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018150286944252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ff25b726ee69a4fbe4bf71dbb79c13, type: 3}
   m_Name: 
@@ -168,7 +168,7 @@ MonoBehaviour:
   playerSpeed: 5
   useMobileControls: 0
   joyStick: {fileID: 0}
---- !u!114 &114847581912051510
+--- !u!114 &114810353182818096
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -179,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd412ad41d8d84469ae3a1494fb33b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpeed: 1
+  useMobileControls: 0
+  joyStick: {fileID: 0}
 --- !u!136 &136625925261652438
 CapsuleCollider:
   m_ObjectHideFlags: 1

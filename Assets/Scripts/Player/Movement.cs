@@ -10,11 +10,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool useMobileControls = false;
 
     public AndroidJoystick joyStick;
+    private Animator animator;
 
     // Use this for initialization
     void Start () {
 
-       
+        animator = GetComponent<Animator>();
 
     }
 	
@@ -26,11 +27,17 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 transform.Translate(0.0f, 0.0f, playerSpeed * Time.deltaTime);
+                animator.SetBool("isWalkingForward", true);
+            }
+            else
+            {
+                animator.SetBool("isWalkingForward", false);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 transform.Translate(0.0f, 0.0f, -playerSpeed * Time.deltaTime);
+                
             }
 
             if (Input.GetKey(KeyCode.D))
@@ -46,6 +53,7 @@ public class Movement : MonoBehaviour
         else
         {
             transform.Translate(joyStick.InputDirection * playerSpeed * Time.deltaTime);
+            
         }
     }
 }

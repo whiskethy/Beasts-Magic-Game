@@ -10,13 +10,13 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool useMobileControls = false;
 
     public AndroidJoystick joyStick;
-    private Animator animator;
+    private PlayerAnimation anim;
+
+    private float movementDirTemp;
 
     // Use this for initialization
     void Start () {
-
-        animator = GetComponent<Animator>();
-
+        anim = GetComponent<PlayerAnimation>();
     }
 	
 	// Update is called once per frame
@@ -26,34 +26,46 @@ public class Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                transform.Translate(0.0f, 0.0f, playerSpeed * Time.deltaTime);
-                animator.SetBool("isWalkingForward", true);
-            }
-            else
-            {
-                animator.SetBool("isWalkingForward", false);
+                movementDirTemp = playerSpeed * Time.deltaTime;
+
+                transform.Translate(0.0f, 0.0f, movementDirTemp);
+                anim.walkForward(movementDirTemp);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
-                transform.Translate(0.0f, 0.0f, -playerSpeed * Time.deltaTime);
-                
+                movementDirTemp = -playerSpeed * Time.deltaTime;
+
+                transform.Translate(0.0f, 0.0f, movementDirTemp);
+                anim.walkBackward(movementDirTemp);
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                transform.Translate(playerSpeed * Time.deltaTime, 0.0f, 0.0f);
+                movementDirTemp = playerSpeed * Time.deltaTime;
+
+                transform.Translate(movementDirTemp, 0.0f, 0.0f);
+                anim.walkLateral(movementDirTemp);
             }
 
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(-playerSpeed * Time.deltaTime, 0.0f, 0.0f);
+                movementDirTemp = -playerSpeed * Time.deltaTime;
+
+                transform.Translate(movementDirTemp, 0.0f, 0.0f);
+                anim.walkLateral(movementDirTemp);
+            }
+
+            //ugly i know, but won't be used in final version anyway. Just there for debugging
+            if ((Input.GetKeyUp(KeyCode.W)) || (Input.GetKeyUp(KeyCode.S)) || (Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.A)))
+            {
+                anim.stopWalking();
             }
         }
         else
         {
             transform.Translate(joyStick.InputDirection * playerSpeed * Time.deltaTime);
-            
+            anim.walk(joyStick.InputDirection * playerSpeed * Time.deltaTime);
         }
     }
 }

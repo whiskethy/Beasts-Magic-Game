@@ -22,45 +22,42 @@ public class Movement : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 
-        if (!useMobileControls)
+        if (Input.GetKey(KeyCode.W))
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                movementDirTemp = playerSpeed * Time.deltaTime;
+            movementDirTemp = playerSpeed * Time.deltaTime;
 
-                transform.Translate(0.0f, 0.0f, movementDirTemp);
-                anim.walkForward(movementDirTemp);
-            }
+            transform.Translate(0.0f, 0.0f, movementDirTemp);
+            anim.walkForward(movementDirTemp);
+        }
 
-            if (Input.GetKey(KeyCode.S))
-            {
-                movementDirTemp = -playerSpeed * Time.deltaTime;
+        else if (Input.GetKey(KeyCode.S))
+        {
+            movementDirTemp = -playerSpeed * Time.deltaTime;
 
-                transform.Translate(0.0f, 0.0f, movementDirTemp);
-                anim.walkBackward(movementDirTemp);
-            }
+            transform.Translate(0.0f, 0.0f, movementDirTemp);
+            anim.walkBackward(movementDirTemp);
+        }
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                movementDirTemp = playerSpeed * Time.deltaTime;
+        else if (Input.GetKey(KeyCode.D))
+        {
+            movementDirTemp = playerSpeed * Time.deltaTime;
 
-                transform.Translate(movementDirTemp, 0.0f, 0.0f);
-                anim.walkLateral(movementDirTemp);
-            }
+            transform.Translate(movementDirTemp, 0.0f, 0.0f);
+            anim.walkLateral(movementDirTemp);
+        }
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                movementDirTemp = -playerSpeed * Time.deltaTime;
+        else if (Input.GetKey(KeyCode.A))
+        {
+            movementDirTemp = -playerSpeed * Time.deltaTime;
 
-                transform.Translate(movementDirTemp, 0.0f, 0.0f);
-                anim.walkLateral(movementDirTemp);
-            }
+            transform.Translate(movementDirTemp, 0.0f, 0.0f);
+            anim.walkLateral(movementDirTemp);
+        }
 
-            //ugly i know, but won't be used in final version anyway. Just there for debugging
-            if ((Input.GetKeyUp(KeyCode.W)) || (Input.GetKeyUp(KeyCode.S)) || (Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.A)))
-            {
-                anim.stopWalking();
-            }
+        //ugly i know, but won't be used in final version anyway. Just there for debugging
+        else if ((Input.GetKeyUp(KeyCode.W)) || (Input.GetKeyUp(KeyCode.S)) || (Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.A)))
+        {
+            anim.stopWalking();
         }
         else
         {

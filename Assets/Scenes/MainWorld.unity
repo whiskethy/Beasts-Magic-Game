@@ -108,62 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &63689723
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4444735214281954, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -5.595571
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444735214281954, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.123
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444735214281954, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -2.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444735214281954, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444735214281954, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444735214281954, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444735214281954, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444735214281954, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1968621113643930, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-      propertyPath: m_Name
-      value: Beast
-      objectReference: {fileID: 0}
-    - target: {fileID: 114908358258175464, guid: 613ac6d77db722741bec1279204bb551,
-        type: 2}
-      propertyPath: joyStick
-      value: 
-      objectReference: {fileID: 778306615}
-    - target: {fileID: 114908358258175464, guid: 613ac6d77db722741bec1279204bb551,
-        type: 2}
-      propertyPath: useMobileControls
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 613ac6d77db722741bec1279204bb551, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &85440310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +972,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee35aa7e6b4d074aa2a4449fefd1141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &880378102
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.595571
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.123
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682631402872450, guid: 4b566b83bfbf5499b87125214220391a,
+        type: 2}
+      propertyPath: joyStick
+      value: 
+      objectReference: {fileID: 778306615}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1313227529
 GameObject:
   m_ObjectHideFlags: 0

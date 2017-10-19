@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour {
-
+    
     private Animator animator;
 
     // Use this for initialization
@@ -11,47 +11,65 @@ public class PlayerAnimation : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
+
     //universal overload is being supplied ...
-    public void walk(float xIn, float yIn, float zIn)
+    public void walk(float xIn, float yIn, float zIn, float speed)
     {
         if (zIn > 0.0f)
         {
-            animator.SetBool("isWalkingForward", true);
+            animator.SetBool("walkingForward", true);
+            animator.SetBool("isIdle", false);
         }
-        
-    }
-    //... but multiple functions removes conditionals at runtime if used properly
-    public void stopWalking()
-    {
-        animator.SetBool("isWalkingForward", false);
-    }
-    public void walkForward(float zIn)
-    {
-        animator.SetBool("isWalkingForward", true);
-    }
 
-    public void walkBackward(float zIn)
-    {
-        
-    }
-    public void walkLateral(float xIn)
-    {
-        
     }
 
     //walk vector overload. How to remove conditional checks? ... 
-    public void walk(Vector3 InputDirection)
+    public void walk(Vector3 InputDirection, float speed)
     {
 
-        if ((InputDirection.x == 0.0f) &&(InputDirection.y == 0.0f) && (InputDirection.z == 0.0f))
+        if (Equals(InputDirection.x, 0.0f) && Equals(InputDirection.y, 0.0f) && Equals(InputDirection.z, 0.0f))
         {
-            animator.SetBool("isWalkingForward", false);
+            stopWalking();
         }
 
         if (InputDirection.z > 0.0f)
         {
-            animator.SetBool("isWalkingForward", true);
+            walkForward(InputDirection.z, speed);
+        }
+        if (InputDirection.z < 0.0f)
+        {
+            walkForward(InputDirection.z, speed);
         }
 
     }
+
+
+    //... but multiple functions removes conditionals at runtime if used properly
+    public void stopWalking()
+    {
+        animator.SetBool("walkingForward", false);
+        animator.SetBool("walkingBackward", false);
+        animator.SetBool("isIdle", true);
+    }
+    public void walkForward(float zIn, float speed)
+    {
+        animator.SetBool("walkingForward", true);
+        animator.SetBool("walkingBackward", false);
+        animator.SetFloat("movementSpeed", speed);
+        animator.SetBool("isIdle", false);
+    }
+
+    public void walkBackward(float zIn, float speed)
+    {
+        animator.SetBool("walkingBackward", true);
+        animator.SetBool("walkingForward", false);
+        animator.SetFloat("movementSpeed", speed);
+        animator.SetBool("isIdle", false);
+    }
+    public void walkLateral(float xIn, float speed)
+    {
+        
+    }
+
+
 }

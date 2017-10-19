@@ -692,7 +692,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525023134621122}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5.595571, y: 0.123, z: -2.38}
+  m_LocalPosition: {x: -2.04, y: 0.123, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4463656918831772}
@@ -1206,9 +1206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ff25b726ee69a4fbe4bf71dbb79c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
-  useMobileControls: 0
+  playerData: {fileID: 0}
   joyStick: {fileID: 0}
+  otherPlayer: {fileID: 0}
 --- !u!114 &114914114795944552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 100
   playerHealhPool: 100
-  movementSpeed: 5
+  movementSpeed: 3
   strength: 30
   agility: 20
   wisdom: 10

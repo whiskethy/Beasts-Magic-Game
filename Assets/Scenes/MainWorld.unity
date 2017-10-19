@@ -299,7 +299,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1525023134621122, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
       propertyPath: m_Name
-      value: Beast - Player 2
+      value: Beast - Player 2 - Debug
       objectReference: {fileID: 0}
     - target: {fileID: 4170802494101608, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -308,8 +308,18 @@ Prefab:
     - target: {fileID: 114682631402872450, guid: 4b566b83bfbf5499b87125214220391a,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114682631402872450, guid: 4b566b83bfbf5499b87125214220391a,
+        type: 2}
+      propertyPath: player2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682631402872450, guid: 4b566b83bfbf5499b87125214220391a,
+        type: 2}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 1764698728}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
   m_IsPrefabParent: 0
@@ -679,6 +689,11 @@ Prefab:
       propertyPath: joyStick
       value: 
       objectReference: {fileID: 778306615}
+    - target: {fileID: 114682631402872450, guid: 4b566b83bfbf5499b87125214220391a,
+        type: 2}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 2146011318}
     - target: {fileID: 1525023134621122, guid: 4b566b83bfbf5499b87125214220391a, type: 2}
       propertyPath: m_Name
       value: Beast - Player 1
@@ -795,6 +810,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1498921824}
+--- !u!1 &1764698728 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1525023134621122, guid: 4b566b83bfbf5499b87125214220391a,
+    type: 2}
+  m_PrefabInternal: {fileID: 880378102}
 --- !u!1 &1786484479
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,3 +1006,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2146011318 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1525023134621122, guid: 4b566b83bfbf5499b87125214220391a,
+    type: 2}
+  m_PrefabInternal: {fileID: 330166697}

@@ -13,11 +13,11 @@ public class NetworkScript : NetworkBehaviour
     [SerializeField] private bool useMobileControls = false;
 
     public AndroidJoystick joyStick;
-    CharacterController controller;
+    //CharacterController controller;
     // Use this for initialization
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
 
         if (isServer)
         {

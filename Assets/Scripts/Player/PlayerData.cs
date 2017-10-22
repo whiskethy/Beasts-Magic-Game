@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour {
 
+    Text healthText;
     public float movementSpeed;
     public int currentHealth;
     public int playerHealhPool;
 
+    public int attackSpeed;
     public int strength;  //physical attacks
     public int agility;   //blocking
     public int wisdom;    //ranged attacks
 
-	Text healthText;
+	
 	private int deathRate;
 
 	public void start(){

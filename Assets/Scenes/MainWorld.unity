@@ -1800,6 +1800,7 @@ MonoBehaviour:
   movementSpeed: 3
   currentHealth: 100
   playerHealhPool: 100
+  attackSpeed: 2
   strength: 30
   agility: 20
   wisdom: 10

@@ -11,6 +11,10 @@ public class PlayerAnimation : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
+    public void attackOne(bool isAttacking)
+    {
+      animator.SetBool("attackOne", isAttacking);
+    }
 
     //universal overload is being supplied ...
     public void walk(float xIn, float yIn, float zIn, float speed)
@@ -49,6 +53,8 @@ public class PlayerAnimation : MonoBehaviour {
     {
         animator.SetBool("walkingForward", false);
         animator.SetBool("walkingBackward", false);
+        animator.SetBool("walkingRight", false);
+        animator.SetBool("walkingLeft", false);
         animator.SetBool("isIdle", true);
     }
     public void walkForward(float zIn, float speed)
@@ -57,6 +63,7 @@ public class PlayerAnimation : MonoBehaviour {
         animator.SetBool("walkingBackward", false);
         animator.SetFloat("movementSpeed", speed);
         animator.SetBool("isIdle", false);
+        animator.SetBool("walkingRight", false);
     }
 
     public void walkBackward(float zIn, float speed)
@@ -65,10 +72,26 @@ public class PlayerAnimation : MonoBehaviour {
         animator.SetBool("walkingForward", false);
         animator.SetFloat("movementSpeed", speed);
         animator.SetBool("isIdle", false);
+        animator.SetBool("walkingRight", false);
     }
     public void walkLateral(float xIn, float speed)
     {
-        
+        animator.SetBool("walkingForward", false);
+        animator.SetBool("walkingBackward", false);
+        animator.SetFloat("movementSpeed", speed);
+        animator.SetBool("isIdle", false);
+
+        if (xIn > 0)
+        {
+            animator.SetBool("walkingRight", true);
+            animator.SetBool("walkingLeft", false);
+        }
+
+        if (xIn < 0)
+        {
+            animator.SetBool("walkingRight", false);
+            animator.SetBool("walkingLeft", true);
+        }
     }
 
 

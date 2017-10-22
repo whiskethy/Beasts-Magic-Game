@@ -9,9 +9,11 @@ public class PlayerAttack : MonoBehaviour {
     private bool attack2;
     private bool canBlock;
 
-	// Use this for initialization
-	void Start () {
+    private PlayerAnimation anim;
 
+    // Use this for initialization
+    void Start () {
+        anim = GetComponent<PlayerAnimation>();
         attack1 = false;
         attack2 = false;
         canBlock = false;
@@ -22,14 +24,16 @@ public class PlayerAttack : MonoBehaviour {
 		
         if(Input.GetMouseButtonDown(0) && !attack2)
         {
-            Debug.Log("Attack 1 Start");
+            Debug.Log("Attack 1 Start!");
             attack1 = true;
+            anim.attackOne(attack1);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             Debug.Log("Attack 1 Stop");
             attack1 = false;
+            anim.attackOne(attack1);
         }
 
         if(Input.GetMouseButtonDown(1) && !attack1)

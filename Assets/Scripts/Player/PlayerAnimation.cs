@@ -13,7 +13,12 @@ public class PlayerAnimation : MonoBehaviour {
 
     public void attackOne(bool isAttacking)
     {
-      animator.SetBool("attackOne", isAttacking);
+        animator.SetBool("attackOne", isAttacking);
+    }
+
+    public void attackTwo(bool isAttacking)
+    {
+        animator.SetBool("attackTwo", isAttacking);
     }
 
     //universal overload is being supplied ...

@@ -40,12 +40,14 @@ public class PlayerAttack : MonoBehaviour {
         {
             attack2 = true;
             Debug.Log("Attack 2 Start");
+            anim.attackTwo(attack2);
         }
 
         if (Input.GetMouseButtonUp(1))
         {
             attack2 = false;
             Debug.Log("Attack 2 Stop");
+            anim.attackTwo(attack2);
         }
 
         if(attack1 && attack2)

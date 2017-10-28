@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Player1Melee
   - Player2Melee
+  - Player1LightMelee
+  - Player2LightMelee
+  - Player2
   layers:
   - Default
   - TransparentFX

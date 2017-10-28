@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour {
     // Use this for initialization
     void Start () {
         anim = GetComponent<PlayerAnimation>();
+        Debug.Assert(anim != null);
         attack1 = false;
         attack2 = false;
         canBlock = false;
@@ -26,28 +27,14 @@ public class PlayerAttack : MonoBehaviour {
         {
             Debug.Log("Attack 1 Start!");
             attack1 = true;
-            anim.attackOne(attack1);
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            Debug.Log("Attack 1 Stop");
-            attack1 = false;
-            anim.attackOne(attack1);
+            StartCoroutine(DisableAttack1());
         }
 
         if(Input.GetMouseButtonDown(1) && !attack1)
         {
             attack2 = true;
             Debug.Log("Attack 2 Start");
-            anim.attackTwo(attack2);
-        }
-
-        if (Input.GetMouseButtonUp(1))
-        {
-            attack2 = false;
-            Debug.Log("Attack 2 Stop");
-            anim.attackTwo(attack2);
+            StartCoroutine(DisableAttack2());
         }
 
         if(attack1 && attack2)
@@ -59,6 +46,34 @@ public class PlayerAttack : MonoBehaviour {
         {
             canBlock = false;
         }
+    }
+
+    private IEnumerator DisableAttack1()
+    {
+        anim.attackOne(attack1);
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Attack 1 Stop");
+        this.attack1 = false;
+        anim.attackOne(attack1);
+    }
+
+    private IEnumerator DisableAttack2()
+    {
+        anim.attackTwo(attack2);
+        yield return new WaitForSeconds(1.5f);
+        this.attack2 = false;
+        Debug.Log("Attack 2 Stop");
+        anim.attackTwo(attack2);
+    }
+
+    public bool getAttack1
+    {
+        get { return attack1; }
+    }
+
+    public bool getAttack2
+    {
+        get { return attack2; }
     }
 
     public void Attack1()

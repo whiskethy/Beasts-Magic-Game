@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 54417476183091580}
   - component: {fileID: 114682631402872450}
   - component: {fileID: 114297238724840570}
+  - component: {fileID: 114417856202749150}
   - component: {fileID: 136163977902709904}
   m_Layer: 0
   m_Name: Beast
@@ -1195,6 +1196,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6d5b386bdcb0b44860bb29601aa9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114417856202749150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525023134621122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba53bfe2e62cd743b2cdff0a42b1022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
 --- !u!114 &114682631402872450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1206,7 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ff25b726ee69a4fbe4bf71dbb79c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
+  player2: 0
   joyStick: {fileID: 0}
   otherPlayer: {fileID: 0}
 --- !u!114 &114914114795944552
@@ -1220,9 +1233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c4d240c021b48bf90f3fd13835ca49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 3
   currentHealth: 100
   playerHealhPool: 100
-  movementSpeed: 3
+  attackSpeed: 0
   strength: 30
   agility: 20
   wisdom: 10

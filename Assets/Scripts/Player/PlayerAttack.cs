@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 
+    //data accessible to the Inspector
+    [SerializeField] private float attack1DisableDelay = 0.5f;
+    [SerializeField] private float attack2DisableDelay = 1.5f;
+
     //data
     private bool attack1;
     private bool attack2;
@@ -51,7 +55,7 @@ public class PlayerAttack : MonoBehaviour {
     private IEnumerator DisableAttack1()
     {
         anim.attackOne(attack1);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(this.attack1DisableDelay);
         Debug.Log("Attack 1 Stop");
         this.attack1 = false;
         anim.attackOne(attack1);
@@ -60,7 +64,7 @@ public class PlayerAttack : MonoBehaviour {
     private IEnumerator DisableAttack2()
     {
         anim.attackTwo(attack2);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(this.attack2DisableDelay);
         this.attack2 = false;
         Debug.Log("Attack 2 Stop");
         anim.attackTwo(attack2);

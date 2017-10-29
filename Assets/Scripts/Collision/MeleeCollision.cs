@@ -7,13 +7,16 @@ public class MeleeCollision : MonoBehaviour {
     [SerializeField] private GameObject playerObj;
 
     private PlayerAttack pAttack;
+    private PlayerData pData;
 
 	// Use this for initialization
 	void Start () {
 
         pAttack = playerObj.GetComponent<PlayerAttack>();
         Debug.Assert(pAttack != null);
-		
+
+        pData = playerObj.GetComponent<PlayerData>();
+        Debug.Assert(pData != null);
 	}
 	
 	// Update is called once per frame
@@ -23,9 +26,28 @@ public class MeleeCollision : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player2" && (pAttack.getAttack1 || pAttack.getAttack2))
+        if(other.gameObject.tag == "Player2" && pAttack.getAttack1)
         {
             Debug.Log("Collided with: " +other.gameObject.name);
+            Debug.Log("Player Attack 1: " + pAttack.getAttack1);
         }
+
+        if (other.gameObject.tag == "Player2" && pAttack.getAttack2)
+        {
+            Debug.Log("Collided with: " + other.gameObject.name);
+            Debug.Log("Player Attack 2: " + pAttack.getAttack2);
+        }
+
+        //if (other.gameObject.tag == "Player1" && pAttack.getAttack1)
+        //{
+        //    Debug.Log("Collided with: " + other.gameObject.name);
+        //    Debug.Log("Player Attack 1: " + pAttack.getAttack1);
+        //}
+
+        //if (other.gameObject.tag == "Player1" && pAttack.getAttack2)
+        //{
+        //    Debug.Log("Collided with: " + other.gameObject.name);
+        //    Debug.Log("Player Attack 2: " + pAttack.getAttack2);
+        //}
     }
 }

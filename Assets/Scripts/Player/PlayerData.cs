@@ -18,21 +18,18 @@ public class PlayerData : MonoBehaviour {
 	
 	private int deathRate;
 
-	public void start(){
-		movementSpeed = 1.0f;
-		currentHealth = 82;
+	public void Start()
+    {
+		movementSpeed = 3.0f;
+		currentHealth = 100;
 		playerHealhPool = 1;
 		deathRate = 1000;
-	}
 
-	public void Update(){
-		if (deathRate == 0) {
-			currentHealth -= 1;
-			deathRate = 1000;
-		}
-		deathRate -= 1;
-	
-		healthText = GameObject.Find("Text").GetComponent <Text> ();
+        healthText = GameObject.Find("Text").GetComponent<Text>();
+    }
+
+	public void Update()
+    {
 		healthText.text = "Health: "+ currentHealth.ToString();
 	}
 }

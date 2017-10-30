@@ -30,24 +30,32 @@ public class MeleeCollision : MonoBehaviour {
         {
             Debug.Log("Collided with: " +other.gameObject.name);
             Debug.Log("Player Attack 1: " + pAttack.getAttack1);
+
+            other.gameObject.GetComponent<PlayerData>().currentHealth -= 10;
         }
 
         if (other.gameObject.tag == "Player2" && pAttack.getAttack2)
         {
             Debug.Log("Collided with: " + other.gameObject.name);
             Debug.Log("Player Attack 2: " + pAttack.getAttack2);
+
+            other.gameObject.GetComponent<PlayerData>().currentHealth -= 20;
         }
 
-        //if (other.gameObject.tag == "Player1" && pAttack.getAttack1)
-        //{
-        //    Debug.Log("Collided with: " + other.gameObject.name);
-        //    Debug.Log("Player Attack 1: " + pAttack.getAttack1);
-        //}
+        if (other.gameObject.tag == "Player1" && pAttack.getAttack1)
+        {
+            Debug.Log("Collided with: " + other.gameObject.name);
+            Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
-        //if (other.gameObject.tag == "Player1" && pAttack.getAttack2)
-        //{
-        //    Debug.Log("Collided with: " + other.gameObject.name);
-        //    Debug.Log("Player Attack 2: " + pAttack.getAttack2);
-        //}
+            other.gameObject.GetComponent<PlayerData>().currentHealth -= 10;
+        }
+
+        if (other.gameObject.tag == "Player1" && pAttack.getAttack2)
+        {
+            Debug.Log("Collided with: " + other.gameObject.name);
+            Debug.Log("Player Attack 2: " + pAttack.getAttack2);
+
+            other.gameObject.GetComponent<PlayerData>().currentHealth -= 20;
+        }
     }
 }

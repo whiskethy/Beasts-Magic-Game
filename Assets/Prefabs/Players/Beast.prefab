@@ -264,11 +264,10 @@ GameObject:
   - component: {fileID: 54417476183091580}
   - component: {fileID: 114682631402872450}
   - component: {fileID: 114297238724840570}
-  - component: {fileID: 114417856202749150}
   - component: {fileID: 136163977902709904}
   m_Layer: 0
   m_Name: Beast
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -692,15 +691,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525023134621122}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.04, y: 0.123, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 3.72, y: -0.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4463656918831772}
   - {fileID: 4078326207879454}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4213991383857748
 Transform:
   m_ObjectHideFlags: 1
@@ -1164,9 +1163,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!95 &95470111115541312
 Animator:
@@ -1196,18 +1195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6d5b386bdcb0b44860bb29601aa9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114417856202749150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1525023134621122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba53bfe2e62cd743b2cdff0a42b1022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerObj: {fileID: 0}
 --- !u!114 &114682631402872450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1219,7 +1206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ff25b726ee69a4fbe4bf71dbb79c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player2: 0
+  player2: 1
   joyStick: {fileID: 0}
   otherPlayer: {fileID: 0}
 --- !u!114 &114914114795944552
@@ -1233,6 +1220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c4d240c021b48bf90f3fd13835ca49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealthText: Player2HealthText
   movementSpeed: 3
   currentHealth: 100
   playerHealhPool: 100

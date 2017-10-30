@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class PlayerData : MonoBehaviour {
 
     Text healthText;
+
+    [SerializeField] private string playerHealthText;
+
     public float movementSpeed;
     public int currentHealth;
     public int playerHealhPool;
@@ -25,11 +28,18 @@ public class PlayerData : MonoBehaviour {
 		playerHealhPool = 1;
 		deathRate = 1000;
 
-        healthText = GameObject.Find("Text").GetComponent<Text>();
+        healthText = GameObject.Find(playerHealthText).GetComponent<Text>();
+        Debug.Assert(healthText != null);
+
     }
 
 	public void Update()
     {
 		healthText.text = "Health: "+ currentHealth.ToString();
+
+        if(currentHealth <= 0)
+        {
+            currentHealth = 100;
+        }
 	}
 }

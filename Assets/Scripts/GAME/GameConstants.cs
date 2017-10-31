@@ -4,11 +4,9 @@ using UnityEngine;
 
 public struct GameConstants{
 
-    enum Level
+    public enum LEVELS
     {
-        StartMenu = 0,
-        MainWorld = 1,
-        NetworkedWorld = 2
+        StartMenu, MainWorld
     }
 	
 }

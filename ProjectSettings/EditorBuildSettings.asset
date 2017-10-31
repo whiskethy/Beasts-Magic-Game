@@ -14,6 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainWorld.unity
     guid: 9383779e66461b347811bdde8d3219c6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NetworkedWorld.unity
     guid: 40322ecadfb30492c86b0c6777484a17

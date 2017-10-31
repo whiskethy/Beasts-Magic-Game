@@ -6,14 +6,14 @@ public class AttackingState : State {
 
 	private bool attack1;
 	private bool attack2;
-	private bool canBlock;
+	//private bool canBlock;
 
 
 	// Use this for initialization
 	void Start () {
 		attack1 = false;
 		attack2 = false;
-		canBlock = false;
+		//canBlock = false;
 	}
 		
 	// Update is called once per frame
@@ -43,10 +43,10 @@ public class AttackingState : State {
 			}
 
 			if (attack1 && attack2) {
-				canBlock = true;
+				//canBlock = true;
 				Debug.Log ("Blocking Attack");
 			} else {
-				canBlock = false;
+				//canBlock = false;
 			}
 		}
 	}
@@ -65,7 +65,7 @@ public class AttackingState : State {
 
 	public void Block()
 	{
-		canBlock = true;
+		//canBlock = true;
 	}
 }
 

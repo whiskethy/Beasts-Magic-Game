@@ -18,15 +18,12 @@ public class PlayerData : MonoBehaviour {
     public int agility;   //blocking
     public int wisdom;    //ranged attacks
 
-	
-	private int deathRate;
 
 	public void Start()
     {
 		movementSpeed = 3.0f;
 		currentHealth = 100;
 		playerHealhPool = 1;
-		deathRate = 1000;
 
         healthText = GameObject.Find(playerHealthText).GetComponent<Text>();
         Debug.Assert(healthText != null);

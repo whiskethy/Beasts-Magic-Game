@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuControl:MonoBehaviour {
 			
-	public void onClickPauseButton() {
+	public void onClickPracticeButton() {
 		Debug.Log ("Practice button clicked");
 		SceneManager.LoadScene(GameConstants.LEVELS.MainWorld.ToString());
 	}

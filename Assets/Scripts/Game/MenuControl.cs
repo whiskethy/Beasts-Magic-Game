@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuControl:MonoBehaviour {
 			
-	public void onClickPracticeButton() {
+	public void OnClickPracticeButton() {
 		Debug.Log ("Practice button clicked");
 		SceneManager.LoadScene(GameConstants.LEVELS.MainWorld.ToString());
 	}
 
-	public void onClickNetworkButton() {
+	public void OnClickNetworkButton() {
 		Debug.Log ("Networked Clicked");
 	}
 
-	public void onClickCharacterButton() {
+	public void OnClickCharacterButton() {
 		Debug.Log ("CharacterClicked");
 	}
 

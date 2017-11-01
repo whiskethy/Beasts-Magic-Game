@@ -45,6 +45,7 @@ public class PlayerAttack : MonoBehaviour {
         {
             canBlock = true;
             Debug.Log("Blocking Attack");
+            anim.blocking();
         }
         else
         {

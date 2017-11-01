@@ -21,6 +21,13 @@ public class PlayerAnimation : MonoBehaviour {
         animator.SetBool("attackTwo", isAttacking);
     }
 
+    public void blocking()
+    {
+        animator.SetBool("blocking", true);
+        animator.SetBool("isIdle", false);
+
+    }
+
     //universal overload is being supplied ...
     public void walk(float xIn, float yIn, float zIn, float speed)
     {

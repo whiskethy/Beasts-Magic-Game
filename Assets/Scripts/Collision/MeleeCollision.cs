@@ -17,6 +17,7 @@ public class MeleeCollision : MonoBehaviour {
 
         pData = playerObj.GetComponent<PlayerData>();
         Debug.Assert(pData != null);
+
 	}
 	
 	// Update is called once per frame

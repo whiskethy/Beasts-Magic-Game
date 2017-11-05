@@ -12,10 +12,16 @@ public class MenuControl:MonoBehaviour {
 
 	public void OnClickNetworkButton() {
 		Debug.Log ("Networked Clicked");
+		SceneManager.LoadScene(GameConstants.LEVELS.NetworkLobby.ToString());
 	}
 
 	public void OnClickCharacterButton() {
+		SceneManager.LoadScene (GameConstants.LEVELS.CharacterLobby.ToString ());
 		Debug.Log ("CharacterClicked");
+	}
+
+	public void OnClickQuitButton() {
+		Debug.Log ("Quit selected");
 	}
 
 }

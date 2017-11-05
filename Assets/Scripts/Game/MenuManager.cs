@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuControl:MonoBehaviour {
+public class MenuManager:MonoBehaviour {
 			
 	public void OnClickPracticeButton() {
 		Debug.Log ("Practice button clicked");
@@ -24,4 +24,7 @@ public class MenuControl:MonoBehaviour {
 		Debug.Log ("Quit selected");
 	}
 
+	public void LoadScene(string scene) {
+		SceneManager.LoadScene (scene);
+	}
 }

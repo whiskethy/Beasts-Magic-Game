@@ -13,7 +13,7 @@ public class PlayerAnimation : MonoBehaviour {
 
     public void attackOne(bool isAttacking)
     {
-        animator.SetBool("attackOne", isAttacking);
+        animator.Play("lightAttack");
     }
 
     public void attackTwo(bool isAttacking)

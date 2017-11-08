@@ -7,7 +7,7 @@ public class MenuManager:MonoBehaviour {
 			
 	public void OnClickPracticeButton() {
 		Debug.Log ("Practice button clicked");
-		SceneManager.LoadScene(GameConstants.LEVELS.MainWorld.ToString());
+		SceneManager.LoadScene(GameConstants.LEVELS.MainWorldPractice.ToString());
 	}
 
 	public void OnClickNetworkButton() {

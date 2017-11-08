@@ -1,42 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerData : MonoBehaviour {
 
-    Text healthText;
+public class PlayerData : MonoBehaviour
+{
 
-    [SerializeField] private string playerHealthText;
-
-    public float movementSpeed;
+    //default fields that SHOULD be overridden in the prefab.
+    public float movementSpeed = 3.0f;
     public int currentHealth;
-    public int playerHealhPool;
+    public int characterHealthPool = 100;
 
-    public int attackSpeed;
-    public int strength;  //physical attacks
-    public int agility;   //blocking
-    public int wisdom;    //ranged attacks
+    public float attack1CoolDown = 0.5f;
+    public float attack2CoolDown = 1.5f;
 
+    public int strength = 10;  //physical attacks
+    public int agility = 10;   //blocking
+    public int wisdom = 10;    //ranged attacks
 
-	public void Start()
-    {
-		movementSpeed = 3.0f;
-		currentHealth = 100;
-		playerHealhPool = 1;
-
-        healthText = GameObject.Find(playerHealthText).GetComponent<Text>();
-        Debug.Assert(healthText != null);
-
-    }
-
-	public void Update()
-    {
-		healthText.text = "Health: "+ currentHealth.ToString();
-
-        if(currentHealth <= 0)
-        {
-            currentHealth = 100;
-        }
-	}
 }

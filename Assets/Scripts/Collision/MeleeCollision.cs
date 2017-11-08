@@ -5,12 +5,16 @@ using UnityEngine;
 public class MeleeCollision : MonoBehaviour {
 
     [SerializeField] private GameObject playerObj;
+    [SerializeField] private HealthManager healthManager;
 
     private PlayerAttack pAttack;
     private PlayerData pData;
 
 	// Use this for initialization
 	void Start () {
+
+        healthManager = FindObjectOfType<HealthManager>();
+        Debug.Assert(healthManager != null);
 
         pAttack = playerObj.GetComponent<PlayerAttack>();
         Debug.Assert(pAttack != null);
@@ -32,7 +36,8 @@ public class MeleeCollision : MonoBehaviour {
             Debug.Log("Collided with: " +other.gameObject.name);
             Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
-            other.gameObject.GetComponent<PlayerData>().currentHealth -= 10;
+            other.gameObject.GetComponent<PlayerAnimation>().lightHit();
+            healthManager.takeDamage(playerObj, 10);
         }
 
         if (other.gameObject.tag == "Player2" && pAttack.getAttack2)
@@ -40,7 +45,8 @@ public class MeleeCollision : MonoBehaviour {
             Debug.Log("Collided with: " + other.gameObject.name);
             Debug.Log("Player Attack 2: " + pAttack.getAttack2);
 
-            other.gameObject.GetComponent<PlayerData>().currentHealth -= 20;
+            other.gameObject.GetComponent<PlayerAnimation>().lightHit();
+            healthManager.takeDamage(playerObj, 20);
         }
 
         if (other.gameObject.tag == "Player1" && pAttack.getAttack1)
@@ -48,7 +54,8 @@ public class MeleeCollision : MonoBehaviour {
             Debug.Log("Collided with: " + other.gameObject.name);
             Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
-            other.gameObject.GetComponent<PlayerData>().currentHealth -= 10;
+            other.gameObject.GetComponent<PlayerAnimation>().lightHit();
+            healthManager.takeDamage(playerObj, 10);
         }
 
         if (other.gameObject.tag == "Player1" && pAttack.getAttack2)
@@ -56,7 +63,8 @@ public class MeleeCollision : MonoBehaviour {
             Debug.Log("Collided with: " + other.gameObject.name);
             Debug.Log("Player Attack 2: " + pAttack.getAttack2);
 
-            other.gameObject.GetComponent<PlayerData>().currentHealth -= 20;
+            other.gameObject.GetComponent<PlayerAnimation>().lightHit();
+            healthManager.takeDamage(playerObj, 20);
         }
     }
 }

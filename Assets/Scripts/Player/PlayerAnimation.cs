@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerAnimation : MonoBehaviour {
-    
+public class PlayerAnimation : MonoBehaviour
+{
+
     private Animator animator;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         animator = GetComponent<Animator>();
     }
 
@@ -18,36 +21,36 @@ public class PlayerAnimation : MonoBehaviour {
 
     public void attackTwo(bool isAttacking)
     {
-        animator.SetBool("attackTwo", isAttacking);
+        animator.Play("heavyAttack");
+    }
+
+    public void lightHit()
+    {
+        animator.Play("lightHit");
     }
 
     public void blocking()
     {
         animator.SetBool("blocking", true);
         animator.SetBool("isIdle", false);
-
     }
 
-    //universal overload is being supplied ...
-    public void walk(float xIn, float yIn, float zIn, float speed)
+    public void blockingImpact()
     {
-        if (zIn > 0.0f)
-        {
-            animator.SetBool("walkingForward", true);
-            animator.SetBool("isIdle", false);
-        }
-
+        animator.Play("blockImpact");
+    }
+    public void death()
+    {
+        animator.Play("death");
     }
 
     //walk vector overload. How to remove conditional checks? ... 
     public void walk(Vector3 InputDirection, float speed)
     {
-
         if (Equals(InputDirection.x, 0.0f) && Equals(InputDirection.y, 0.0f) && Equals(InputDirection.z, 0.0f))
         {
             stopWalking();
         }
-
         if (InputDirection.z > 0.0f)
         {
             walkForward(InputDirection.z, speed);
@@ -58,7 +61,6 @@ public class PlayerAnimation : MonoBehaviour {
         }
 
     }
-
 
     //... but multiple functions removes conditionals at runtime if used properly
     public void stopWalking()
@@ -71,27 +73,29 @@ public class PlayerAnimation : MonoBehaviour {
     }
     public void walkForward(float zIn, float speed)
     {
-        animator.SetBool("walkingForward", true);
-        animator.SetBool("walkingBackward", false);
         animator.SetFloat("movementSpeed", speed);
         animator.SetBool("isIdle", false);
+        animator.SetBool("walkingForward", true);
+        animator.SetBool("walkingBackward", false);
         animator.SetBool("walkingRight", false);
+        animator.SetBool("walkingLeft", false);
     }
 
     public void walkBackward(float zIn, float speed)
     {
-        animator.SetBool("walkingBackward", true);
-        animator.SetBool("walkingForward", false);
         animator.SetFloat("movementSpeed", speed);
         animator.SetBool("isIdle", false);
+        animator.SetBool("walkingForward", false);
+        animator.SetBool("walkingBackward", true);
         animator.SetBool("walkingRight", false);
+        animator.SetBool("walkingLeft", false);
     }
     public void walkLateral(float xIn, float speed)
     {
-        animator.SetBool("walkingForward", false);
-        animator.SetBool("walkingBackward", false);
         animator.SetFloat("movementSpeed", speed);
         animator.SetBool("isIdle", false);
+        animator.SetBool("walkingForward", false);
+        animator.SetBool("walkingBackward", false);
 
         if (xIn > 0)
         {

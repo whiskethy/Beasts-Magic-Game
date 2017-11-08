@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Movement : MonoBehaviour
+public class Movement : NetworkBehaviour
 {
     //[SerializeField] private bool useMobileControls = false;
     [SerializeField] private bool player2 = false;
@@ -16,14 +17,37 @@ public class Movement : MonoBehaviour
 
     private float movementDirTemp;
 
+    enum Id {No, Client, Server};
+
+    float x1, z1;
+    float x2, z2;
+
+    int myID = 0;
+
     // Use this for initialization
     void Start () {
         anim = GetComponent<PlayerAnimation>();
         playerData = GetComponent<PlayerData>();
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public override void OnStartClient()
+    {
+        myID += 1;  
+    }
+
+    public override void OnStartServer()
+    {
+        myID += 1;
+    }
+    // Update is called once per frame
+    void Update () {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
+
         if (!player2)
         {
             if (Input.GetKey(KeyCode.W))

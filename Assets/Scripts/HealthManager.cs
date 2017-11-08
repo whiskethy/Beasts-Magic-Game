@@ -37,6 +37,7 @@ public class HealthManager : MonoBehaviour {
 
     public void Update()
     {
+        
         p1healthText.text = "Health: " + player1Data.currentHealth.ToString();
         p2healthText.text = "Health: " + player1Data.currentHealth.ToString();
 

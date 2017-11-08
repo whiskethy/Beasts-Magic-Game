@@ -599,6 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4656562876023630}
   - component: {fileID: 95576693529593552}
+  - component: {fileID: 114365664668407182}
   - component: {fileID: 114378267900655896}
   - component: {fileID: 54191629288144860}
   - component: {fileID: 114426415114081596}
@@ -606,6 +607,8 @@ GameObject:
   - component: {fileID: 114532082234077064}
   - component: {fileID: 136214846643197650}
   - component: {fileID: 23572681676945842}
+  - component: {fileID: 114269847609343424}
+  - component: {fileID: 114439474545057192}
   m_Layer: 0
   m_Name: Beast - Player 1
   m_TagString: Player1
@@ -1200,6 +1203,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1215,6 +1219,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1232,6 +1237,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -1247,6 +1253,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1323,7 +1330,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 07b69242c842c014d85dfd50c4ab779d, type: 3}
   m_Controller: {fileID: 9100000, guid: cdb29691c9bd41e4fbfc26e78def25ff, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 2
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -1341,6 +1348,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6d5b386bdcb0b44860bb29601aa9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114269847609343424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973208309327856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 151
+    i1: 220
+    i2: 248
+    i3: 210
+    i4: 219
+    i5: 168
+    i6: 138
+    i7: 20
+    i8: 137
+    i9: 158
+    i10: 42
+    i11: 117
+    i12: 209
+    i13: 155
+    i14: 101
+    i15: 105
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114275432608124288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1353,6 +1392,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1973208309327856}
+  healthManager: {fileID: 0}
+--- !u!114 &114365664668407182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973208309327856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95576693529593552}
+  m_ParameterSendBits: 1023
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114374397995967308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1397,7 +1456,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2: 0
   joyStick: {fileID: 0}
-  otherPlayer: {fileID: 0}
+  otherPlayer: {fileID: 1973208309327856}
+--- !u!114 &114439474545057192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973208309327856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.045454547
+  m_SyncRotationAxis: 5
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114532082234077064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1409,8 +1489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c0af63292170e499b056665ccb2c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack1DisableDelay: 0.5
-  attack2DisableDelay: 1.5
 --- !u!114 &114769340946585268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1423,6 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1973208309327856}
+  healthManager: {fileID: 0}
 --- !u!136 &136214846643197650
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1445,6 +1524,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1460,6 +1540,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

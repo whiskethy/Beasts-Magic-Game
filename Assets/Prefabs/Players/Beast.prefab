@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 114682631402872450}
   - component: {fileID: 114297238724840570}
   - component: {fileID: 136163977902709904}
+  - component: {fileID: 114023136206979322}
   m_Layer: 0
   m_Name: Beast
   m_TagString: Player2
@@ -1184,6 +1185,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114023136206979322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525023134621122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 75
+    i1: 86
+    i2: 107
+    i3: 131
+    i4: 191
+    i5: 191
+    i6: 84
+    i7: 153
+    i8: 184
+    i9: 113
+    i10: 37
+    i11: 33
+    i12: 66
+    i13: 32
+    i14: 57
+    i15: 26
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114297238724840570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1220,11 +1253,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c4d240c021b48bf90f3fd13835ca49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthText: Player2HealthText
   movementSpeed: 3
   currentHealth: 100
-  playerHealhPool: 100
-  attackSpeed: 0
+  characterHealthPool: 100
+  attack1CoolDown: 0.5
+  attack2CoolDown: 1.5
   strength: 30
   agility: 20
   wisdom: 10
@@ -1250,6 +1283,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1265,6 +1299,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

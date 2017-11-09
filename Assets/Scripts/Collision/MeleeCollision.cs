@@ -37,7 +37,7 @@ public class MeleeCollision : MonoBehaviour {
             Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
             other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-            healthManager.takeDamage(playerObj, 10);
+            healthManager.takeDamage(other.gameObject, 10);
         }
 
         if (other.gameObject.tag == "Player2" && pAttack.getAttack2)
@@ -46,7 +46,7 @@ public class MeleeCollision : MonoBehaviour {
             Debug.Log("Player Attack 2: " + pAttack.getAttack2);
 
             other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-            healthManager.takeDamage(playerObj, 20);
+            healthManager.takeDamage(other.gameObject, 20);
         }
 
         if (other.gameObject.tag == "Player1" && pAttack.getAttack1)
@@ -55,7 +55,7 @@ public class MeleeCollision : MonoBehaviour {
             Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
             other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-            healthManager.takeDamage(playerObj, 10);
+            healthManager.takeDamage(other.gameObject, 10);
         }
 
         if (other.gameObject.tag == "Player1" && pAttack.getAttack2)
@@ -64,7 +64,7 @@ public class MeleeCollision : MonoBehaviour {
             Debug.Log("Player Attack 2: " + pAttack.getAttack2);
 
             other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-            healthManager.takeDamage(playerObj, 20);
+            healthManager.takeDamage(other.gameObject, 20);
         }
     }
 }

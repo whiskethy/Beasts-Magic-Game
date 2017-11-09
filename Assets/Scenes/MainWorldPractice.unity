@@ -971,6 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1764698728}
+  healthManager: {fileID: 0}
 --- !u!65 &514130363
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1341,6 +1342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1764698728}
+  healthManager: {fileID: 0}
 --- !u!65 &864493349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2947,6 +2949,7 @@ GameObject:
   - component: {fileID: 2083983416}
   - component: {fileID: 2083983415}
   - component: {fileID: 2083983414}
+  - component: {fileID: 2083983417}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2999,6 +3002,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2083983417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083983413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e5bc5dc3eee47379842982a2020a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2146011318 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1525023134621122, guid: 4b566b83bfbf5499b87125214220391a,

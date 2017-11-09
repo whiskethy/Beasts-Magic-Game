@@ -22,6 +22,7 @@ public class MenuManager:MonoBehaviour {
 
 	public void OnClickQuitButton() {
 		Debug.Log ("Quit selected");
+		Application.Quit();
 	}
 
 	public void LoadScene(string scene) {

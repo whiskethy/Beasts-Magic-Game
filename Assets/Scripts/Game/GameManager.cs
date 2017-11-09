@@ -19,7 +19,21 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void InitGame() {
-		menuManager.LoadScene (GameConstants.LEVELS.StartMenu.ToString ());		
+		if (menuManager != null) {
+			menuManager.LoadScene (GameConstants.LEVELS.StartMenu.ToString ());		
+		}
+	}
+
+	void Update() {
+		if (Input.GetKey ("escape")) {
+			Debug.Log ("Quit");
+			Quit ();
+		}
+
+	}
+
+	public void Quit() {
+		Application.Quit();
 	}
 	
 }

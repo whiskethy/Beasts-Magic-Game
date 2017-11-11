@@ -1330,7 +1330,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 07b69242c842c014d85dfd50c4ab779d, type: 3}
   m_Controller: {fileID: 9100000, guid: cdb29691c9bd41e4fbfc26e78def25ff, type: 2}
-  m_CullingMode: 2
+  m_CullingMode: 1
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -1470,9 +1470,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
   m_SendInterval: 0.045454547
-  m_SyncRotationAxis: 5
+  m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
-  m_SyncSpin: 0
+  m_SyncSpin: 1
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5

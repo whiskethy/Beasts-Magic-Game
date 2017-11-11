@@ -17,12 +17,9 @@ public class Movement : NetworkBehaviour
 
     private float movementDirTemp;
 
-    enum Id {No, Client, Server};
+    static GameObject goClient;
+    static GameObject goServer;
 
-    float x1, z1;
-    float x2, z2;
-
-    int myID = 0;
 
     // Use this for initialization
     void Start () {
@@ -33,21 +30,41 @@ public class Movement : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        myID += 1;  
+        if (gameObject.Equals(goServer)) return;
+        goClient = gameObject;
     }
 
     public override void OnStartServer()
     {
-        myID += 1;
+        if (goServer == null)
+        goServer = gameObject;
+    }
+
+    [ClientRpc]
+    public void RpcSetOther(GameObject gameObject)
+    {
+        if (goServer == null)
+            goServer = gameObject;
     }
     // Update is called once per frame
     void Update () {
+        
         if (!isLocalPlayer)
         {
             return;
         }
 
+        if (gameObject.Equals(goServer))
+            if (goClient != null)
+                otherPlayer = goClient;
 
+        if (gameObject.Equals(goClient))
+            if (goServer != null)
+                otherPlayer = goServer;
+
+        if (isServer && goServer != null)
+            RpcSetOther(goServer);
+        
         if (!player2)
         {
             if (Input.GetKey(KeyCode.W))

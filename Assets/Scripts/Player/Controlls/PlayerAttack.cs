@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerAttack : MonoBehaviour {
+[NetworkSettings (channel = 1, sendInterval = 10f) ]
+public class PlayerAttack : NetworkBehaviour {
 
     //data accessible to the Inspector
     //[SerializeField] private float attack1DisableDelay = 0.5f;
@@ -27,10 +29,18 @@ public class PlayerAttack : MonoBehaviour {
 
         pData = GetComponent<PlayerData>();
         Debug.Assert(pData != null);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (!isLocalPlayer) 
+
+        {
+            return;
+        }
+            
 		
         if(Input.GetMouseButtonDown(0) && !attack2)
         {

@@ -32,7 +32,21 @@ public class PlayerAnimation : MonoBehaviour
     public void blocking()
     {
         animator.SetBool("blocking", true);
+        animator.SetBool("walkingForward", false);
+        animator.SetBool("walkingBackward", false);
+        animator.SetBool("walkingRight", false);
+        animator.SetBool("walkingLeft", false);
         animator.SetBool("isIdle", false);
+    }
+
+    public void unBlocking()
+    {
+        animator.SetBool("blocking", false);
+        animator.SetBool("walkingForward", false);
+        animator.SetBool("walkingBackward", false);
+        animator.SetBool("walkingRight", false);
+        animator.SetBool("walkingLeft", false);
+        animator.SetBool("isIdle", true);
     }
 
     public void blockingImpact()

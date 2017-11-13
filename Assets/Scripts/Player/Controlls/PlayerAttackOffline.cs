@@ -46,16 +46,16 @@ public class PlayerAttackOffline : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Space))
         {
-
             canBlock = true;
             Debug.Log("Blocking Attack");
             anim.blocking();
         }
-        //else
-        //{
-        //    Debug.Log("Blocking Attack Stop");
-        //    canBlock = false;
-        //}
+        else
+        {
+            Debug.Log("Blocking Attack Stop");
+            canBlock = false;
+            anim.unBlocking();
+        }
     }
 
     private IEnumerator DisableAttack1()

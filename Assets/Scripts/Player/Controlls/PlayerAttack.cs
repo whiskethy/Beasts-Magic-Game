@@ -56,7 +56,7 @@ public class PlayerAttack : NetworkBehaviour {
             StartCoroutine(DisableAttack2());
         }
 
-        if(attack1 && attack2)
+        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2)
         {
             canBlock = true;
             Debug.Log("Blocking Attack");
@@ -64,7 +64,9 @@ public class PlayerAttack : NetworkBehaviour {
         }
         else
         {
+            //Debug.Log("Blocking Attack Stop");
             canBlock = false;
+            anim.unBlocking();
         }
     }
 

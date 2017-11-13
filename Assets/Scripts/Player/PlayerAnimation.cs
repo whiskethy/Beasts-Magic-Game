@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 
 public class PlayerAnimation : MonoBehaviour
 {
-
     private Animator animator;
 
     // Use this for initialization

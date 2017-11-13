@@ -44,7 +44,7 @@ public class PlayerAttackOffline : MonoBehaviour {
             StartCoroutine(DisableAttack2());
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             canBlock = true;
             Debug.Log("Blocking Attack");

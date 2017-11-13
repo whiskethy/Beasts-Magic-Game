@@ -44,7 +44,11 @@ public class PlayerAttackOffline : MonoBehaviour {
             StartCoroutine(DisableAttack2());
         }
 
+<<<<<<< HEAD
         if (Input.GetKey(KeyCode.Space))
+=======
+        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2)
+>>>>>>> origin/master
         {
             canBlock = true;
             Debug.Log("Blocking Attack");
@@ -52,7 +56,7 @@ public class PlayerAttackOffline : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Blocking Attack Stop");
+            //Debug.Log("Blocking Attack Stop");
             canBlock = false;
             anim.unBlocking();
         }

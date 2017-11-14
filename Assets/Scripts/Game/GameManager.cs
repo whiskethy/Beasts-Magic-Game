@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 
 	void InitGame() {
 		if (menuManager != null) {
-			menuManager.LoadScene (GameConstants.LEVELS.StartMenu.ToString ());		
+			menuManager.LoadScene (GameConstants.LEVELS.NetworkLobby.ToString ());		
 		}
 	}
 

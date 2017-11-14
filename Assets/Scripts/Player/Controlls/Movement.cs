@@ -11,7 +11,7 @@ public class Movement : NetworkBehaviour
     [SerializeField] private bool player2 = false;
     private PlayerData playerData;
 
-    public AndroidJoystick joyStick;
+    //public AndroidJoystick joyStick;
     private PlayerAnimation anim;
     public GameObject otherPlayer;
 
@@ -108,12 +108,12 @@ public class Movement : NetworkBehaviour
             {
                 anim.stopWalking();
             }
-            else
-            {
-                transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
-                transform.LookAt(otherPlayer.transform);
-                anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
-            }
+            //else
+            //{
+            //    transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
+            //    transform.LookAt(otherPlayer.transform);
+            //    anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
+            //}
 
         }
         else
@@ -162,5 +162,11 @@ public class Movement : NetworkBehaviour
 
         }
 
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        gameObject.tag = "Player2";
+        gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
     }
 }

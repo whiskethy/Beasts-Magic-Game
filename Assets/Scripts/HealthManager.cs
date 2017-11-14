@@ -12,6 +12,7 @@ public class HealthManager : MonoBehaviour {
     public PlayerData player2Data;
 
     private PlayerAnimation anim;
+    private bool find;
 
     public Text p1healthText;
     [SerializeField] private string player1HealthText;
@@ -21,9 +22,13 @@ public class HealthManager : MonoBehaviour {
 
     public void Start()
     {
+        player1 = GameObject.FindWithTag("Player1");
+        Debug.Assert(player1 != null);
         player1Data = player1.GetComponent<PlayerData>();
         Debug.Assert(player1Data != null);
 
+        player2 = GameObject.FindWithTag("Player2");
+        Debug.Assert(player2 != null);
         player2Data = player2.GetComponent<PlayerData>();
         Debug.Assert(player2Data != null);
 
@@ -37,7 +42,6 @@ public class HealthManager : MonoBehaviour {
 
     public void Update()
     {
-        
         p1healthText.text = "Health: " + player1Data.currentHealth.ToString();
         p2healthText.text = "Health: " + player1Data.currentHealth.ToString();
 

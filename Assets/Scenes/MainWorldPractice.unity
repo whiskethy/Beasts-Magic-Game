@@ -1352,7 +1352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1764698728}
-  healthManager: {fileID: 0}
+  healthManager: {fileID: 1072399750}
+  offlineMode: 1
 --- !u!65 &812823248
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2497,7 +2498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1764698728}
-  healthManager: {fileID: 0}
+  healthManager: {fileID: 1072399750}
+  offlineMode: 1
 --- !u!65 &1809837980
 BoxCollider:
   m_ObjectHideFlags: 0

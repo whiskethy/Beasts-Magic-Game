@@ -11,7 +11,7 @@ public class Movement : NetworkBehaviour
     [SerializeField] private bool player2 = false;
     private PlayerData playerData;
 
-    //public AndroidJoystick joyStick;
+    public AndroidJoystick joyStick;
     private PlayerAnimation anim;
     public GameObject otherPlayer;
 
@@ -20,12 +20,16 @@ public class Movement : NetworkBehaviour
     static GameObject goClient;
     static GameObject goServer;
 
+    Text healthText1;
+    Text healthText2;
 
     // Use this for initialization
     void Start () {
         anim = GetComponent<PlayerAnimation>();
         playerData = GetComponent<PlayerData>();
 
+        healthText1 = GameObject.Find("Player1HealthText").GetComponent<Text>();
+        healthText2 = GameObject.Find("Player2HealthText").GetComponent<Text>();
     }
 
     public override void OnStartClient()
@@ -52,6 +56,16 @@ public class Movement : NetworkBehaviour
         if (!isLocalPlayer)
         {
             return;
+        }
+
+        if(goClient != null)
+        {
+            healthText2.text = goClient.GetComponent<PlayerData>().currentHealth.ToString();
+        }
+
+        if (goServer != null)
+        {
+            healthText1.text = goServer.GetComponent<PlayerData>().currentHealth.ToString();
         }
 
         if (gameObject.Equals(goServer))
@@ -108,12 +122,12 @@ public class Movement : NetworkBehaviour
             {
                 anim.stopWalking();
             }
-            //else
-            //{
-            //    transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
-            //    transform.LookAt(otherPlayer.transform);
-            //    anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
-            //}
+            else
+            {
+                transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
+                transform.LookAt(otherPlayer.transform);
+                anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
+            }
 
         }
         else

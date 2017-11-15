@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-
-public class PlayerData : MonoBehaviour
+public class PlayerData : NetworkBehaviour
 {
 
     //default fields that SHOULD be overridden in the prefab.
     public float movementSpeed = 3.0f;
+    [SyncVar] 
     public int currentHealth;
     public int characterHealthPool = 100;
 

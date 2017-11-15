@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class HealthManager : MonoBehaviour {
+public class HealthManager : NetworkBehaviour {
 
-    [SerializeField] private GameObject player1;
-    [SerializeField] private GameObject player2;
+    [SerializeField] private GameObject player;
 
-    public PlayerData player1Data;
-    public PlayerData player2Data;
+
+    private PlayerData mplayerData;
 
     private PlayerAnimation anim;
     private bool find;
+
+    public Text healthText;
+    public Text healthText1;
+    public Text healthText2;
 
     public Text p1healthText;
     [SerializeField] private string player1HealthText;
@@ -22,43 +26,46 @@ public class HealthManager : MonoBehaviour {
 
     public void Start()
     {
-        player1 = GameObject.FindWithTag("Player1");
-        Debug.Assert(player1 != null);
-        player1Data = player1.GetComponent<PlayerData>();
-        Debug.Assert(player1Data != null);
+        if (gameObject.tag == "Player1")
+            healthText = GameObject.Find("Player1HealthText").GetComponent<Text>();
+        else
+        if (gameObject.tag == "Player2")
+            healthText = GameObject.Find("Player2HealthText").GetComponent<Text>();
+        mplayerData = GetComponent<PlayerData>();
+        //Debug.Log("Gameobject:" + gameObject.name + "   HelthText:" + healthText.name);
 
-        player2 = GameObject.FindWithTag("Player2");
-        Debug.Assert(player2 != null);
-        player2Data = player2.GetComponent<PlayerData>();
-        Debug.Assert(player2Data != null);
 
-        //healthText = GameObject.Find(playerHealthText).GetComponent<Text>();
-        Debug.Assert(p1healthText != null);
-        Debug.Assert(p2healthText != null);
+        //Debug.Log("Plyerdata:" + mplayerData.name);
+        player = gameObject;
+        if (mplayerData == null)
+            return;
+        mplayerData.currentHealth = mplayerData.characterHealthPool;
 
-        player1Data.currentHealth = player1Data.characterHealthPool;
-        player2Data.currentHealth = player2Data.characterHealthPool;
     }
 
     public void Update()
     {
-        p1healthText.text = "Health: " + player1Data.currentHealth.ToString();
-        p2healthText.text = "Health: " + player1Data.currentHealth.ToString();
-
-        //healthText = playerHealthText;
-        if (player1Data.currentHealth <= 0)
+        if (mplayerData == null)
+            return;
+       if(mplayerData.currentHealth <= 0)
         {
-            player1.GetComponent<PlayerAnimation>().death();
-        }
-        else if(player2Data.currentHealth <= 0)
-        {
-            player2.GetComponent<PlayerAnimation>().death();
+            if(player != null)
+            player.GetComponent<PlayerAnimation>().death();
         }
     }
 
 
     public void takeDamage(GameObject player, int damage)
     {
-        player.GetComponent<PlayerData>().currentHealth -= damage;
+        CmdDoDamage(player, damage);
     }
+
+    [Command]
+    void CmdDoDamage(GameObject player, int damage)
+    {
+        player.GetComponent<PlayerData>().currentHealth -= damage;
+        Debug.Log(player.tag + "    Damage:" + player.GetComponent<PlayerData>().currentHealth);
+
+    }
+
 }

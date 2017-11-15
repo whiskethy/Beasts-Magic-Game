@@ -3264,9 +3264,10 @@ MonoBehaviour:
   m_MinPlayers: 2
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 0}
+  m_GamePlayerPrefab: {fileID: 1973208309327856, guid: 97dcf8d2dba88a14899e2a75d19b6569,
+    type: 2}
   m_LobbyScene: 
-  m_PlayScene: 
+  m_PlayScene: MainWorld
   lobbySlots: []
   prematchCountdown: 3
   topPanel: {fileID: 11424994}

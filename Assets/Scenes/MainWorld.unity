@@ -1050,7 +1050,7 @@ Prefab:
         type: 2}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 1973208309327856, guid: 97dcf8d2dba88a14899e2a75d19b6569,
+      objectReference: {fileID: 1344688370519928, guid: 97dcf8d2dba88a14899e2a75d19b6569,
         type: 2}
     - target: {fileID: 114425193481278556, guid: ddbfccacaecee4ac5b112e012945336b,
         type: 2}

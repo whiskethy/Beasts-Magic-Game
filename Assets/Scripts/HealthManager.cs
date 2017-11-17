@@ -7,9 +7,8 @@ using UnityEngine.Networking;
 public class HealthManager : NetworkBehaviour {
 
     [SerializeField] private GameObject player;
-
-
-    private PlayerData mplayerData;
+   
+    public PlayerData mplayerData;
 
     private PlayerAnimation anim;
     private bool find;
@@ -31,6 +30,7 @@ public class HealthManager : NetworkBehaviour {
         else
         if (gameObject.tag == "Player2")
             healthText = GameObject.Find("Player2HealthText").GetComponent<Text>();
+
         mplayerData = GetComponent<PlayerData>();
         //Debug.Log("Gameobject:" + gameObject.name + "   HelthText:" + healthText.name);
 

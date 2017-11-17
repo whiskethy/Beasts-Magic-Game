@@ -11,6 +11,8 @@ public class Movement : NetworkBehaviour
     [SerializeField] private bool player2 = false;
     private PlayerData playerData;
 
+    private UnityStandardAssets.Cameras.AutoCam theCamera;
+
     public AndroidJoystick joyStick;
     private PlayerAnimation anim;
     public GameObject otherPlayer;
@@ -25,6 +27,8 @@ public class Movement : NetworkBehaviour
 
     // Use this for initialization
     void Start () {
+        theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
+
         anim = GetComponent<PlayerAnimation>();
         playerData = GetComponent<PlayerData>();
 
@@ -41,7 +45,7 @@ public class Movement : NetworkBehaviour
     public override void OnStartServer()
     {
         if (goServer == null)
-        goServer = gameObject;
+            goServer = gameObject;
     }
 
     [ClientRpc]
@@ -69,13 +73,28 @@ public class Movement : NetworkBehaviour
         }
 
         if (gameObject.Equals(goServer))
+        {
+            if (theCamera.Target == null)
+            {
+                theCamera.setTarget(gameObject.transform);
+
+            }
             if (goClient != null)
+            {
                 otherPlayer = goClient;
-
+            }
+        }
         if (gameObject.Equals(goClient))
+        {
+            if (theCamera.Target == null)
+            {
+                theCamera.setTarget(gameObject.transform);
+            }
             if (goServer != null)
+            {
                 otherPlayer = goServer;
-
+            }
+        }
         if (isServer && goServer != null)
             RpcSetOther(goServer);
         
@@ -179,8 +198,12 @@ public class Movement : NetworkBehaviour
     }
 
     public override void OnStartLocalPlayer()
-    {
+    { 
         gameObject.tag = "Player2";
         gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
+
+        Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>().setTarget(gameObject.transform);
     }
+
+    //public override void OnS
 }

@@ -24,8 +24,8 @@ public class MeleeCollision : MonoBehaviour {
         }
         else
         {
-            pAttackO = playerObj.GetComponent<PlayerAttackOffline>();
-            Debug.Assert(pAttack != null);
+         //   pAttackO = playerObj.GetComponent<PlayerAttackOffline>();
+         //   Debug.Assert(pAttack != null);
         }
 
 	}
@@ -74,6 +74,7 @@ public class MeleeCollision : MonoBehaviour {
         }
         else
         {
+            return;
             if (other.gameObject.tag == "Player2" && pAttackO.getAttack1)
             {
                 Debug.Log("Collided with: " + other.gameObject.name);

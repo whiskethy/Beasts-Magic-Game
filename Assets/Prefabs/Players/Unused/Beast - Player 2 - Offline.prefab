@@ -524,6 +524,8 @@ GameObject:
   - component: {fileID: 114216748728713140}
   - component: {fileID: 114928986877778938}
   - component: {fileID: 136769255110517120}
+  - component: {fileID: 114128808795645452}
+  - component: {fileID: 114082653441724626}
   m_Layer: 0
   m_Name: Beast - Player 2 - Offline
   m_TagString: Player2
@@ -970,7 +972,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857442795896012}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.72, y: -0.005, z: 0}
+  m_LocalPosition: {x: 3.72, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4226922342747354}
@@ -1237,7 +1239,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65269511245646608
 BoxCollider:
@@ -1268,6 +1270,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114082653441724626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857442795896012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a9bff9143cc42d89a2df4233bf0423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  mplayerData: {fileID: 0}
+  healthText: {fileID: 0}
+  healthText1: {fileID: 0}
+  healthText2: {fileID: 0}
+  p1healthText: {fileID: 0}
+  player1HealthText: 
+  p2healthText: {fileID: 0}
+  player2HealthText: 
 --- !u!114 &114102371260591058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1287,6 +1309,20 @@ MonoBehaviour:
   strength: 30
   agility: 20
   wisdom: 10
+--- !u!114 &114128808795645452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857442795896012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7b46b040d1534816bc5b6dd01b3fda1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
+  healthManager: {fileID: 0}
+  offlineMode: 0
 --- !u!114 &114216748728713140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1331,7 +1367,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857442795896012}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.36363873
   m_Height: 1.78

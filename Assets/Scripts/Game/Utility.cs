@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Utility : MonoBehaviour
+public class Utility
 {
     bool isEqual(float a, float b)
     {

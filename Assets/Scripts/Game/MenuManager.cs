@@ -16,7 +16,6 @@ public class MenuManager:MonoBehaviour {
 	}
 
 	public void OnClickCharacterButton() {
-		SceneManager.LoadScene (GameConstants.LEVELS.CharacterLobby.ToString ());
 		Debug.Log ("CharacterClicked");
 	}
 

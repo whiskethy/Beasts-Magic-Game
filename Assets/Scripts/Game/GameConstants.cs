@@ -6,7 +6,7 @@ public struct GameConstants{
 	
     public enum LEVELS
     {
-        StartMenu, MainWorld, NetworkLobby, CharacterLobby, MainWorldPractice
+        MainWorld, NetworkLobby, MainWorldPractice
     }
 	
 }

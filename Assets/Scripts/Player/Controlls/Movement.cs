@@ -98,7 +98,7 @@ public class Movement : NetworkBehaviour
         if (isServer && goServer != null)
             RpcSetOther(goServer);
         
-        if (!player2)
+        if ((!player2)&&(playerData.isAlive == true))
         {
             if (Input.GetKey(KeyCode.W))
             {

@@ -19,4 +19,5 @@ public class PlayerData : NetworkBehaviour
     public int agility = 10;   //blocking
     public int wisdom = 10;    //ranged attacks
 
+    public bool isAlive = true;
 }

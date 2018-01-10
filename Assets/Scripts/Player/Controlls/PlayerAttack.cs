@@ -42,21 +42,21 @@ public class PlayerAttack : NetworkBehaviour {
         }
             
 		
-        if(Input.GetMouseButtonDown(0) && !attack2)
+        if(Input.GetMouseButtonDown(0) && !attack2 && pData.isAlive)
         {
             Debug.Log("Attack 1 Start!");
             attack1 = true;
             StartCoroutine(DisableAttack1());
         }
 
-        if(Input.GetMouseButtonDown(1) && !attack1)
+        if(Input.GetMouseButtonDown(1) && !attack1 && pData.isAlive)
         {
             attack2 = true;
             Debug.Log("Attack 2 Start");
             StartCoroutine(DisableAttack2());
         }
 
-        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2)
+        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
         {
             canBlock = true;
             Debug.Log("Blocking Attack");

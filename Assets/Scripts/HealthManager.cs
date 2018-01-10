@@ -47,10 +47,11 @@ public class HealthManager : NetworkBehaviour {
     {
         if (mplayerData == null)
             return;
-       if(mplayerData.currentHealth <= 0)
+       if((mplayerData.currentHealth <= 0) && (mplayerData.isAlive))
         {
             if(player != null)
             player.GetComponent<PlayerAnimation>().death();
+            mplayerData.isAlive = false;
         }
     }
 

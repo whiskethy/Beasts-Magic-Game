@@ -87,6 +87,11 @@ public class PlayerAttackOffline : MonoBehaviour {
         get { return attack2; }
     }
 
+    public bool getBlock
+    {
+        get { return canBlock; }
+    }
+
     public void Attack1()
     {
         attack1 = true;

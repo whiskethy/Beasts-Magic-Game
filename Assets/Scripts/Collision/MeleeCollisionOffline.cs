@@ -8,16 +8,21 @@ public class MeleeCollisionOffline : MonoBehaviour
     [SerializeField] private GameObject playerObj;
     [SerializeField] private HealthManagerOffline healthManager;
     [SerializeField] private bool offlineMode;
+    [SerializeField] private int blockDurabilityNum = 4;
 
     private PlayerAttack pAttack;
     private PlayerAttackOffline pAttackO;
     private PlayerData pData;
 
+    private int tempBlockDurability;
+
     // Use this for initialization
     void Start()
     {
+        tempBlockDurability = blockDurabilityNum;
         healthManager = FindObjectOfType<HealthManagerOffline>();
         Debug.Assert(healthManager != null);
+
     }
 
     // Update is called once per frame
@@ -33,24 +38,37 @@ public class MeleeCollisionOffline : MonoBehaviour
             return;
         }
                 
-        PlayerAnimation pAnim = other.gameObject.GetComponent<PlayerAnimation>();
-        Debug.Assert(pAnim != null);
+        PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
         PlayerAttackOffline pAttack = GetComponent<PlayerAttackOffline>();
-        Debug.Assert(pAttack != null);
         PlayerData pData = other.GetComponent<PlayerData>();
-        Debug.Assert(pData != null);
-        
-        if (pData.currentHealth <= 0)
+        if (pAttack == null) return;
+        if (pData == null) return;
+        if (pData.currentHealth <= 0) return;
+
+
+        if(other.gameObject.GetComponent<ForceBlock>().getBlock)
         {
-            return;
+            Debug.Log("Collided with: " + other.gameObject.name);
+            Debug.Log("Other Player Block: " + other.gameObject.GetComponent<ForceBlock>().getBlock);
+
+            tempBlockDurability--;
+            Debug.Log("Block Durability: " + tempBlockDurability);
+
+            healthManager.takeDamage(other.gameObject, 5);
+
+            if(tempBlockDurability <= 0)
+            {
+                other.gameObject.GetComponent<ForceBlock>().setBlock(false);
+                tempBlockDurability = blockDurabilityNum;
+            }
         }
-          
+
         if (pAttack.getAttack1)
         {
             Debug.Log("Collided with: " + other.gameObject.name);
             Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
-            pAnim.lightHit();
+            panim.lightHit();
             healthManager.takeDamage(other.gameObject, 10);
         }
 
@@ -58,9 +76,8 @@ public class MeleeCollisionOffline : MonoBehaviour
         {
             Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
             Debug.Log("Player Attack 2: " + pAttack.getAttack2);
-            pAnim.lightHit();
+            panim.lightHit();
             healthManager.takeDamage(other.gameObject, 20);
-
         }
         
     }

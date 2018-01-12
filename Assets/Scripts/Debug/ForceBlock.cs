@@ -24,6 +24,20 @@ public class ForceBlock : MonoBehaviour {
         {
             anim.blocking();
         }
+        else
+        {
+            anim.unBlocking();
+        }
 		
 	}
+
+    public void setBlock(bool value)
+    {
+        canBlock = value;
+    }
+
+    public bool getBlock
+    {
+        get { return canBlock; }
+    }
 }

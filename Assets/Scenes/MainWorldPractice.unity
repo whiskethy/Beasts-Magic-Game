@@ -3559,6 +3559,7 @@ MonoBehaviour:
   playerObj: {fileID: 0}
   healthManager: {fileID: 0}
   offlineMode: 0
+  blockDurabilityNum: 4
 --- !u!114 &1764698739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4295,7 +4296,6 @@ GameObject:
   - component: {fileID: 2146011326}
   - component: {fileID: 2146011325}
   - component: {fileID: 2146011324}
-  - component: {fileID: 2146011323}
   - component: {fileID: 2146011322}
   - component: {fileID: 2146011321}
   - component: {fileID: 2146011320}
@@ -4343,6 +4343,7 @@ MonoBehaviour:
   playerObj: {fileID: 0}
   healthManager: {fileID: 0}
   offlineMode: 0
+  blockDurabilityNum: 4
 --- !u!136 &2146011321
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4369,21 +4370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6d5b386bdcb0b44860bb29601aa9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2146011323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114216748728713140, guid: 139c7295abde8ec4aaeb052a12bc722f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2146011318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6aadfda1493be44a8fde7759bd02634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player2: 1
-  joyStick: {fileID: 778306615}
-  otherPlayer: {fileID: 1764698728}
 --- !u!114 &2146011324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4395,7 +4381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4375798ea0401b4785200111e421b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBlock: 1
+  canBlock: 0
 --- !u!54 &2146011325
 Rigidbody:
   m_ObjectHideFlags: 0

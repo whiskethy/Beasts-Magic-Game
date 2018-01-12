@@ -9,17 +9,23 @@ public class MovementOffline : MonoBehaviour {
     private PlayerData playerData;
 
     public AndroidJoystick joyStick;
-    private PlayerAnimation anim;
     public GameObject otherPlayer;
 
+    private PlayerAnimation anim;
+    private PlayerAttackOffline pAttack;
     private float movementDirTemp;
 
     // Use this for initialization
     void Start()
     {
         anim = GetComponent<PlayerAnimation>();
-        playerData = GetComponent<PlayerData>();
+        Debug.Assert(anim != null);
 
+        playerData = GetComponent<PlayerData>();
+        Debug.Assert(playerData != null);
+
+        pAttack = GetComponent<PlayerAttackOffline>();
+        Debug.Assert(pAttack != null);
     }
 
     // Update is called once per frame
@@ -27,7 +33,7 @@ public class MovementOffline : MonoBehaviour {
     {
         if (!player2)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) && !pAttack.getBlock)
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;
 
@@ -36,7 +42,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkForward(movementDirTemp, playerData.movementSpeed);
             }
 
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S) && !pAttack.getBlock)
             {
                 movementDirTemp = -playerData.movementSpeed * Time.deltaTime;
 
@@ -45,7 +51,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkBackward(movementDirTemp, playerData.movementSpeed);
             }
 
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D) && !pAttack.getBlock)
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;
 
@@ -54,7 +60,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkLateral(movementDirTemp, playerData.movementSpeed);
             }
 
-            else if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A) && !pAttack.getBlock)
             {
                 movementDirTemp = -playerData.movementSpeed * Time.deltaTime;
 

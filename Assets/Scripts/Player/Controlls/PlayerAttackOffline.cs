@@ -48,7 +48,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
         {
             canBlock = true;
-            Debug.Log("Blocking Attack");
+            //Debug.Log("Blocking Attack");
             anim.blocking();
         }
         else

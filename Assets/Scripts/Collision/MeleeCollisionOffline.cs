@@ -54,13 +54,19 @@ public class MeleeCollisionOffline : MonoBehaviour
             tempBlockDurability--;
             Debug.Log("Block Durability: " + tempBlockDurability);
 
+            //Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            //rb.AddForceAtPosition(-other.gameObject.transform.forward, other.gameObject.transform.position);
+
             healthManager.takeDamage(other.gameObject, 5);
 
             if(tempBlockDurability <= 0)
             {
                 other.gameObject.GetComponent<ForceBlock>().setBlock(false);
                 tempBlockDurability = blockDurabilityNum;
+                Debug.Log("Block Durability: " + tempBlockDurability);
             }
+
+            return;
         }
 
         if (pAttack.getAttack1)
@@ -70,6 +76,7 @@ public class MeleeCollisionOffline : MonoBehaviour
 
             panim.lightHit();
             healthManager.takeDamage(other.gameObject, 10);
+            return;
         }
 
         if (pAttack.getAttack2)
@@ -78,6 +85,7 @@ public class MeleeCollisionOffline : MonoBehaviour
             Debug.Log("Player Attack 2: " + pAttack.getAttack2);
             panim.lightHit();
             healthManager.takeDamage(other.gameObject, 20);
+            return;
         }
         
     }

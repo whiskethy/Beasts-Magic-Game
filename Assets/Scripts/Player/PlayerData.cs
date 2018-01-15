@@ -20,4 +20,5 @@ public class PlayerData : NetworkBehaviour
     public int wisdom = 10;    //ranged attacks
 
     public bool isAlive = true;
+    public bool isBlocking = false;
 }

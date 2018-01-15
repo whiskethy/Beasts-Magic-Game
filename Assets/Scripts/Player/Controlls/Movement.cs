@@ -95,10 +95,14 @@ public class Movement : NetworkBehaviour
                 otherPlayer = goServer;
             }
         }
+
         if (isServer && goServer != null)
+        {
             RpcSetOther(goServer);
-        
-        if ((!player2)&&(playerData.isAlive == true))
+        }
+
+        //player 1 movements
+        if ((!player2) && (playerData.isBlocking == false) && (playerData.isAlive == true))
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -151,6 +155,8 @@ public class Movement : NetworkBehaviour
         }
         else
         {
+            anim.stopWalking();
+
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;

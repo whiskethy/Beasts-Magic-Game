@@ -59,12 +59,14 @@ public class PlayerAttack : NetworkBehaviour {
         if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
         {
             canBlock = true;
+            pData.isBlocking = true;
             Debug.Log("Blocking Attack");
             anim.blocking();
         }
         else
         {
             //Debug.Log("Blocking Attack Stop");
+            pData.isBlocking = false;
             canBlock = false;
             anim.unBlocking();
         }

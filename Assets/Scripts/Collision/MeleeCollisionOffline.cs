@@ -62,6 +62,7 @@ public class MeleeCollisionOffline : MonoBehaviour
             if(tempBlockDurability <= 0)
             {
                 other.gameObject.GetComponent<ForceBlock>().setBlock(false);
+                other.gameObject.GetComponent<ForceBlock>().setBreakBlockEffect(true);
                 tempBlockDurability = blockDurabilityNum;
                 Debug.Log("Block Durability: " + tempBlockDurability);
             }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerAttackOffline : MonoBehaviour {
 
+    [SerializeField] private GameObject blockingEffect;
+    [SerializeField] private GameObject breakBlockingEffect;
+
     private PlayerData pData;
 
     //data
@@ -25,6 +28,11 @@ public class PlayerAttackOffline : MonoBehaviour {
         pData = GetComponent<PlayerData>();
         Debug.Assert(pData != null);
 
+        blockingEffect.SetActive(false);
+        Debug.Assert(blockingEffect != null);
+
+        breakBlockingEffect.SetActive(false);
+        Debug.Assert(breakBlockingEffect != null);
     }
 
     // Update is called once per frame
@@ -48,6 +56,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
         {
             canBlock = true;
+            blockingEffect.SetActive(true);
             //Debug.Log("Blocking Attack");
             anim.blocking();
         }
@@ -55,8 +64,16 @@ public class PlayerAttackOffline : MonoBehaviour {
         {
             //Debug.Log("Blocking Attack Stop");
             canBlock = false;
+            //SpawnBreakBlockEffect();
+            blockingEffect.SetActive(false);
             anim.unBlocking();
         }
+    }
+
+    void SpawnBreakBlockEffect()
+    {
+        GameObject temp = Instantiate(breakBlockingEffect, gameObject.transform);
+        Destroy(temp, 0.1f);
     }
 
     private IEnumerator DisableAttack1()

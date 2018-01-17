@@ -6,6 +6,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
     [SerializeField] private GameObject blockingEffect;
     [SerializeField] private GameObject breakBlockingEffect;
+    [SerializeField] private GameObject breakBlockEffectTrans;
 
     private PlayerData pData;
 
@@ -13,6 +14,7 @@ public class PlayerAttackOffline : MonoBehaviour {
     private bool attack1;
     private bool attack2;
     private bool canBlock;
+    private bool canSpawnBreakingBlockEffect;
 
     private PlayerAnimation anim;
 
@@ -24,6 +26,7 @@ public class PlayerAttackOffline : MonoBehaviour {
         attack1 = false;
         attack2 = false;
         canBlock = false;
+        canSpawnBreakingBlockEffect = false;
 
         pData = GetComponent<PlayerData>();
         Debug.Assert(pData != null);
@@ -68,12 +71,24 @@ public class PlayerAttackOffline : MonoBehaviour {
             blockingEffect.SetActive(false);
             anim.unBlocking();
         }
+
+        if(Input.GetKeyUp(KeyCode.Space) && !attack1 && !attack2)
+        {
+            canSpawnBreakingBlockEffect = true;
+        }
+
+        if(canSpawnBreakingBlockEffect)
+        {
+            SpawnBreakBlockEffect();
+            canSpawnBreakingBlockEffect = false;
+        }
     }
 
     void SpawnBreakBlockEffect()
     {
-        GameObject temp = Instantiate(breakBlockingEffect, gameObject.transform);
-        Destroy(temp, 0.1f);
+        GameObject temp = Instantiate(breakBlockingEffect, breakBlockEffectTrans.transform);
+        temp.SetActive(true);
+        Destroy(temp, 2.1f);
     }
 
     private IEnumerator DisableAttack1()

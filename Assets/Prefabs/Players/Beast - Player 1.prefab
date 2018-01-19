@@ -249,6 +249,8 @@ GameObject:
   - component: {fileID: 4244403595875098}
   - component: {fileID: 95967146727117228}
   - component: {fileID: 114669552168312024}
+  - component: {fileID: 114516636181764804}
+  - component: {fileID: 114048748035740782}
   - component: {fileID: 114554395587865660}
   - component: {fileID: 54870516892180444}
   - component: {fileID: 114224911642483074}
@@ -1426,6 +1428,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114048748035740782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344688370519928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780074c13f289d04f9815246833e8280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherPlayer: {fileID: 0}
 --- !u!114 &114072616463096740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1488,6 +1502,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6d5b386bdcb0b44860bb29601aa9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114516636181764804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344688370519928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718d27c6fb3bd1643bd5db5d5e808f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player2: 0
+  joyStick: {fileID: 0}
 --- !u!114 &114554395587865660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1508,6 +1535,7 @@ MonoBehaviour:
   agility: 20
   wisdom: 10
   isAlive: 1
+  isBlocking: 0
 --- !u!114 &114669552168312024
 MonoBehaviour:
   m_ObjectHideFlags: 1

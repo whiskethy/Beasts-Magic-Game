@@ -9,99 +9,35 @@ public class Movement : NetworkBehaviour
 {
     //[SerializeField] private bool useMobileControls = false;
     [SerializeField] private bool player2 = false;
+    
     private PlayerData playerData;
-
     private UnityStandardAssets.Cameras.AutoCam theCamera;
-
+    private NetOp netOp;
     public AndroidJoystick joyStick;
     private PlayerAnimation anim;
-    public GameObject otherPlayer;
+    private GameObject otherPlayer;
 
     private float movementDirTemp;
 
-    static GameObject goClient;
-    static GameObject goServer;
 
-    Text healthText1;
-    Text healthText2;
 
     // Use this for initialization
     void Start () {
-        theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
+        //theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
 
         anim = GetComponent<PlayerAnimation>();
         playerData = GetComponent<PlayerData>();
 
-        healthText1 = GameObject.Find("Player1HealthText").GetComponent<Text>();
-        healthText2 = GameObject.Find("Player2HealthText").GetComponent<Text>();
     }
 
-    public override void OnStartClient()
-    {
-        if (gameObject.Equals(goServer)) return;
-        goClient = gameObject;
-    }
-
-    public override void OnStartServer()
-    {
-        if (goServer == null)
-            goServer = gameObject;
-    }
-
-    [ClientRpc]
-    public void RpcSetOther(GameObject gameObject)
-    {
-        if (goServer == null)
-            goServer = gameObject;
-    }
     // Update is called once per frame
     void Update () {
-        
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-
-        if(goClient != null)
-        {
-            healthText2.text = goClient.GetComponent<PlayerData>().currentHealth.ToString();
-        }
-
-        if (goServer != null)
-        {
-            healthText1.text = goServer.GetComponent<PlayerData>().currentHealth.ToString();
-        }
-
-        if (gameObject.Equals(goServer))
-        {
-            if (theCamera.Target == null)
+            if(otherPlayer==null)
             {
-                theCamera.setTarget(gameObject.transform);
-
+                otherPlayer = GetComponent<NetOp>().getOtherPlayer();
             }
-            if (goClient != null)
-            {
-                otherPlayer = goClient;
-            }
-        }
-        if (gameObject.Equals(goClient))
-        {
-            if (theCamera.Target == null)
-            {
-                theCamera.setTarget(gameObject.transform);
-            }
-            if (goServer != null)
-            {
-                otherPlayer = goServer;
-            }
-        }
-
-        if (isServer && goServer != null)
-        {
-            RpcSetOther(goServer);
-        }
-
-        //player 1 movements
+        if (otherPlayer == null) return;
+        //////////////////////////////////////////
         if ((!player2) && (playerData.isBlocking == false) && (playerData.isAlive == true))
         {
             if (Input.GetKey(KeyCode.W))
@@ -203,13 +139,7 @@ public class Movement : NetworkBehaviour
 
     }
 
-    public override void OnStartLocalPlayer()
-    { 
-        gameObject.tag = "Player2";
-        gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
 
-        Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>().setTarget(gameObject.transform);
-    }
 
     //public override void OnS
 }

@@ -259,7 +259,6 @@ GameObject:
   - component: {fileID: 23281879631022288}
   - component: {fileID: 114694912554172768}
   - component: {fileID: 114971646855894734}
-  - component: {fileID: 114819148726000490}
   - component: {fileID: 114965223924197578}
   - component: {fileID: 114173025602070820}
   m_Layer: 0
@@ -1514,7 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player2: 0
-  joyStick: {fileID: 0}
+  joyStick: {fileID: 114521514192926366, guid: 1a002c05274b64b4dac69e1d3852b2f2, type: 2}
 --- !u!114 &114554395587865660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1601,20 +1600,6 @@ MonoBehaviour:
   playerObj: {fileID: 1344688370519928}
   healthManager: {fileID: 0}
   offlineMode: 0
---- !u!114 &114819148726000490
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344688370519928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54ff25b726ee69a4fbe4bf71dbb79c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player2: 0
-  joyStick: {fileID: 114521514192926366, guid: 1a002c05274b64b4dac69e1d3852b2f2, type: 2}
-  otherPlayer: {fileID: 1344688370519928}
 --- !u!114 &114965223924197578
 MonoBehaviour:
   m_ObjectHideFlags: 1

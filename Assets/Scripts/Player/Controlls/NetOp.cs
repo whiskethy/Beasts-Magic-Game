@@ -10,7 +10,7 @@ public class NetOp : NetworkBehaviour {
     //[SerializeField]
     //private bool player2 = false;
     //private PlayerData playerData;
-    
+    public GameObject cam;
     private UnityStandardAssets.Cameras.AutoCam theCamera;
 
     //public AndroidJoystick joyStick;
@@ -31,7 +31,11 @@ public class NetOp : NetworkBehaviour {
     // Use this for initialization
     void Start()
     {
-        theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
+        //theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
+        theCamera = cam.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
+
+        //theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
 
         //anim = GetComponent<PlayerAnimation>();
         //playerData = GetComponent<PlayerData>();
@@ -147,6 +151,6 @@ public class NetOp : NetworkBehaviour {
         //gameObject.tag = "Player2";
         gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
 
-        //Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>().setTarget(gameObject.transform);
+        Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>().setTarget(gameObject.transform);
     }
 }

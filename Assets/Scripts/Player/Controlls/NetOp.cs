@@ -150,6 +150,7 @@ public class NetOp : NetworkBehaviour {
     {
         //gameObject.tag = "Player2";
         gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
+        gameObject.transform.Find("PersonalSpace").GetComponent<MeshRenderer>().material.color = Color.blue;
 
         Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>().setTarget(gameObject.transform);
     }

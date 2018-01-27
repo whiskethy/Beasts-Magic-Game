@@ -33,7 +33,7 @@ public class MovementOffline : MonoBehaviour {
     {
         if (!player2)
         {
-            if (Input.GetKey(KeyCode.W) && !pAttack.getBlock)
+            if (Input.GetKey(KeyCode.W) && !pAttack.getBlock && !pAttack.getAttack2)
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;
 
@@ -42,7 +42,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkForward(movementDirTemp, playerData.movementSpeed);
             }
 
-            else if (Input.GetKey(KeyCode.S) && !pAttack.getBlock)
+            else if (Input.GetKey(KeyCode.S) && !pAttack.getBlock && !pAttack.getAttack2)
             {
                 movementDirTemp = -playerData.movementSpeed * Time.deltaTime;
 
@@ -51,7 +51,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkBackward(movementDirTemp, playerData.movementSpeed);
             }
 
-            else if (Input.GetKey(KeyCode.D) && !pAttack.getBlock)
+            else if (Input.GetKey(KeyCode.D) && !pAttack.getBlock && !pAttack.getAttack2)
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;
 
@@ -60,7 +60,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkLateral(movementDirTemp, playerData.movementSpeed);
             }
 
-            else if (Input.GetKey(KeyCode.A) && !pAttack.getBlock)
+            else if (Input.GetKey(KeyCode.A) && !pAttack.getBlock && !pAttack.getAttack2)
             {
                 movementDirTemp = -playerData.movementSpeed * Time.deltaTime;
 

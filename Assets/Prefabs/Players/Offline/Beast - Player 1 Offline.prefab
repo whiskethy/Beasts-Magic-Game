@@ -1723,7 +1723,7 @@ MonoBehaviour:
   currentHealth: 0
   characterHealthPool: 150
   attack1CoolDown: 0.5
-  attack2CoolDown: 1.5
+  attack2CoolDown: 2.1
   strength: 40
   agility: 30
   wisdom: 0

@@ -99,12 +99,13 @@ public class PlayerAttackOffline : MonoBehaviour {
     {
         anim.attackOne(attack1);
 
+        yield return new WaitForSeconds(pData.attack1CoolDown);
+
         if (hasProjectileAttack)
         {
             SpawnProjectileAttack1();
         }
 
-        yield return new WaitForSeconds(pData.attack1CoolDown);
         Debug.Log("Attack 1 Stop");
         this.attack1 = false;
         //anim.attackOne(attack1);
@@ -114,12 +115,13 @@ public class PlayerAttackOffline : MonoBehaviour {
     {
         anim.attackTwo(attack2);
 
-        if(hasProjectileAttack)
+        yield return new WaitForSeconds(pData.attack2CoolDown);
+
+        if (hasProjectileAttack)
         {
             SpawnProjectileAttack2();
         }
 
-        yield return new WaitForSeconds(pData.attack2CoolDown);
         this.attack2 = false;
         Debug.Log("Attack 2 Stop");
         //anim.attackTwo(attack2);

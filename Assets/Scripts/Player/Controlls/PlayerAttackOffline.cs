@@ -130,13 +130,13 @@ public class PlayerAttackOffline : MonoBehaviour {
     private void SpawnProjectileAttack1()
     {
         GameObject temp = Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-        Destroy(temp, 5.0f);
+        temp.GetComponent<SpellFire>().setStrongAttack(false);
     }
 
     private void SpawnProjectileAttack2()
     {
         GameObject temp = Instantiate(projectilePrefab2, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-        Destroy(temp, 5.0f);
+        temp.GetComponent<SpellFire>().setStrongAttack(true);
     }
 
     public bool getAttack1

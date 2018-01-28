@@ -887,6 +887,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1818111103573484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4979439145603850}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1845795191657130
 GameObject:
   m_ObjectHideFlags: 1
@@ -1268,6 +1283,7 @@ Transform:
   m_Children:
   - {fileID: 4690405877155124}
   - {fileID: 4581398196621846}
+  - {fileID: 4979439145603850}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -2013,6 +2029,19 @@ Transform:
   m_Father: {fileID: 4828943418832604}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4979439145603850
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818111103573484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.163, y: 1.367, z: 0.593}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4295780563699956}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4990118072503456
 Transform:
   m_ObjectHideFlags: 1
@@ -2249,6 +2278,12 @@ MonoBehaviour:
   blockingEffect: {fileID: 0}
   breakBlockingEffect: {fileID: 0}
   breakBlockEffectTrans: {fileID: 0}
+  projectileSpawn: {fileID: 1818111103573484}
+  projectilePrefab: {fileID: 1486166823927332, guid: 3b4f0e50ab13279488f8bd78f37896d4,
+    type: 2}
+  projectilePrefab2: {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7,
+    type: 2}
+  hasProjectileAttack: 1
 --- !u!136 &136354361196903550
 CapsuleCollider:
   m_ObjectHideFlags: 1

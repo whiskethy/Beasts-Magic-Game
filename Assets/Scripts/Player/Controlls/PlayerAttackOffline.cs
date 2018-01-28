@@ -7,6 +7,10 @@ public class PlayerAttackOffline : MonoBehaviour {
     [SerializeField] private GameObject blockingEffect;
     [SerializeField] private GameObject breakBlockingEffect;
     [SerializeField] private GameObject breakBlockEffectTrans;
+    [SerializeField] private GameObject projectileSpawn;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject projectilePrefab2;
+    [SerializeField] private bool hasProjectileAttack;
 
     private PlayerData pData;
 
@@ -94,19 +98,43 @@ public class PlayerAttackOffline : MonoBehaviour {
     private IEnumerator DisableAttack1()
     {
         anim.attackOne(attack1);
+
+        if (hasProjectileAttack)
+        {
+            SpawnProjectileAttack1();
+        }
+
         yield return new WaitForSeconds(pData.attack1CoolDown);
         Debug.Log("Attack 1 Stop");
         this.attack1 = false;
-        anim.attackOne(attack1);
+        //anim.attackOne(attack1);
     }
 
     private IEnumerator DisableAttack2()
     {
         anim.attackTwo(attack2);
+
+        if(hasProjectileAttack)
+        {
+            SpawnProjectileAttack2();
+        }
+
         yield return new WaitForSeconds(pData.attack2CoolDown);
         this.attack2 = false;
         Debug.Log("Attack 2 Stop");
-        anim.attackTwo(attack2);
+        //anim.attackTwo(attack2);
+    }
+
+    private void SpawnProjectileAttack1()
+    {
+        GameObject temp = Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+        Destroy(temp, 5.0f);
+    }
+
+    private void SpawnProjectileAttack2()
+    {
+        GameObject temp = Instantiate(projectilePrefab2, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+        Destroy(temp, 5.0f);
     }
 
     public bool getAttack1

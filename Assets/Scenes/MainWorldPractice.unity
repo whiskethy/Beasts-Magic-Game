@@ -167,9 +167,19 @@ Prefab:
       propertyPath: healthManager
       value: 
       objectReference: {fileID: 1072399750}
+    - target: {fileID: 114077484160555678, guid: f42e8052b7d61734e8b7c943fdd7576e,
+        type: 2}
+      propertyPath: attack2CoolDown
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114077484160555678, guid: f42e8052b7d61734e8b7c943fdd7576e,
+        type: 2}
+      propertyPath: attack1CoolDown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1172603600452000, guid: f42e8052b7d61734e8b7c943fdd7576e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f42e8052b7d61734e8b7c943fdd7576e, type: 2}
@@ -321,7 +331,7 @@ Prefab:
         type: 2}
       propertyPath: joyStick
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 903448390}
     - target: {fileID: 114698603835337944, guid: 7d093dafcb529764facc717f9a62e58b,
         type: 2}
       propertyPath: otherPlayer
@@ -330,15 +340,6 @@ Prefab:
     - target: {fileID: 1961791894276870, guid: 7d093dafcb529764facc717f9a62e58b, type: 2}
       propertyPath: m_Name
       value: Mage - Player 1 Offline
-      objectReference: {fileID: 0}
-    - target: {fileID: 114698603835337944, guid: 7d093dafcb529764facc717f9a62e58b,
-        type: 2}
-      propertyPath: player2
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1961791894276870, guid: 7d093dafcb529764facc717f9a62e58b, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d093dafcb529764facc717f9a62e58b, type: 2}
@@ -384,11 +385,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &503320423 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4354202828456148, guid: f42e8052b7d61734e8b7c943fdd7576e,
-    type: 2}
-  m_PrefabInternal: {fileID: 146139431}
 --- !u!1 &681969593
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +433,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224510083144220664, guid: 9e99afbd0c303044692f2f30dff0b907,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -555,12 +561,12 @@ Prefab:
     - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
         type: 2}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
         type: 2}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
         type: 2}
@@ -595,12 +601,12 @@ Prefab:
     - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
         type: 2}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.07586217
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
         type: 2}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
         type: 2}
@@ -636,6 +642,56 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1730684554}
+    - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_NetworkcurrentHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 114801240677106532, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2146011324}
+    - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_NetworkcurrentHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 114127188340552348, guid: 9e99afbd0c303044692f2f30dff0b907,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e99afbd0c303044692f2f30dff0b907, type: 2}
@@ -730,10 +786,15 @@ Prefab:
     - target: {fileID: 11400000, guid: baec086904791744185aaa07a6cf55c2, type: 2}
       propertyPath: m_Target
       value: 
-      objectReference: {fileID: 503320423}
+      objectReference: {fileID: 987595182}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: baec086904791744185aaa07a6cf55c2, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &987595182 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4295780563699956, guid: 7d093dafcb529764facc717f9a62e58b,
+    type: 2}
+  m_PrefabInternal: {fileID: 411189745}
 --- !u!1 &1072399749
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +974,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a20a98ba453411d4ca988ae0486818c1, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1730684554 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114077484160555678, guid: f42e8052b7d61734e8b7c943fdd7576e,
+    type: 2}
+  m_PrefabInternal: {fileID: 146139431}
+  m_Script: {fileID: 11500000, guid: a7c4d240c021b48bf90f3fd13835ca49, type: 3}
 --- !u!1 &1786484479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,3 +1200,9 @@ GameObject:
   m_PrefabParentObject: {fileID: 1748629977370526, guid: 890671968266f1c47bf6b2534bcb69bd,
     type: 2}
   m_PrefabInternal: {fileID: 1157128186}
+--- !u!114 &2146011324 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114158690670123252, guid: 890671968266f1c47bf6b2534bcb69bd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1157128186}
+  m_Script: {fileID: 11500000, guid: a7c4d240c021b48bf90f3fd13835ca49, type: 3}

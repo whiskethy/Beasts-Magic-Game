@@ -40,7 +40,6 @@ public class PlayerAttack : NetworkBehaviour {
         {
             return;
         }
-            
 		
         if(Input.GetMouseButtonDown(0) && !attack2 && pData.isAlive)
         {

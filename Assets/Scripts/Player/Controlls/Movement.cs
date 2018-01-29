@@ -23,11 +23,10 @@ public class Movement : NetworkBehaviour
 
     // Use this for initialization
     void Start () {
-        //theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
+        theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
 
         anim = GetComponent<PlayerAnimation>();
         playerData = GetComponent<PlayerData>();
-
     }
 
     // Update is called once per frame
@@ -138,8 +137,5 @@ public class Movement : NetworkBehaviour
         }
 
     }
-
-
-
     //public override void OnS
 }

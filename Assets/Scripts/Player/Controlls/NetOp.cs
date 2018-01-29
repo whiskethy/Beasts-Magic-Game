@@ -7,17 +7,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 public class NetOp : NetworkBehaviour {
 
-    //[SerializeField]
-    //private bool player2 = false;
-    //private PlayerData playerData;
     public GameObject cam;
     private UnityStandardAssets.Cameras.AutoCam theCamera;
 
-    //public AndroidJoystick joyStick;
-    //private PlayerAnimation anim;
     public GameObject otherPlayer;
-
-    //private float movementDirTemp;
 
     static GameObject goClient;
     static GameObject goServer;
@@ -28,18 +21,11 @@ public class NetOp : NetworkBehaviour {
     Slider slid2;
     Slider[] slider;
    
-    // Use this for initialization
     void Start()
     {
-        //theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         theCamera = cam.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
 
-        //theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
-
-        //anim = GetComponent<PlayerAnimation>();
-        //playerData = GetComponent<PlayerData>();
-        //otherPlayer = GetComponent<Movement>().otherPlayer;
         healthText1 = GameObject.Find("Player1HealthText").GetComponent<Text>();
         healthText2 = GameObject.Find("Player2HealthText").GetComponent<Text>();
  
@@ -66,7 +52,6 @@ public class NetOp : NetworkBehaviour {
         if (gameObject.Equals(goServer)) return;
 
         goClient = gameObject;
-       // goClient.tag = "ClientPlayer";
         goClient.name = "ClientPlayer";
 
     }
@@ -75,10 +60,7 @@ public class NetOp : NetworkBehaviour {
     {
         if (goServer == null)
         {
-
-        
             goServer = gameObject;
-            //goServer.tag = "ServerPlayer";
         }
     }
 
@@ -89,8 +71,6 @@ public class NetOp : NetworkBehaviour {
             goServer = gameObject;
     }
 
-
-    // Update is called once per frame
     void Update () {
         if (!isLocalPlayer)
         {
@@ -101,44 +81,31 @@ public class NetOp : NetworkBehaviour {
         {
             healthText2.text = goClient.GetComponent<PlayerData>().currentHealth.ToString();
             if (slid1 != null)
+            {
                 slid2.value = goClient.GetComponent<PlayerData>().currentHealth;
+            }
         }
 
         if (goServer != null)
         {
-            
             healthText1.text = goServer.GetComponent<PlayerData>().currentHealth.ToString();
-            if(slid1!=null)
+            if (slid1 != null)
+            {
                 slid1.value = goServer.GetComponent<PlayerData>().currentHealth;
-
+            }
         }
 
         if (gameObject.Equals(goServer))
         {
-            if (theCamera.Target == null)
-            {
-                //theCamera.setTarget(gameObject.transform);
-
-            }
             if (goClient != null)
             {
-                //GetComponent<Movement>().setOther(goClient);
-                //Debug.Log("***Other(Client)="+goClient);
-                //GetComponent<Movement>().otherPlayer=goClient;
                 otherPlayer = goClient;
             }
         }
         if (gameObject.Equals(goClient))
         {
-            if (theCamera.Target == null)
-            {
-                //theCamera.setTarget(gameObject.transform);
-            }
             if (goServer != null)
             {
-                //GetComponent<Movement>().setOther(goServer);
-                //Debug.Log("***Other(Server)=" + goServer);
-                //GetComponent<Movement>().otherPlayer=goServer;
                 otherPlayer = goServer;
             }
         }
@@ -148,7 +115,6 @@ public class NetOp : NetworkBehaviour {
     }
     public override void OnStartLocalPlayer()
     {
-        //gameObject.tag = "Player2";
         gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
         gameObject.transform.Find("PersonalSpace").GetComponent<MeshRenderer>().material.color = Color.blue;
 

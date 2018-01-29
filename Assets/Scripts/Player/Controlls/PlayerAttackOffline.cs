@@ -214,5 +214,8 @@ public class PlayerAttackOffline : MonoBehaviour {
     public void Block()
     {
         canBlock = true;
+        blockingEffect.SetActive(true);
+        //Debug.Log("Blocking Attack");
+        anim.blocking();
     }
 }

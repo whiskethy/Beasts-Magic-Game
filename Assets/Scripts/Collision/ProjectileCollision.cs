@@ -5,18 +5,15 @@ using UnityEngine;
 public class ProjectileCollision : MonoBehaviour
 {
     [SerializeField] private HealthManagerOffline healthManager;
+    [SerializeField] private int blockDurabilityNum = 4;
+
+    private int tempBlockDurability;
 
     // Use this for initialization
     void Start()
     {
         healthManager = FindObjectOfType<HealthManagerOffline>();
         Debug.Assert(healthManager != null);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void OnCollisionEnter(Collision other)

@@ -21,4 +21,9 @@ public class PlayerData : NetworkBehaviour
 
     public bool isAlive = true;
     public bool isBlocking = false;
+
+    private void Start()
+    {
+        currentHealth = characterHealthPool;
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttackOffline : MonoBehaviour {
 
@@ -11,8 +12,12 @@ public class PlayerAttackOffline : MonoBehaviour {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject projectilePrefab2;
     [SerializeField] private bool hasProjectileAttack;
+    [SerializeField] private bool mobileMode;
 
     private PlayerData pData;
+    private Button attackButton1;
+    private Button attackButton2;
+    private Button blockButton;
 
     //data
     private bool attack1;
@@ -40,25 +45,57 @@ public class PlayerAttackOffline : MonoBehaviour {
 
         breakBlockingEffect.SetActive(false);
         Debug.Assert(breakBlockingEffect != null);
+
+        if(mobileMode)
+        {
+            attackButton1 = GameObject.Find("Attack 1").GetComponent<Button>();
+            Debug.Assert(attackButton1 != null);
+
+            attackButton2 = GameObject.Find("Attack 2").GetComponent<Button>();
+            Debug.Assert(attackButton2 != null);
+
+            blockButton = GameObject.Find("Block Attack").GetComponent<Button>();
+            Debug.Assert(blockButton != null);
+
+            attackButton1.onClick.AddListener(Attack1);
+            attackButton2.onClick.AddListener(Attack2);
+            blockButton.onClick.AddListener(Block);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !attack2)
+        if (mobileMode)
         {
-            Debug.Log("Attack 1 Start!");
-            attack1 = true;
-            StartCoroutine(DisableAttack1());
-        }
+            if (attack1)
+            {
+                Debug.Log("Attack 1 Start!");
+                StartCoroutine(DisableAttack1());
+            }
 
-        if (Input.GetMouseButtonDown(1) && !attack1)
+            if (attack2)
+            {
+                Debug.Log("Attack 2 Start");
+                StartCoroutine(DisableAttack2());
+            }
+        }
+        else
         {
-            attack2 = true;
-            Debug.Log("Attack 2 Start");
-            StartCoroutine(DisableAttack2());
-        }
+            if (Input.GetMouseButtonDown(0) && !attack2)
+            {
+                Debug.Log("Attack 1 Start!");
+                attack1 = true;
+                StartCoroutine(DisableAttack1());
+            }
 
+            if (Input.GetMouseButtonDown(1) && !attack1)
+            {
+                attack2 = true;
+                Debug.Log("Attack 2 Start");
+                StartCoroutine(DisableAttack2());
+            }
+        }
         if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2)
 
         {

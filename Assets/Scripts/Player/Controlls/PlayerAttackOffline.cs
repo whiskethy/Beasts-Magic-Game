@@ -68,28 +68,28 @@ public class PlayerAttackOffline : MonoBehaviour {
     {
         if (mobileMode)
         {
-            if (attack1)
-            {
-                Debug.Log("Attack 1 Start!");
-                StartCoroutine(DisableAttack1());
-            }
+            //if (attack1)
+            //{
+            //    Debug.Log("Attack 1 Start!");
+            //    StartCoroutine(DisableAttack1());
+            //}
 
-            if (attack2)
-            {
-                Debug.Log("Attack 2 Start");
-                StartCoroutine(DisableAttack2());
-            }
+            //if (attack2)
+            //{
+            //    Debug.Log("Attack 2 Start");
+            //    StartCoroutine(DisableAttack2());
+            //}
         }
         else
         {
-            if (Input.GetMouseButtonDown(0) && !attack2)
+            if (Input.GetMouseButtonDown(0) && !attack1 && !attack2)
             {
                 Debug.Log("Attack 1 Start!");
                 attack1 = true;
                 StartCoroutine(DisableAttack1());
             }
 
-            if (Input.GetMouseButtonDown(1) && !attack1)
+            if (Input.GetMouseButtonDown(1) && !attack1 && !attack2)
             {
                 attack2 = true;
                 Debug.Log("Attack 2 Start");
@@ -193,12 +193,22 @@ public class PlayerAttackOffline : MonoBehaviour {
 
     public void Attack1()
     {
-        attack1 = true;
+        if (!attack1 && !attack2)
+        {
+            attack1 = true;
+            Debug.Log("Attack 1 Start!");
+            StartCoroutine(DisableAttack1());
+        }
     }
 
     public void Attack2()
     {
-        attack2 = true;
+        if (!attack1 && !attack2)
+        {
+            attack2 = true;
+            Debug.Log("Attack 2 Start!");
+            StartCoroutine(DisableAttack2());
+        }
     }
 
     public void Block()

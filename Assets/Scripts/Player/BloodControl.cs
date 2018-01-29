@@ -8,8 +8,8 @@ public class BloodControl : MonoBehaviour {
     Text healthText2;
     Slider slid1;
     Slider slid2;
-    private GameObject Player1;
-    private GameObject Player2;
+   [SerializeField] private GameObject Player1;
+   [SerializeField] private GameObject Player2;
     public int PlayerNumber;
 
     // Use this for initialization
@@ -23,8 +23,12 @@ public class BloodControl : MonoBehaviour {
         slid1.maxValue = 150;
         slid2.minValue = 0;
         slid1.minValue = 0;
-        Player1=GameObject.Find("Beast - Player 1 Offline");
-        Player2 = GameObject.Find("Beast - Player 2 - Offline");
+
+        if(Player1 == null)
+            Player1=GameObject.Find("Beast - Player 1 Offline");
+
+        if(Player2 == null)
+            Player2 = GameObject.Find("Beast - Player 2 - Offline");
     }
 
     // Update is called once per frame

@@ -50,24 +50,42 @@ public class PlayerAttack : NetworkBehaviour {
 
         if(mobileMode)
         {
-            attackButton1 = GameObject.Find("Attack 1").GetComponent<Button>();
-            Debug.Assert(attackButton1 != null);
+            //attackButton1 = GameObject.Find("Attack 1").GetComponent<Button>();
+            //Debug.Assert(attackButton1 != null);
 
-            attackButton2 = GameObject.Find("Attack 2").GetComponent<Button>();
-            Debug.Assert(attackButton2 != null);
+            //attackButton2 = GameObject.Find("Attack 2").GetComponent<Button>();
+            //Debug.Assert(attackButton2 != null);
 
-            blockButton = GameObject.Find("Block Attack").GetComponent<Button>();
-            Debug.Assert(blockButton != null);
-
-            attackButton1.onClick.AddListener(Attack1);
-            attackButton2.onClick.AddListener(Attack2);
-            blockButton.onClick.AddListener(Block);
+            //blockButton = GameObject.Find("Block Attack").GetComponent<Button>();
+            //Debug.Assert(blockButton != null);
+            
+            //attackButton1.onClick.AddListener(CmdAttack1);
+            //attackButton2.onClick.AddListener(CmdAttack2);
+            //blockButton.onClick.AddListener(CmdBlock);
         }
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+
+        attackButton1 = GameObject.Find("Attack 1").GetComponent<Button>();
+        Debug.Assert(attackButton1 != null);
+
+        attackButton2 = GameObject.Find("Attack 2").GetComponent<Button>();
+        Debug.Assert(attackButton2 != null);
+
+        blockButton = GameObject.Find("Block Attack").GetComponent<Button>();
+        Debug.Assert(blockButton != null);
+
+        attackButton1.onClick.AddListener(() => CmdAttack1());
+        attackButton2.onClick.AddListener(() => CmdAttack2());
+        blockButton.onClick.AddListener(() => CmdBlock());
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (!isLocalPlayer)  
         {
@@ -83,25 +101,24 @@ public class PlayerAttack : NetworkBehaviour {
 
         if(Input.GetMouseButtonDown(1) && !attack1 && !attack2 && pData.isAlive)
         {
-            attack2 = true;
             Debug.Log("Attack 2 Start");
+            attack2 = true;
             StartCoroutine(DisableAttack2());
         }
 
         if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
         {
             canBlock = true;
-            pData.isBlocking = true;
-			blockingEffect.SetActive(true);
-            Debug.Log("Blocking Attack");
+            blockingEffect.SetActive(true);
+            //Debug.Log("Blocking Attack");
             anim.blocking();
         }
         else
         {
             //Debug.Log("Blocking Attack Stop");
-            pData.isBlocking = false;
             canBlock = false;
-			blockingEffect.SetActive(false);
+            //SpawnBreakBlockEffect();
+            blockingEffect.SetActive(false);
             anim.unBlocking();
         }
 
@@ -112,12 +129,13 @@ public class PlayerAttack : NetworkBehaviour {
 
         if(canSpawnBreakingBlockEffect)
         {
-            SpawnBreakBlockEffect();
+            CmdSpawnBreakBlockEffect();
             canSpawnBreakingBlockEffect = false;
         }
     }
 
-	void SpawnBreakBlockEffect()
+    [Command]
+    void CmdSpawnBreakBlockEffect()
     {
         GameObject temp = Instantiate(breakBlockingEffect, breakBlockEffectTrans.transform);
         temp.SetActive(true);
@@ -131,7 +149,7 @@ public class PlayerAttack : NetworkBehaviour {
 
         if (hasProjectileAttack)
         {
-            SpawnProjectileAttack1();
+            CmdSpawnProjectileAttack1();
         }
 
         Debug.Log("Attack 1 Stop");
@@ -145,7 +163,7 @@ public class PlayerAttack : NetworkBehaviour {
 
  		if (hasProjectileAttack)
         {
-            SpawnProjectileAttack2();
+            CmdSpawnProjectileAttack2();
         }
 
         this.attack2 = false;
@@ -167,20 +185,38 @@ public class PlayerAttack : NetworkBehaviour {
         get { return canBlock; }
     }
 
-	private void SpawnProjectileAttack1()
+    [Command]
+    private void CmdSpawnProjectileAttack1()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         GameObject temp = Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
         temp.GetComponent<SpellFire>().setStrongAttack(false);
     }
 
-    private void SpawnProjectileAttack2()
+    [Command]
+    private void CmdSpawnProjectileAttack2()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         GameObject temp = Instantiate(projectilePrefab2, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
         temp.GetComponent<SpellFire>().setStrongAttack(true);
     }
 
-    public void Attack1()
+    [Command]
+    public void CmdAttack1()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         if (!attack1 && !attack2)
         {
             attack1 = true;
@@ -189,8 +225,14 @@ public class PlayerAttack : NetworkBehaviour {
         }
     }
 
-    public void Attack2()
+    [Command]
+    public void CmdAttack2()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         if (!attack1 && !attack2)
         {
             attack2 = true;
@@ -199,11 +241,33 @@ public class PlayerAttack : NetworkBehaviour {
         }
     }
 
-    public void Block()
+    [Command]
+    public void CmdBlock()
     {
+        //if (!isLocalPlayer)
+        //{
+        //    return;
+        //}
+
         canBlock = true;
-		blockingEffect.SetActive(true);
-        //Debug.Log("Blocking Attack");
+        pData.isBlocking = true;
+        blockingEffect.SetActive(true);
+        Debug.Log("Blocking Attack");
         anim.blocking();
+    }
+
+    [Command]
+    public void CmdStopBlock()
+    {
+        //if (!isLocalPlayer)
+        //{
+        //    return;
+        //}
+
+        //Debug.Log("Blocking Attack Stop");
+        pData.isBlocking = false;
+        canBlock = false;
+        blockingEffect.SetActive(false);
+        anim.unBlocking();
     }
 }

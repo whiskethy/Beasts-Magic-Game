@@ -52,6 +52,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.Play("blockImpact");
     }
+    public void blockBreak()
+    {
+        animator.Play("defenseBroken");
+
+    }
     public void death()
     {
         animator.Play("death");
@@ -122,6 +127,7 @@ public class PlayerAnimation : MonoBehaviour
             animator.SetBool("walkingLeft", true);
         }
     }
+
 
 
 }

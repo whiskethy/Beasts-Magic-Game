@@ -131,6 +131,7 @@ public class PlayerAttack : NetworkBehaviour {
         {
             CmdSpawnBreakBlockEffect();
             canSpawnBreakingBlockEffect = false;
+            anim.blockBreak(); //will play the block Break animation
         }
     }
 

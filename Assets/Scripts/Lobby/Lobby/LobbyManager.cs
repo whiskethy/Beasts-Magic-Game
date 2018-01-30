@@ -15,6 +15,8 @@ namespace Prototype.NetworkLobby
 
         static public LobbyManager s_Singleton;
 
+        public GameObject[] players;
+        private int playerIndex = 1;
 
         [Header("Unity UI Lobby")]
         [Tooltip("Time in second between all players ready & match start")]

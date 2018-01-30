@@ -9,21 +9,25 @@ public class Movement : NetworkBehaviour
 {
     //[SerializeField] private bool useMobileControls = false;
     [SerializeField] private bool player2 = false;
-    
+    [SerializeField] private AndroidJoystick joyStick;
+
     private PlayerData playerData;
     private UnityStandardAssets.Cameras.AutoCam theCamera;
     private NetOp netOp;
-    public AndroidJoystick joyStick;
+    
     private PlayerAnimation anim;
     private GameObject otherPlayer;
-
     private float movementDirTemp;
-
-
 
     // Use this for initialization
     void Start () {
         theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
+
+        if(joyStick == null)
+        {
+            joyStick = GameObject.Find("JoystickController").GetComponent<AndroidJoystick>();
+            Debug.Assert(joyStick != null);
+        }
 
         anim = GetComponent<PlayerAnimation>();
         playerData = GetComponent<PlayerData>();

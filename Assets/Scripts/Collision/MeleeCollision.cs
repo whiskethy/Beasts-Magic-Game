@@ -74,7 +74,7 @@ public class MeleeCollision : MonoBehaviour {
         }
         else
         {
-            return;
+            //return;
             if (other.gameObject.tag == "Player2" && pAttackO.getAttack1)
             {
                 Debug.Log("Collided with: " + other.gameObject.name);

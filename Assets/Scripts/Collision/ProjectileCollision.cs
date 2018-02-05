@@ -30,11 +30,11 @@ public class ProjectileCollision : MonoBehaviour
 
             if (!gameObject.GetComponent<SpellFire>().getStrongAttack)
             {
-                healthManager.takeDamage(other.gameObject, 10);
+                healthManager.takeDamage(other.gameObject, pData.lightAttackDamage);
             }
             else
             {
-                healthManager.takeDamage(other.gameObject, 20);
+                healthManager.takeDamage(other.gameObject, pData.heavyAttackDamage);
             }
 
             Destroy(gameObject);

@@ -9,7 +9,6 @@ public class MeleeCollision : MonoBehaviour {
     [SerializeField] private bool offlineMode;
 
     private PlayerAttack pAttack;
-    private PlayerAttackOffline pAttackO;
     private PlayerData pData;
 
 	// Use this for initialization
@@ -74,42 +73,7 @@ public class MeleeCollision : MonoBehaviour {
         }
         else
         {
-            //return;
-            if (other.gameObject.tag == "Player2" && pAttackO.getAttack1)
-            {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 1: " + pAttackO.getAttack1);
-
-                other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-                healthManager.takeDamage(other.gameObject, 10);
-            }
-
-            if (other.gameObject.tag == "Player2" && pAttackO.getAttack2)
-            {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 2: " + pAttackO.getAttack2);
-
-                other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-                healthManager.takeDamage(other.gameObject, 20);
-            }
-
-            if (other.gameObject.tag == "Player1" && pAttackO.getAttack1)
-            {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 1: " + pAttackO.getAttack1);
-
-                other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-                healthManager.takeDamage(other.gameObject, 10);
-            }
-
-            if (other.gameObject.tag == "Player1" && pAttackO.getAttack2)
-            {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 2: " + pAttackO.getAttack2);
-
-                other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-                healthManager.takeDamage(other.gameObject, 20);
-            }
+            return;
         }
     }
 }

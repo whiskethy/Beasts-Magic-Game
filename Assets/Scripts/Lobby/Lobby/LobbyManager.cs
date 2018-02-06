@@ -5,22 +5,18 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
-using System.Collections.Generic;
+
 
 namespace Prototype.NetworkLobby
 {
     public class LobbyManager : NetworkLobbyManager 
     {
-        public string serverGamePlayer;
-        public string clientGamePlayer;
-        Dictionary<int, int> currentPlayers;
-        GameObject net;
-//        LobbyPlayerControl pc;
-
         static short MsgKicked = MsgType.Highest + 1;
 
         static public LobbyManager s_Singleton;
 
+        public GameObject[] players;
+        private int playerIndex = 1;
 
         [Header("Unity UI Lobby")]
         [Tooltip("Time in second between all players ready & match start")]
@@ -61,17 +57,6 @@ namespace Prototype.NetworkLobby
 
         void Start()
         {
-            
-            //pc.SetIp("1ocalhost");
-            //My Add
-            //serverGamePlayer = PlayerPrefs.GetString("ServerPlayer");
-            //clientGamePlayer = PlayerPrefs.GetString("ClientPlayer");
-            currentPlayers = new Dictionary<int, int>();
-
-
-            //SetWorkGamePlayers();
-            currentPlayers.Add(0,1);
-            currentPlayers.Add(1, 0);
             s_Singleton = this;
             _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
             currentPanel = mainMenuPanel;
@@ -82,77 +67,6 @@ namespace Prototype.NetworkLobby
             DontDestroyOnLoad(gameObject);
 
             SetServerInfo("Offline", "None");
-        }
-        //My Add
-        public GameObject ObjFtnd(string Objname)
-        {
-
-            GameObject[] pAllObjects = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
-
-            foreach (GameObject pObject in pAllObjects)
-            {
-                if (Objname == pObject.name)
-                {
-                    Debug.Log(pObject.name);
-                    return pObject;
-                }
-
-            }
-            return null;
-        }
-
-        private void SetWorkGamePlayers()
-        {
-            currentPlayers.Clear();
-            serverGamePlayer = PlayerPrefs.GetString("ServerGamePlayer");
-            Debug.Log("Server player to " + serverGamePlayer);
-            if (serverGamePlayer == "Beast")
-            {
-                Debug.Log("Server:beast");
-                if (!currentPlayers.ContainsKey(0))
-                    currentPlayers.Add(0, 0);
-            }
-            else
-            {
-                if (serverGamePlayer == "Mage")
-                {
-                    Debug.Log("Server:Mage");
-
-                    if (!currentPlayers.ContainsKey(0))
-                        currentPlayers.Add(0, 1);
-                }
-
-            }
-            clientGamePlayer = PlayerPrefs.GetString("ClientGamePlayer");
-            if (clientGamePlayer == "Beast")
-            {
-                Debug.Log("Client:mage");
-                if (!currentPlayers.ContainsKey(1))
-                    currentPlayers.Add(1, 0);
-            }
-            else
-            {
-                if (!currentPlayers.ContainsKey(1))
-                    currentPlayers.Add(1, 1);
-
-            }
-
-        }
-        //My Add
-
-        public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
-        {
-
-            SetWorkGamePlayers();
-            int index = currentPlayers[conn.connectionId];
-
-            GameObject _temp = (GameObject)GameObject.Instantiate(spawnPrefabs[index],
-            startPositions[conn.connectionId].position,
-            Quaternion.identity);
-            NetworkServer.AddPlayerForConnection(conn, _temp, playerControllerId);
-            return _temp;
-            // return base.OnLobbyServerCreateGamePlayer(conn, playerControllerId);
-
         }
 
         public override void OnLobbyClientSceneChanged(NetworkConnection conn)
@@ -379,9 +293,7 @@ namespace Prototype.NetworkLobby
                     p.ToggleJoinButton(numPlayers + 1 >= minPlayers);
                 }
             }
-            //myAdd
-            //string player= PlayerPrefs.GetString("SelectedPlayer");
-            //PlayerPrefs.SetString("ServerPlayer",player);
+
             return obj;
         }
 
@@ -430,25 +342,13 @@ namespace Prototype.NetworkLobby
         public override void OnLobbyServerPlayersReady()
         {
 			bool allready = true;
-            LobbyPlayer p;
-            string s;
-
-            for (int i = 0; i < lobbySlots.Length; ++i)
+			for(int i = 0; i < lobbySlots.Length; ++i)
 			{
 				if(lobbySlots[i] != null)
-                {
 					allready &= lobbySlots[i].readyToBegin;
-                    //myAdd
-                    p = (LobbyPlayer)lobbySlots[i];
-                    s = p.playerName;
-                    PlayerPrefs.SetString("Player" + (i + 1).ToString(), s);
-                    //PlayerPrefs.SetString("ClientGamePlayer", p.ClientGamePlayer);
+			}
 
-                }
-
-            }
-
-            if (allready)
+			if(allready)
 				StartCoroutine(ServerCountdownCoroutine());
         }
 
@@ -505,11 +405,9 @@ namespace Prototype.NetworkLobby
                 backDelegate = StopClientClbk;
                 SetServerInfo("Client", networkAddress);
             }
-            //string iplayer = PlayerPrefs.GetString("SelectedPlayer");
-
-            //pc.SetGamePlayer(iplayer);
-
         }
+
+
         public override void OnClientDisconnect(NetworkConnection conn)
         {
             base.OnClientDisconnect(conn);

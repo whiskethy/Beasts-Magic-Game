@@ -4,8 +4,6 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
-using System;
 
 namespace Prototype.NetworkLobby
 {
@@ -32,10 +30,6 @@ namespace Prototype.NetworkLobby
         [SyncVar(hook = "OnMyColor")]
         public Color playerColor = Color.white;
 
-        [SyncVar(hook = "OnClientGamePlayer")]
-        public string ClientGamePlayer = "";
-        public string ServerGamePlayer = "";
-
         public Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
         public Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
 
@@ -47,21 +41,6 @@ namespace Prototype.NetworkLobby
         //static Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
         //static Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
 
-        string strSelectedPlayer;
-
-        private void Start()
-        {
-            strSelectedPlayer = GenSelectPlayer();
-
-        }
-        private string GenSelectPlayer()
-        {
-            string dir = Directory.GetCurrentDirectory();
-            UInt32 hash = (UInt32)dir.GetHashCode();
-            string strHash = "SelectedPlayer" + hash.ToString();
-
-            return strHash;
-        }
 
         public override void OnClientEnterLobby()
         {
@@ -85,7 +64,7 @@ namespace Prototype.NetworkLobby
             //will be created with the right value currently on server
             OnMyName(playerName);
             OnMyColor(playerColor);
-         }
+        }
 
         public override void OnStartAuthority()
         {
@@ -195,23 +174,6 @@ namespace Prototype.NetworkLobby
                 colorButton.interactable = isLocalPlayer;
                 nameInput.interactable = isLocalPlayer;
             }
-            if (isLocalPlayer)
-            {
-                if (!isServer && isClient)
-                {
-                    //CmdClientGamePlayer(ClientGamePlayer);
-                    //OnClientGamePlayer(ClientGamePlayer);
-                    ClientGamePlayer = PlayerPrefs.GetString(strSelectedPlayer);
-                    CmdClientGamePlayer(ClientGamePlayer);
-                    Debug.Log("Cmd ClientGamePlayer: " + ClientGamePlayer);
-                }
-                else
-                {
-                    ServerGamePlayer = PlayerPrefs.GetString(strSelectedPlayer);
-                    PlayerPrefs.SetString("ServerGamePlayer", ServerGamePlayer);
-                    Debug.Log("write ServerGamePlayer" + ServerGamePlayer);
-                }
-            }
         }
 
         public void OnPlayerListChanged(int idx)
@@ -231,10 +193,6 @@ namespace Prototype.NetworkLobby
         {
             playerColor = newColor;
             colorButton.GetComponent<Image>().color = newColor;
-        }
-        public void OnClientGamePlayer(string ClientPlayer)
-        {
-            ClientGamePlayer = ClientPlayer;
         }
 
         //===== UI Handler
@@ -332,15 +290,6 @@ namespace Prototype.NetworkLobby
         {
             playerName = name;
         }
-
-        [Command]
-        public void CmdClientGamePlayer(string player)
-        {
-            ClientGamePlayer = player;
-            PlayerPrefs.SetString("ClientGamePlayer", player);
-            Debug.Log("CmdClientPlayer: " + player);
-        }
-
 
         //Cleanup thing when get destroy (which happen when client kick or disconnect)
         public void OnDestroy()

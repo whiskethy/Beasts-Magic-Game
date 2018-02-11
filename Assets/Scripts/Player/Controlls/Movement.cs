@@ -15,7 +15,7 @@ public class Movement : NetworkBehaviour
     private UnityStandardAssets.Cameras.AutoCam theCamera;
     private NetOp netOp;
     
-    //private PlayerAnimation anim;
+    private PlayerAnim anim;
     private GameObject otherPlayer;
     private float movementDirTemp;
 

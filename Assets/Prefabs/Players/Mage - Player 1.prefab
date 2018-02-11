@@ -162,6 +162,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1138978288486796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4785101865472090}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1142302921436736
 GameObject:
   m_ObjectHideFlags: 1
@@ -1569,7 +1584,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1859721052152444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.7557707, y: 1.6437705, z: -3.9886131}
+  m_LocalPosition: {x: 3.3949578, y: -2.0559617e-17, z: 1.2518456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4884380009745782}
@@ -1577,6 +1592,7 @@ Transform:
   - {fileID: 4477162896562480}
   - {fileID: 4187059222519968}
   - {fileID: 4625513418194310}
+  - {fileID: 4785101865472090}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2051,6 +2067,19 @@ Transform:
   - {fileID: 4227198266286772}
   m_Father: {fileID: 4187059222519968}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4785101865472090
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138978288486796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.405, y: 1.566, z: 0.458}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4323907277706784}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4795998957625470
 Transform:
@@ -2691,7 +2720,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1859721052152444}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
@@ -2710,7 +2739,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1859721052152444}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
@@ -2753,11 +2782,13 @@ MonoBehaviour:
   breakBlockingEffect: {fileID: 1580776923936220, guid: 864b5ce935ae5784ba28d487c2e15bb8,
     type: 2}
   breakBlockEffectTrans: {fileID: 1859721052152444}
-  projectileSpawn: {fileID: 0}
-  projectilePrefab: {fileID: 0}
-  projectilePrefab2: {fileID: 0}
-  hasProjectileAttack: 0
-  mobileMode: 0
+  projectileSpawn: {fileID: 1138978288486796}
+  projectilePrefab: {fileID: 1486166823927332, guid: 3b4f0e50ab13279488f8bd78f37896d4,
+    type: 2}
+  projectilePrefab2: {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7,
+    type: 2}
+  hasProjectileAttack: 1
+  mobileMode: 1
 --- !u!114 &114535959221847004
 MonoBehaviour:
   m_ObjectHideFlags: 1

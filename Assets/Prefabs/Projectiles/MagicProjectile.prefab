@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 114880812795164678}
   - component: {fileID: 114863957614342858}
   - component: {fileID: 54127818028959208}
+  - component: {fileID: 114004656987152506}
+  - component: {fileID: 114266316964547450}
   m_Layer: 0
   m_Name: MagicProjectile
   m_TagString: Untagged
@@ -201,6 +203,59 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114004656987152506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486166823927332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 132
+    i1: 42
+    i2: 255
+    i3: 46
+    i4: 126
+    i5: 89
+    i6: 0
+    i7: 68
+    i8: 216
+    i9: 107
+    i10: 102
+    i11: 16
+    i12: 158
+    i13: 83
+    i14: 248
+    i15: 199
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114266316964547450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486166823927332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114863957614342858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c972e7879ec15ae46b3b1b9b4cd3d3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthManager: {fileID: 0}
+  blockDurabilityNum: 4
 --- !u!114 &114880812795164678
 MonoBehaviour:
   m_ObjectHideFlags: 1

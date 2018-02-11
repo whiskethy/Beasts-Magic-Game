@@ -27,12 +27,13 @@ public class PlayerAttack : NetworkBehaviour {
     private bool canBlock;
     private bool canSpawnBreakingBlockEffect;
 
-    //private PlayerAnimation anim;
+    private PlayerAnim anim;
 
     // Use this for initialization
     void Start () {
-        //anim = GetComponent<PlayerAnimation>();
-        //Debug.Assert(anim != null);
+
+        anim = GetComponent<PlayerAnim>();
+        Debug.Assert(anim != null);
 
         attack1 = false;
         attack2 = false;
@@ -145,7 +146,7 @@ public class PlayerAttack : NetworkBehaviour {
 
     private IEnumerator DisableAttack1()
     {
-        //anim.attackOne(attack1);
+        anim.attackOne(attack1);
         yield return new WaitForSeconds(pData.attack1CoolDown);
 
         if (hasProjectileAttack && attack1)
@@ -159,7 +160,7 @@ public class PlayerAttack : NetworkBehaviour {
 
     private IEnumerator DisableAttack2()
     {
-        //anim.attackTwo(attack2);
+        anim.attackTwo(attack2);
         yield return new WaitForSeconds(pData.attack2CoolDown);
 
  		if (hasProjectileAttack && attack2)

@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 public class NetOp : NetworkBehaviour {
 
-    public GameObject cam;
-    private UnityStandardAssets.Cameras.AutoCam theCamera;
+    [SerializeField] private GameObject cam;
 
     public GameObject otherPlayer;
 
@@ -23,8 +22,6 @@ public class NetOp : NetworkBehaviour {
    
     void Start()
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera");
-        theCamera = cam.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
 
         healthText1 = GameObject.Find("Player1HealthText").GetComponent<Text>();
         healthText2 = GameObject.Find("Player2HealthText").GetComponent<Text>();
@@ -68,7 +65,9 @@ public class NetOp : NetworkBehaviour {
     public void RpcSetOther(GameObject gameObject)
     {
         if (goServer == null)
+        {
             goServer = gameObject;
+        }
     }
 
     void Update () {
@@ -76,7 +75,6 @@ public class NetOp : NetworkBehaviour {
         {
             return;
         }
-
         if (goClient != null)
         {
             healthText2.text = goClient.GetComponent<PlayerData>().currentHealth.ToString();
@@ -110,14 +108,18 @@ public class NetOp : NetworkBehaviour {
             }
         }
         if (isServer && goServer != null)
+        {
             RpcSetOther(goServer);
+        }
 
     }
     public override void OnStartLocalPlayer()
     {
+        cam.SetActive(true);
         gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
         gameObject.transform.Find("PersonalSpace").GetComponent<MeshRenderer>().material.color = Color.blue;
 
-        Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>().setTarget(gameObject.transform);
+        //Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>().setTarget(gameObject.transform);
+        
     }
 }

@@ -11,14 +11,14 @@ public class MovementOffline : MonoBehaviour {
     public AndroidJoystick joyStick;
     public GameObject otherPlayer;
 
-    private PlayerAnimation anim;
+    private PlayerAnimOffline anim;
     private PlayerAttackOffline pAttack;
     private float movementDirTemp;
 
     // Use this for initialization
     void Start()
     {
-        anim = GetComponent<PlayerAnimation>();
+        anim = GetComponent<PlayerAnimOffline>();
         Debug.Assert(anim != null);
 
         playerData = GetComponent<PlayerData>();
@@ -39,7 +39,7 @@ public class MovementOffline : MonoBehaviour {
 
                 transform.Translate(0.0f, 0.0f, movementDirTemp);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkForward(movementDirTemp, playerData.movementSpeed);
+                anim.walkForward();
             }
 
             else if (Input.GetKey(KeyCode.S) && !pAttack.getBlock && !pAttack.getAttack2)
@@ -48,7 +48,7 @@ public class MovementOffline : MonoBehaviour {
 
                 transform.Translate(0.0f, 0.0f, movementDirTemp);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkBackward(movementDirTemp, playerData.movementSpeed);
+                anim.walkBackward();
             }
 
             else if (Input.GetKey(KeyCode.D) && !pAttack.getBlock && !pAttack.getAttack2)
@@ -57,7 +57,7 @@ public class MovementOffline : MonoBehaviour {
 
                 transform.Translate(movementDirTemp, 0.0f, 0.0f);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkLateral(movementDirTemp, playerData.movementSpeed);
+                anim.walkRight();
             }
 
             else if (Input.GetKey(KeyCode.A) && !pAttack.getBlock && !pAttack.getAttack2)
@@ -66,10 +66,9 @@ public class MovementOffline : MonoBehaviour {
 
                 transform.Translate(movementDirTemp, 0.0f, 0.0f);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkLateral(movementDirTemp, playerData.movementSpeed);
+                anim.walkLeft();
             }
 
-            //ugly i know, but won't be used in final version anyway. Just there for debugging
             else if ((Input.GetKeyUp(KeyCode.W)) || (Input.GetKeyUp(KeyCode.S)) || (Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.A)))
             {
                 anim.stopWalking();
@@ -78,7 +77,7 @@ public class MovementOffline : MonoBehaviour {
             {
                 transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
                 transform.LookAt(otherPlayer.transform);
-                anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
+                //anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
             }
 
         }
@@ -90,7 +89,7 @@ public class MovementOffline : MonoBehaviour {
 
                 transform.Translate(0.0f, 0.0f, movementDirTemp);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkForward(movementDirTemp, playerData.movementSpeed);
+                //anim.walkForward(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.DownArrow))
@@ -99,7 +98,7 @@ public class MovementOffline : MonoBehaviour {
 
                 transform.Translate(0.0f, 0.0f, movementDirTemp);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkBackward(movementDirTemp, playerData.movementSpeed);
+                //anim.walkBackward(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.LeftArrow))
@@ -108,7 +107,7 @@ public class MovementOffline : MonoBehaviour {
 
                 transform.Translate(movementDirTemp, 0.0f, 0.0f);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkLateral(movementDirTemp, playerData.movementSpeed);
+                //anim.walkLateral(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.RightArrow))
@@ -117,13 +116,13 @@ public class MovementOffline : MonoBehaviour {
 
                 transform.Translate(movementDirTemp, 0.0f, 0.0f);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkLateral(movementDirTemp, playerData.movementSpeed);
+                //anim.walkLateral(movementDirTemp, playerData.movementSpeed);
             }
 
             //ugly i know, but won't be used in final version anyway. Just there for debugging
             else if ((Input.GetKeyUp(KeyCode.UpArrow)) || (Input.GetKeyUp(KeyCode.DownArrow)) || (Input.GetKeyUp(KeyCode.LeftArrow)) || (Input.GetKeyUp(KeyCode.RightArrow)))
             {
-                anim.stopWalking();
+                //anim.stopWalking();
             }
 
         }

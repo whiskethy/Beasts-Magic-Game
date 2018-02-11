@@ -22,23 +22,23 @@ public class ProjectileCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Player2" || other.gameObject.tag == "Player1")
         {
-            PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
+            //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
             PlayerData pData = other.gameObject.GetComponent<PlayerData>();
 
             Debug.Log("Collided with: " + other.gameObject.name);
             //Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
-            panim.lightHit();
+            //panim.lightHit();
 
             if (!gameObject.GetComponent<SpellFire>().getStrongAttack)
             {
                 healthManager.takeDamage(other.gameObject, pData.lightAttackDamage);
-                panim.lightHit();
+                //panim.lightHit();
             }
             else
             {
                 healthManager.takeDamage(other.gameObject, pData.heavyAttackDamage);
-                panim.lightHit();
+                //panim.lightHit();
             }
 
             Destroy(gameObject);

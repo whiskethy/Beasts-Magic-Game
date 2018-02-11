@@ -15,7 +15,7 @@ public class Movement : NetworkBehaviour
     private UnityStandardAssets.Cameras.AutoCam theCamera;
     private NetOp netOp;
     
-    private PlayerAnimation anim;
+    //private PlayerAnimation anim;
     private GameObject otherPlayer;
     private float movementDirTemp;
 
@@ -29,7 +29,7 @@ public class Movement : NetworkBehaviour
             Debug.Assert(joyStick != null);
         }
 
-        anim = GetComponent<PlayerAnimation>();
+        //anim = GetComponent<PlayerAnimation>();
         playerData = GetComponent<PlayerData>();
     }
 
@@ -49,7 +49,7 @@ public class Movement : NetworkBehaviour
 
                 transform.Translate(0.0f, 0.0f, movementDirTemp);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkForward(movementDirTemp, playerData.movementSpeed);
+                //anim.walkForward(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.S))
@@ -58,7 +58,7 @@ public class Movement : NetworkBehaviour
 
                 transform.Translate(0.0f, 0.0f, movementDirTemp);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkBackward(movementDirTemp, playerData.movementSpeed);
+                //anim.walkBackward(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.D))
@@ -67,7 +67,7 @@ public class Movement : NetworkBehaviour
 
                 transform.Translate(movementDirTemp, 0.0f, 0.0f);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkLateral(movementDirTemp, playerData.movementSpeed);
+                //anim.walkLateral(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.A))
@@ -76,25 +76,25 @@ public class Movement : NetworkBehaviour
 
                 transform.Translate(movementDirTemp, 0.0f, 0.0f);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkLateral(movementDirTemp, playerData.movementSpeed);
+                //anim.walkLateral(movementDirTemp, playerData.movementSpeed);
             }
 
             //ugly i know, but won't be used in final version anyway. Just there for debugging
             else if ((Input.GetKeyUp(KeyCode.W)) || (Input.GetKeyUp(KeyCode.S)) || (Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.A)))
             {
-                anim.stopWalking();
+                //anim.stopWalking();
             }
             else
             {
                 transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
                 transform.LookAt(otherPlayer.transform);
-                anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
+                //anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
             }
 
         }
         else
         {
-            anim.stopWalking();
+            //anim.stopWalking();
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -102,7 +102,7 @@ public class Movement : NetworkBehaviour
 
                 transform.Translate(0.0f, 0.0f, movementDirTemp);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkForward(movementDirTemp, playerData.movementSpeed);
+                //anim.walkForward(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.DownArrow))
@@ -111,7 +111,7 @@ public class Movement : NetworkBehaviour
 
                 transform.Translate(0.0f, 0.0f, movementDirTemp);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkBackward(movementDirTemp, playerData.movementSpeed);
+                //anim.walkBackward(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.LeftArrow))
@@ -120,7 +120,7 @@ public class Movement : NetworkBehaviour
 
                 transform.Translate(movementDirTemp, 0.0f, 0.0f);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkLateral(movementDirTemp, playerData.movementSpeed);
+                //anim.walkLateral(movementDirTemp, playerData.movementSpeed);
             }
 
             else if (Input.GetKey(KeyCode.RightArrow))
@@ -129,13 +129,13 @@ public class Movement : NetworkBehaviour
 
                 transform.Translate(movementDirTemp, 0.0f, 0.0f);
                 transform.LookAt(otherPlayer.transform);
-                anim.walkLateral(movementDirTemp, playerData.movementSpeed);
+                //anim.walkLateral(movementDirTemp, playerData.movementSpeed);
             }
 
             //ugly i know, but won't be used in final version anyway. Just there for debugging
             else if ((Input.GetKeyUp(KeyCode.UpArrow)) || (Input.GetKeyUp(KeyCode.DownArrow)) || (Input.GetKeyUp(KeyCode.LeftArrow)) || (Input.GetKeyUp(KeyCode.RightArrow)))
             {
-                anim.stopWalking();
+                //anim.stopWalking();
             }
 
         }

@@ -9,7 +9,7 @@ public class ForceBlock : MonoBehaviour {
     [SerializeField] private GameObject breakBlockingEffect;
     [SerializeField] private bool canBlock = false;
 
-    private PlayerAnimation anim;
+    //private PlayerAnimation anim;
     private bool canBreakBlock;
 
     // Use this for initialization
@@ -17,8 +17,8 @@ public class ForceBlock : MonoBehaviour {
 
         canBreakBlock = false;
 
-        anim = GetComponent<PlayerAnimation>();
-        Debug.Assert(anim != null);
+        //anim = GetComponent<PlayerAnimation>();
+        //Debug.Assert(anim != null);
 
         blockingEffect.SetActive(false);
         Debug.Assert(blockingEffect != null);
@@ -33,14 +33,14 @@ public class ForceBlock : MonoBehaviour {
         if(canBlock)
         {
             blockingEffect.SetActive(true);
-            anim.blocking();
+            //anim.blocking();
         }
         else
         {
             SpawnBreakBlockEffect();
 
             blockingEffect.SetActive(false);
-            anim.unBlocking();
+            //anim.unBlocking();
         }
 
         if(canBreakBlock)

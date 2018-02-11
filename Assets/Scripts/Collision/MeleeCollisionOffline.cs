@@ -51,7 +51,7 @@ public class MeleeCollisionOffline : MonoBehaviour
             return;
         }
 
-        PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
+        //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
         PlayerAttackOffline pAttack = GetComponent<PlayerAttackOffline>();
         PlayerData pData = other.GetComponent<PlayerData>();
         if (pAttack == null) return;
@@ -79,7 +79,7 @@ public class MeleeCollisionOffline : MonoBehaviour
                 {
                     other.gameObject.GetComponent<ForceBlock>().setBlock(false);
                     other.gameObject.GetComponent<ForceBlock>().setBreakBlockEffect(true);
-                    panim.blockBreak();
+                    //panim.blockBreak();
                     tempBlockDurability = blockDurabilityNum;
                     Debug.Log("Block Durability: " + tempBlockDurability);
                 }
@@ -92,7 +92,7 @@ public class MeleeCollisionOffline : MonoBehaviour
                 Debug.Log("Collided with: " + other.gameObject.name);
                 Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
-                panim.lightHit();
+                //panim.lightHit();
                 healthManager.takeDamage(other.gameObject, 10);
 
                 return;
@@ -102,7 +102,7 @@ public class MeleeCollisionOffline : MonoBehaviour
             {
                 Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
                 Debug.Log("Player Attack 2: " + pAttack.getAttack2);
-                panim.lightHit();
+                //panim.lightHit();
                 healthManager.takeDamage(other.gameObject, 20);
                 return;
             }

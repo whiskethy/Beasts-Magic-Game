@@ -10,7 +10,7 @@ public class HealthManager : NetworkBehaviour {
    
     public PlayerData mplayerData;
 
-    private PlayerAnimation anim;
+    //private PlayerAnimation anim;
     private bool find;
 
     public Text healthText;
@@ -50,7 +50,7 @@ public class HealthManager : NetworkBehaviour {
        if((mplayerData.currentHealth <= 0) && (mplayerData.isAlive))
         {
             if(player != null)
-            player.GetComponent<PlayerAnimation>().death();
+            //player.GetComponent<PlayerAnimation>().death();
             mplayerData.isAlive = false;
         }
     }

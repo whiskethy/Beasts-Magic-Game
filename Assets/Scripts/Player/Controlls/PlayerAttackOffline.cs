@@ -25,12 +25,12 @@ public class PlayerAttackOffline : MonoBehaviour {
     private bool canBlock;
     private bool canSpawnBreakingBlockEffect;
 
-    private PlayerAnimation anim;
+    private PlayerAnimOffline anim;
 
     // Use this for initialization
     void Start()
     {
-        anim = GetComponent<PlayerAnimation>();
+        anim = GetComponent<PlayerAnimOffline>();
         Debug.Assert(anim != null);
         attack1 = false;
         attack2 = false;
@@ -68,17 +68,17 @@ public class PlayerAttackOffline : MonoBehaviour {
     {
         if (mobileMode)
         {
-            //if (attack1)
-            //{
-            //    Debug.Log("Attack 1 Start!");
-            //    StartCoroutine(DisableAttack1());
-            //}
+            if (attack1)
+            {
+                Debug.Log("Attack 1 Start!");
+                StartCoroutine(DisableAttack1());
+            }
 
-            //if (attack2)
-            //{
-            //    Debug.Log("Attack 2 Start");
-            //    StartCoroutine(DisableAttack2());
-            //}
+            if (attack2)
+            {
+                Debug.Log("Attack 2 Start");
+                StartCoroutine(DisableAttack2());
+            }
         }
         else
         {
@@ -86,6 +86,7 @@ public class PlayerAttackOffline : MonoBehaviour {
             {
                 Debug.Log("Attack 1 Start!");
                 attack1 = true;
+
                 StartCoroutine(DisableAttack1());
             }
 

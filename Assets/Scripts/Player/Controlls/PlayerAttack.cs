@@ -27,12 +27,12 @@ public class PlayerAttack : NetworkBehaviour {
     private bool canBlock;
     private bool canSpawnBreakingBlockEffect;
 
-    private PlayerAnimation anim;
+    //private PlayerAnimation anim;
 
     // Use this for initialization
     void Start () {
-        anim = GetComponent<PlayerAnimation>();
-        Debug.Assert(anim != null);
+        //anim = GetComponent<PlayerAnimation>();
+        //Debug.Assert(anim != null);
 
         attack1 = false;
         attack2 = false;
@@ -111,7 +111,7 @@ public class PlayerAttack : NetworkBehaviour {
             canBlock = true;
             blockingEffect.SetActive(true);
             //Debug.Log("Blocking Attack");
-            anim.blocking();
+            //anim.blocking();
         }
         else
         {
@@ -119,7 +119,7 @@ public class PlayerAttack : NetworkBehaviour {
             canBlock = false;
             //SpawnBreakBlockEffect();
             blockingEffect.SetActive(false);
-            anim.unBlocking();
+            //anim.unBlocking();
         }
 
  		if(Input.GetKeyUp(KeyCode.Space) && !attack1 && !attack2)
@@ -131,7 +131,7 @@ public class PlayerAttack : NetworkBehaviour {
         {
             CmdSpawnBreakBlockEffect();
             canSpawnBreakingBlockEffect = false;
-            anim.blockBreak(); //will play the block Break animation
+            //anim.blockBreak(); //will play the block Break animation
         }
     }
 
@@ -145,7 +145,7 @@ public class PlayerAttack : NetworkBehaviour {
 
     private IEnumerator DisableAttack1()
     {
-        anim.attackOne(attack1);
+        //anim.attackOne(attack1);
         yield return new WaitForSeconds(pData.attack1CoolDown);
 
         if (hasProjectileAttack)
@@ -159,7 +159,7 @@ public class PlayerAttack : NetworkBehaviour {
 
     private IEnumerator DisableAttack2()
     {
-        anim.attackTwo(attack2);
+        //anim.attackTwo(attack2);
         yield return new WaitForSeconds(pData.attack2CoolDown);
 
  		if (hasProjectileAttack)
@@ -254,7 +254,7 @@ public class PlayerAttack : NetworkBehaviour {
         pData.isBlocking = true;
         blockingEffect.SetActive(true);
         Debug.Log("Blocking Attack");
-        anim.blocking();
+        //anim.blocking();
     }
 
     [Command]
@@ -269,6 +269,6 @@ public class PlayerAttack : NetworkBehaviour {
         pData.isBlocking = false;
         canBlock = false;
         blockingEffect.SetActive(false);
-        anim.unBlocking();
+        //anim.unBlocking();
     }
 }

@@ -11,7 +11,7 @@ public class HealthManagerOffline : MonoBehaviour
 
     public PlayerData mplayerData;
 
-    private PlayerAnimation anim;
+    //private PlayerAnimation anim;
     private bool find;
 
     public Text healthText;
@@ -50,8 +50,8 @@ public class HealthManagerOffline : MonoBehaviour
             return;
         if (mplayerData.currentHealth <= 0)
         {
-            if (player != null)
-                player.GetComponent<PlayerAnimation>().death();
+            //if (player != null)
+                //player.GetComponent<PlayerAnimation>().death();
         }
     }
 

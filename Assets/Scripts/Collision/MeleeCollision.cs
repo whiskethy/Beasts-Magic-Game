@@ -40,7 +40,7 @@ public class MeleeCollision : MonoBehaviour {
         if (!offlineMode)
         {
             if (other.gameObject == null) return;
-            PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
+            //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
             PlayerAttack pAttack = GetComponent<PlayerAttack>();
             PlayerData pData = other.GetComponent<PlayerData>();
             if (pAttack == null) return;
@@ -54,7 +54,7 @@ public class MeleeCollision : MonoBehaviour {
                 // if (other.gameObject == null) return;
                 //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
                 //                if (pa == null) return;
-                panim.lightHit();
+                //panim.lightHit();
                 healthManager.takeDamage(other.gameObject, 10);
             }
 
@@ -66,7 +66,7 @@ public class MeleeCollision : MonoBehaviour {
                 //if (other.gameObject == null) return;
                 //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
                 //                if (pa == null) return;
-                panim.lightHit();
+                //panim.lightHit();
                 healthManager.takeDamage(other.gameObject, 20);
             }
 
@@ -80,7 +80,7 @@ public class MeleeCollision : MonoBehaviour {
                 Debug.Log("Collided with: " + other.gameObject.name);
                 Debug.Log("Player Attack 1: " + pAttackO.getAttack1);
 
-                other.gameObject.GetComponent<PlayerAnimation>().lightHit();
+                //other.gameObject.GetComponent<PlayerAnimation>().lightHit();
                 healthManager.takeDamage(other.gameObject, 10);
             }
 
@@ -89,7 +89,7 @@ public class MeleeCollision : MonoBehaviour {
                 Debug.Log("Collided with: " + other.gameObject.name);
                 Debug.Log("Player Attack 2: " + pAttackO.getAttack2);
 
-                other.gameObject.GetComponent<PlayerAnimation>().lightHit();
+                //other.gameObject.GetComponent<PlayerAnimation>().lightHit();
                 healthManager.takeDamage(other.gameObject, 20);
             }
 
@@ -98,7 +98,7 @@ public class MeleeCollision : MonoBehaviour {
                 Debug.Log("Collided with: " + other.gameObject.name);
                 Debug.Log("Player Attack 1: " + pAttackO.getAttack1);
 
-                other.gameObject.GetComponent<PlayerAnimation>().lightHit();
+                //other.gameObject.GetComponent<PlayerAnimation>().lightHit();
                 healthManager.takeDamage(other.gameObject, 10);
             }
 
@@ -107,7 +107,7 @@ public class MeleeCollision : MonoBehaviour {
                 Debug.Log("Collided with: " + other.gameObject.name);
                 Debug.Log("Player Attack 2: " + pAttackO.getAttack2);
 
-                other.gameObject.GetComponent<PlayerAnimation>().lightHit();
+                //other.gameObject.GetComponent<PlayerAnimation>().lightHit();
                 healthManager.takeDamage(other.gameObject, 20);
             }
         }

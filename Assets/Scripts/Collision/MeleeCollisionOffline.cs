@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class MeleeCollisionOffline : MonoBehaviour
 {
-
     [SerializeField] private GameObject playerObj;
-    [SerializeField] private HealthManagerOffline healthManager;
     [SerializeField] private bool offlineMode;
     [SerializeField] private int blockDurabilityNum = 4;
 
     private PlayerAttack pAttack;
     private PlayerAttackOffline pAttackO;
     private PlayerData pData;
+    private HealthManagerOffline healthManager;
+
+    private bool isAttacking;
 
     private int tempBlockDurability;
 
@@ -22,6 +23,8 @@ public class MeleeCollisionOffline : MonoBehaviour
         tempBlockDurability = blockDurabilityNum;
         healthManager = FindObjectOfType<HealthManagerOffline>();
         Debug.Assert(healthManager != null);
+
+        isAttacking = false;
 
     }
 
@@ -37,7 +40,17 @@ public class MeleeCollisionOffline : MonoBehaviour
         {
             return;
         }
-                
+
+        isAttacking = false;
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == null)
+        {
+            return;
+        }
+
         PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
         PlayerAttackOffline pAttack = GetComponent<PlayerAttackOffline>();
         PlayerData pData = other.GetComponent<PlayerData>();
@@ -45,49 +58,65 @@ public class MeleeCollisionOffline : MonoBehaviour
         if (pData == null) return;
         if (pData.currentHealth <= 0) return;
 
-
-        if(other.gameObject.GetComponent<ForceBlock>().getBlock)
+        if (!isAttacking && pAttack.getAttack2 || pAttack.getAttack1)
         {
-            Debug.Log("Collided with: " + other.gameObject.name);
-            Debug.Log("Other Player Block: " + other.gameObject.GetComponent<ForceBlock>().getBlock);
+            isAttacking = true;
 
-            tempBlockDurability--;
-            Debug.Log("Block Durability: " + tempBlockDurability);
-
-            //Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-            //rb.AddForceAtPosition(-other.gameObject.transform.forward, other.gameObject.transform.position);
-
-            healthManager.takeDamage(other.gameObject, 5);
-
-            if(tempBlockDurability <= 0)
+            if (other.gameObject.GetComponent<ForceBlock>().getBlock)
             {
-                other.gameObject.GetComponent<ForceBlock>().setBlock(false);
-                other.gameObject.GetComponent<ForceBlock>().setBreakBlockEffect(true);
-                tempBlockDurability = blockDurabilityNum;
+                Debug.Log("Collided with: " + other.gameObject.name);
+                Debug.Log("Other Player Block: " + other.gameObject.GetComponent<ForceBlock>().getBlock);
+
+                tempBlockDurability--;
                 Debug.Log("Block Durability: " + tempBlockDurability);
+
+                //Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+                //rb.AddForceAtPosition(-other.gameObject.transform.forward, other.gameObject.transform.position);
+
+                healthManager.takeDamage(other.gameObject, 5);
+
+                if (tempBlockDurability <= 0)
+                {
+                    other.gameObject.GetComponent<ForceBlock>().setBlock(false);
+                    other.gameObject.GetComponent<ForceBlock>().setBreakBlockEffect(true);
+                    panim.blockBreak();
+                    tempBlockDurability = blockDurabilityNum;
+                    Debug.Log("Block Durability: " + tempBlockDurability);
+                }
+
+                return;
             }
 
-            return;
+            if (pAttack.getAttack1)
+            {
+                Debug.Log("Collided with: " + other.gameObject.name);
+                Debug.Log("Player Attack 1: " + pAttack.getAttack1);
+
+                panim.lightHit();
+                healthManager.takeDamage(other.gameObject, 10);
+
+                return;
+            }
+
+            if (pAttack.getAttack2)
+            {
+                Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
+                Debug.Log("Player Attack 2: " + pAttack.getAttack2);
+                panim.lightHit();
+                healthManager.takeDamage(other.gameObject, 20);
+                return;
+            }
         }
 
-        if (pAttack.getAttack1)
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == null)
         {
-            Debug.Log("Collided with: " + other.gameObject.name);
-            Debug.Log("Player Attack 1: " + pAttack.getAttack1);
-
-            panim.lightHit();
-            healthManager.takeDamage(other.gameObject, 10);
             return;
         }
 
-        if (pAttack.getAttack2)
-        {
-            Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
-            Debug.Log("Player Attack 2: " + pAttack.getAttack2);
-            panim.lightHit();
-            healthManager.takeDamage(other.gameObject, 20);
-            return;
-        }
-        
+        isAttacking = false;
     }
 }

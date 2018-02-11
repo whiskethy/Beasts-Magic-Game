@@ -14,6 +14,8 @@ public class ProjectileCollision : MonoBehaviour
     {
         healthManager = FindObjectOfType<HealthManagerOffline>();
         Debug.Assert(healthManager != null);
+
+        tempBlockDurability = blockDurabilityNum;
     }
 
     void OnCollisionEnter(Collision other)
@@ -31,10 +33,12 @@ public class ProjectileCollision : MonoBehaviour
             if (!gameObject.GetComponent<SpellFire>().getStrongAttack)
             {
                 healthManager.takeDamage(other.gameObject, pData.lightAttackDamage);
+                panim.lightHit();
             }
             else
             {
                 healthManager.takeDamage(other.gameObject, pData.heavyAttackDamage);
+                panim.lightHit();
             }
 
             Destroy(gameObject);

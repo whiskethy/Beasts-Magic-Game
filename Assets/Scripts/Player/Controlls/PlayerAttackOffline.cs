@@ -139,7 +139,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
         yield return new WaitForSeconds(pData.attack1CoolDown);
 
-        if (hasProjectileAttack)
+        if (hasProjectileAttack && attack1)
         {
             SpawnProjectileAttack1();
         }
@@ -155,12 +155,12 @@ public class PlayerAttackOffline : MonoBehaviour {
 
         yield return new WaitForSeconds(pData.attack2CoolDown);
 
-        if (hasProjectileAttack)
+        if (hasProjectileAttack && attack2)
         {
             SpawnProjectileAttack2();
         }
 
-        this.attack2 = false;
+        attack2 = false;
         Debug.Log("Attack 2 Stop");
         //anim.attackTwo(attack2);
     }

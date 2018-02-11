@@ -148,7 +148,7 @@ public class PlayerAttack : NetworkBehaviour {
         //anim.attackOne(attack1);
         yield return new WaitForSeconds(pData.attack1CoolDown);
 
-        if (hasProjectileAttack)
+        if (hasProjectileAttack && attack1)
         {
             CmdSpawnProjectileAttack1();
         }
@@ -162,7 +162,7 @@ public class PlayerAttack : NetworkBehaviour {
         //anim.attackTwo(attack2);
         yield return new WaitForSeconds(pData.attack2CoolDown);
 
- 		if (hasProjectileAttack)
+ 		if (hasProjectileAttack && attack2)
         {
             CmdSpawnProjectileAttack2();
         }

@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 222320403080100950}
   - component: {fileID: 114530973700539222}
   - component: {fileID: 114207055566410858}
-  - component: {fileID: 114889914972836150}
   m_Layer: 5
   m_Name: Attack 2
   m_TagString: Untagged
@@ -298,7 +297,6 @@ GameObject:
   - component: {fileID: 222155906689570706}
   - component: {fileID: 114757109612277140}
   - component: {fileID: 114260476758314394}
-  - component: {fileID: 114709164309647860}
   m_Layer: 5
   m_Name: Attack 1
   m_TagString: Untagged
@@ -317,7 +315,6 @@ GameObject:
   - component: {fileID: 222057672114427862}
   - component: {fileID: 114636930147082382}
   - component: {fileID: 114029630679100490}
-  - component: {fileID: 114852648629016956}
   m_Layer: 5
   m_Name: Block Attack
   m_TagString: Untagged
@@ -814,7 +811,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -907,38 +904,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 100
---- !u!114 &114709164309647860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1757992952199232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 158
-    i1: 153
-    i2: 175
-    i3: 189
-    i4: 12
-    i5: 48
-    i6: 48
-    i7: 68
-    i8: 105
-    i9: 47
-    i10: 47
-    i11: 48
-    i12: 223
-    i13: 240
-    i14: 185
-    i15: 7
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114730141904703862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1128,70 +1093,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114852648629016956
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1954429654327880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 158
-    i1: 153
-    i2: 175
-    i3: 189
-    i4: 12
-    i5: 48
-    i6: 48
-    i7: 68
-    i8: 105
-    i9: 47
-    i10: 47
-    i11: 48
-    i12: 223
-    i13: 240
-    i14: 185
-    i15: 7
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &114889914972836150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102017538940326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 158
-    i1: 153
-    i2: 175
-    i3: 189
-    i4: 12
-    i5: 48
-    i6: 48
-    i7: 68
-    i8: 105
-    i9: 47
-    i10: 47
-    i11: 48
-    i12: 223
-    i13: 240
-    i14: 185
-    i15: 7
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114907691126383970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1449,7 +1350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -199, y: 56.2}
+  m_AnchoredPosition: {x: -199, y: 56.19995}
   m_SizeDelta: {x: 90, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224324205995119744
@@ -1714,6 +1615,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -79.600006, y: 56.199997}
+  m_AnchoredPosition: {x: -79.600006, y: 56.19995}
   m_SizeDelta: {x: 90, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}

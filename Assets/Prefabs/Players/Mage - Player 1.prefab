@@ -2788,7 +2788,7 @@ MonoBehaviour:
   projectilePrefab2: {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7,
     type: 2}
   hasProjectileAttack: 1
-  mobileMode: 1
+  mobileMode: 0
 --- !u!114 &114535959221847004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2801,7 +2801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player2: 0
-  joyStick: {fileID: 114521514192926366, guid: 1a002c05274b64b4dac69e1d3852b2f2, type: 2}
+  joyStick: {fileID: 0}
 --- !u!114 &114809660656964916
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -82,18 +82,21 @@ public class PlayerAttack : NetworkBehaviour {
     {
         base.OnStartLocalPlayer();
 
-        attackButton1 = GameObject.Find("Attack 1").GetComponent<Button>();
-        Debug.Assert(attackButton1 != null);
+        if (mobileMode)
+        {
+            attackButton1 = GameObject.Find("/Canvas/Attack 1").GetComponent<Button>();
+            Debug.Assert(attackButton1 != null);
 
-        attackButton2 = GameObject.Find("Attack 2").GetComponent<Button>();
-        Debug.Assert(attackButton2 != null);
+            attackButton2 = GameObject.Find("/Canvas/Attack 2").GetComponent<Button>();
+            Debug.Assert(attackButton2 != null);
 
-        blockButton = GameObject.Find("Block Attack").GetComponent<Button>();
-        Debug.Assert(blockButton != null);
+            blockButton = GameObject.Find("/Canvas/Block Attack").GetComponent<Button>();
+            Debug.Assert(blockButton != null);
 
-        attackButton1.onClick.AddListener(() => CmdAttack1());
-        attackButton2.onClick.AddListener(() => CmdAttack2());
-        blockButton.onClick.AddListener(() => CmdBlock());
+            attackButton1.onClick.AddListener(() => CmdAttack1());
+            attackButton2.onClick.AddListener(() => CmdAttack2());
+            blockButton.onClick.AddListener(() => CmdBlock());
+        }
     }
 
     // Update is called once per frame
@@ -103,47 +106,50 @@ public class PlayerAttack : NetworkBehaviour {
         {
             return;
         }
-		
-        if(Input.GetMouseButtonDown(0) && !attack1 && !attack2 && pData.isAlive)
-        {
-            Debug.Log("Attack 1 Start!");
-            attack1 = true;
-            StartCoroutine(DisableAttack1());
-        }
 
-        if(Input.GetMouseButtonDown(1) && !attack1 && !attack2 && pData.isAlive)
+        if (!mobileMode)
         {
-            Debug.Log("Attack 2 Start");
-            attack2 = true;
-            StartCoroutine(DisableAttack2());
-        }
+            if (Input.GetMouseButtonDown(0) && !attack1 && !attack2 && pData.isAlive)
+            {
+                Debug.Log("Attack 1 Start!");
+                attack1 = true;
+                StartCoroutine(DisableAttack1());
+            }
 
-        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
-        {
-            canBlock = true;
-            blockingEffect.SetActive(true);
-            //Debug.Log("Blocking Attack");
-            //anim.blocking();
-        }
-        else
-        {
-            //Debug.Log("Blocking Attack Stop");
-            canBlock = false;
-            //SpawnBreakBlockEffect();
-            blockingEffect.SetActive(false);
-            //anim.unBlocking();
-        }
+            if (Input.GetMouseButtonDown(1) && !attack1 && !attack2 && pData.isAlive)
+            {
+                Debug.Log("Attack 2 Start");
+                attack2 = true;
+                StartCoroutine(DisableAttack2());
+            }
 
- 		if(Input.GetKeyUp(KeyCode.Space) && !attack1 && !attack2)
-        {
-            canSpawnBreakingBlockEffect = true;
-        }
+            if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
+            {
+                canBlock = true;
+                blockingEffect.SetActive(true);
+                //Debug.Log("Blocking Attack");
+                //anim.blocking();
+            }
+            else
+            {
+                //Debug.Log("Blocking Attack Stop");
+                canBlock = false;
+                //SpawnBreakBlockEffect();
+                blockingEffect.SetActive(false);
+                //anim.unBlocking();
+            }
 
-        if(canSpawnBreakingBlockEffect)
-        {
-            CmdSpawnBreakBlockEffect();
-            canSpawnBreakingBlockEffect = false;
-            //anim.blockBreak(); //will play the block Break animation
+            if (Input.GetKeyUp(KeyCode.Space) && !attack1 && !attack2)
+            {
+                canSpawnBreakingBlockEffect = true;
+            }
+
+            if (canSpawnBreakingBlockEffect)
+            {
+                CmdSpawnBreakBlockEffect();
+                canSpawnBreakingBlockEffect = false;
+                //anim.blockBreak(); //will play the block Break animation
+            }
         }
     }
 

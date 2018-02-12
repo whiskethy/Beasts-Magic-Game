@@ -93,6 +93,10 @@ public class PlayerAttack : NetworkBehaviour {
             blockButton = GameObject.Find("/Canvas/Block Attack").GetComponent<Button>();
             Debug.Assert(blockButton != null);
 
+            attackButton1.onClick.RemoveAllListeners();
+            attackButton2.onClick.RemoveAllListeners();
+            blockButton.onClick.RemoveAllListeners();
+
             attackButton1.onClick.AddListener(() => CmdAttack1());
             attackButton2.onClick.AddListener(() => CmdAttack2());
             blockButton.onClick.AddListener(() => CmdBlock());

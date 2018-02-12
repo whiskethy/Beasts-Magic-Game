@@ -125,6 +125,7 @@ public class PlayerAttack : NetworkBehaviour {
 
             if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
             {
+                pData.isBlocking = true;
                 canBlock = true;
                 blockingEffect.SetActive(true);
                 //Debug.Log("Blocking Attack");
@@ -132,6 +133,7 @@ public class PlayerAttack : NetworkBehaviour {
             }
             else
             {
+                pData.isBlocking = false;
                 //Debug.Log("Blocking Attack Stop");
                 canBlock = false;
                 //SpawnBreakBlockEffect();

@@ -77,13 +77,15 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 1973208309327856, guid: 97dcf8d2dba88a14899e2a75d19b6569,
+  m_PlayerPrefab: {fileID: 1344688370519928, guid: 97dcf8d2dba88a14899e2a75d19b6569,
     type: 2}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: 
   m_OnlineScene: MainWorld
-  m_SpawnPrefabs: []
+  m_SpawnPrefabs:
+  - {fileID: 1486166823927332, guid: 3b4f0e50ab13279488f8bd78f37896d4, type: 2}
+  - {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -131,7 +133,7 @@ MonoBehaviour:
   m_UseSimulator: 0
   m_SimulatedLatency: 1
   m_PacketLossPercentage: 0
-  m_MaxBufferedPackets: 16
+  m_MaxBufferedPackets: 32
   m_AllowFragmentation: 1
   m_MatchHost: mm.unet.unity3d.com
   m_MatchPort: 443

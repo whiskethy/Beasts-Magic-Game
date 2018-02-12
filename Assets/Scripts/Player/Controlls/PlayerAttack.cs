@@ -67,6 +67,17 @@ public class PlayerAttack : NetworkBehaviour {
 
 	}
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        if (projectilePrefab && projectilePrefab2 != null && hasProjectileAttack)
+        {
+            ClientScene.RegisterPrefab(projectilePrefab);
+            ClientScene.RegisterPrefab(projectilePrefab2);
+        }
+    }
+
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
@@ -197,6 +208,8 @@ public class PlayerAttack : NetworkBehaviour {
 
         GameObject temp = Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
         temp.GetComponent<SpellFire>().setStrongAttack(false);
+        NetworkServer.Spawn(temp);
+        //NetworkServer.SpawnWithClientAuthority(temp, connectionToClient);
     }
 
     [Command]
@@ -209,6 +222,8 @@ public class PlayerAttack : NetworkBehaviour {
 
         GameObject temp = Instantiate(projectilePrefab2, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
         temp.GetComponent<SpellFire>().setStrongAttack(true);
+        NetworkServer.Spawn(temp);
+        //NetworkServer.SpawnWithClientAuthority(temp, connectionToClient);
     }
 
     [Command]
@@ -219,7 +234,7 @@ public class PlayerAttack : NetworkBehaviour {
             return;
         }
 
-        if (!attack1 && !attack2)
+        if (!attack1 && !attack2 && pData.isAlive)
         {
             attack1 = true;
             Debug.Log("Attack 1 Start!");
@@ -235,7 +250,7 @@ public class PlayerAttack : NetworkBehaviour {
             return;
         }
 
-        if (!attack1 && !attack2)
+        if (!attack1 && !attack2 && pData.isAlive)
         {
             attack2 = true;
             Debug.Log("Attack 2 Start!");

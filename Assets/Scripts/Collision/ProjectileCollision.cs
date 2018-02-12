@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileCollision : MonoBehaviour
 {
-    [SerializeField] private HealthManagerOffline healthManager;
+    [SerializeField] private HealthManager healthManager;
     [SerializeField] private int blockDurabilityNum = 4;
 
     private int tempBlockDurability;
@@ -12,7 +12,7 @@ public class ProjectileCollision : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        healthManager = FindObjectOfType<HealthManagerOffline>();
+        healthManager = FindObjectOfType<HealthManager>();
         Debug.Assert(healthManager != null);
 
         tempBlockDurability = blockDurabilityNum;

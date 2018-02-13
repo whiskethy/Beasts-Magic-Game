@@ -16,18 +16,18 @@ public class PlayerAnim : NetworkBehaviour {
 
     public void walk(Vector3 InputDirection, float speed)
     {
-        //if (Equals(InputDirection.x, 0.0f) && Equals(InputDirection.y, 0.0f) && Equals(InputDirection.z, 0.0f))
-        //{
-        //    stopWalking();
-        //}
-        //if (InputDirection.z > 0.0f)
-        //{
-        //    walkForward(InputDirection.z, speed);
-        //}
-        //if (InputDirection.z < 0.0f)
-        //{
-        //    walkForward(InputDirection.z, speed);
-        //}
+        if (Equals(InputDirection.x, 0.0f) && Equals(InputDirection.y, 0.0f) && Equals(InputDirection.z, 0.0f))
+        {
+            stopWalking();
+        }
+        if (InputDirection.z > 0.0f)
+        {
+            walkForward();
+        }
+        if (InputDirection.z < 0.0f)
+        {
+            walkForward();
+        }
 
     }
     public void stopWalking()

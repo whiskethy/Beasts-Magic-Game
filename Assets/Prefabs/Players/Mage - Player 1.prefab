@@ -1015,6 +1015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4323907277706784}
   - component: {fileID: 95518551997962308}
+  - component: {fileID: 114535104396746310}
   - component: {fileID: 114245016287283970}
   - component: {fileID: 114535959221847004}
   - component: {fileID: 114071983355576902}
@@ -2788,7 +2789,20 @@ MonoBehaviour:
   projectilePrefab2: {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7,
     type: 2}
   hasProjectileAttack: 1
-  mobileMode: 1
+  mobileMode: 0
+--- !u!114 &114535104396746310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1859721052152444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ac7902e71c1ec498541e04f5c78dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iTime: 0
+  timeLimited: 0
 --- !u!114 &114535959221847004
 MonoBehaviour:
   m_ObjectHideFlags: 1

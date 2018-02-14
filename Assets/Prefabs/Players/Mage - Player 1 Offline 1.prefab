@@ -1049,6 +1049,7 @@ GameObject:
   - component: {fileID: 114432846650551478}
   - component: {fileID: 54011955188938064}
   - component: {fileID: 114862951108366952}
+  - component: {fileID: 114368079410362218}
   - component: {fileID: 114698603835337944}
   - component: {fileID: 114297276022083430}
   - component: {fileID: 136354361196903550}
@@ -2217,6 +2218,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6d5b386bdcb0b44860bb29601aa9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114368079410362218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961791894276870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277e1a26947d4574c8531980ac2bb76f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iTime: 0
+  timeLimited: 0
 --- !u!114 &114432846650551478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2236,6 +2250,8 @@ MonoBehaviour:
   strength: 40
   agility: 30
   wisdom: 0
+  lightAttackDamage: 10
+  heavyAttackDamage: 20
   isAlive: 1
   isBlocking: 0
 --- !u!114 &114672872567492972
@@ -2284,6 +2300,7 @@ MonoBehaviour:
   projectilePrefab2: {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7,
     type: 2}
   hasProjectileAttack: 1
+  mobileMode: 0
 --- !u!136 &136354361196903550
 CapsuleCollider:
   m_ObjectHideFlags: 1

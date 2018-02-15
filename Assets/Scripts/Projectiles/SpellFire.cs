@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SpellFire : MonoBehaviour {
+public class SpellFire : NetworkBehaviour {
 
     [SerializeField] private float projectileSpeed = 10.0f;
 
@@ -20,7 +21,12 @@ public class SpellFire : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        bulletRigidBody.velocity = transform.forward * projectileSpeed ;
+        //if(!isServer)
+        //{
+        //    return;
+        //}
+
+        bulletRigidBody.velocity = transform.forward * projectileSpeed;
 	}
 
     public void setStrongAttack(bool value)

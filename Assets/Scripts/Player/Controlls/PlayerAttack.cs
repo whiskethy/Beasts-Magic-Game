@@ -106,56 +106,58 @@ public class PlayerAttack : NetworkBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (!isLocalPlayer)  
+        if (isLocalPlayer)
+        {
+            if (!mobileMode)
+            {
+                if (Input.GetMouseButtonDown(0) && !attack1 && !attack2 && pData.isAlive)
+                {
+                    Debug.Log("Attack 1 Start!");
+                    attack1 = true;
+                    StartCoroutine(DisableAttack1());
+                }
+
+                if (Input.GetMouseButtonDown(1) && !attack1 && !attack2 && pData.isAlive)
+                {
+                    Debug.Log("Attack 2 Start");
+                    attack2 = true;
+                    StartCoroutine(DisableAttack2());
+                }
+
+                if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
+                {
+                    pData.isBlocking = true;
+                    canBlock = true;
+                    blockingEffect.SetActive(true);
+                    //Debug.Log("Blocking Attack");
+                    //anim.blocking();
+                }
+                else
+                {
+                    pData.isBlocking = false;
+                    //Debug.Log("Blocking Attack Stop");
+                    canBlock = false;
+                    //SpawnBreakBlockEffect();
+                    blockingEffect.SetActive(false);
+                    //anim.unBlocking();
+                }
+
+                if (Input.GetKeyUp(KeyCode.Space) && !attack1 && !attack2)
+                {
+                    canSpawnBreakingBlockEffect = true;
+                }
+
+                if (canSpawnBreakingBlockEffect)
+                {
+                    CmdSpawnBreakBlockEffect();
+                    canSpawnBreakingBlockEffect = false;
+                    //anim.blockBreak(); //will play the block Break animation
+                }
+            }
+        }
+        else
         {
             return;
-        }
-
-        if (!mobileMode)
-        {
-            if (Input.GetMouseButtonDown(0) && !attack1 && !attack2 && pData.isAlive)
-            {
-                Debug.Log("Attack 1 Start!");
-                attack1 = true;
-                StartCoroutine(DisableAttack1());
-            }
-
-            if (Input.GetMouseButtonDown(1) && !attack1 && !attack2 && pData.isAlive)
-            {
-                Debug.Log("Attack 2 Start");
-                attack2 = true;
-                StartCoroutine(DisableAttack2());
-            }
-
-            if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
-            {
-                pData.isBlocking = true;
-                canBlock = true;
-                blockingEffect.SetActive(true);
-                //Debug.Log("Blocking Attack");
-                //anim.blocking();
-            }
-            else
-            {
-                pData.isBlocking = false;
-                //Debug.Log("Blocking Attack Stop");
-                canBlock = false;
-                //SpawnBreakBlockEffect();
-                blockingEffect.SetActive(false);
-                //anim.unBlocking();
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space) && !attack1 && !attack2)
-            {
-                canSpawnBreakingBlockEffect = true;
-            }
-
-            if (canSpawnBreakingBlockEffect)
-            {
-                CmdSpawnBreakBlockEffect();
-                canSpawnBreakingBlockEffect = false;
-                //anim.blockBreak(); //will play the block Break animation
-            }
         }
     }
 
@@ -174,9 +176,17 @@ public class PlayerAttack : NetworkBehaviour {
 
         if (hasProjectileAttack && attack1)
         {
-            CmdSpawnProjectileAttack1();
-        }
+            GameObject temp = Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+            temp.GetComponent<SpellFire>().setStrongAttack(false);
 
+            //if (isLocalPlayer)
+            //{
+            //    Destroy(temp);
+            //}
+
+            CmdSpawnProjectile(projectilePrefab, projectileSpawn.transform.position, false);
+        }
+        
         Debug.Log("Attack 1 Stop");
         this.attack1 = false;
     }
@@ -188,9 +198,17 @@ public class PlayerAttack : NetworkBehaviour {
 
  		if (hasProjectileAttack && attack2)
         {
-            CmdSpawnProjectileAttack2();
-        }
+            GameObject temp = Instantiate(projectilePrefab2, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+            temp.GetComponent<SpellFire>().setStrongAttack(true);
 
+            //if (isLocalPlayer)
+            //{
+            //    Destroy(temp);
+            //}
+
+            CmdSpawnProjectile(projectilePrefab2, projectileSpawn.transform.position, true);
+        }
+        
         this.attack2 = false;
         Debug.Log("Attack 2 Stop");
     }
@@ -208,6 +226,35 @@ public class PlayerAttack : NetworkBehaviour {
 	public bool getBlock
     {
         get { return canBlock; }
+    }
+
+    public void Attack1()
+    {
+        if (!attack1 && !attack2 && pData.isAlive)
+        {
+            Debug.Log("Attack 2 Start");
+            attack1 = true;
+            StartCoroutine(DisableAttack1());
+        }
+    }
+
+    public void Attack2()
+    {
+        if (!attack1 && !attack2 && pData.isAlive)
+        {
+            Debug.Log("Attack 2 Start");
+            attack2 = true;
+            StartCoroutine(DisableAttack2());
+        }
+    }
+
+    [Command]
+    private void CmdSpawnProjectile(GameObject prefab, Vector3 pos, bool isStrongAttack)
+    {
+        GameObject temp = Instantiate(prefab, pos, projectileSpawn.transform.rotation);
+        temp.GetComponent<SpellFire>().setStrongAttack(isStrongAttack);
+        NetworkServer.Spawn(temp);
+        //NetworkServer.SpawnWithClientAuthority(temp, connectionToClient);
     }
 
     [Command]

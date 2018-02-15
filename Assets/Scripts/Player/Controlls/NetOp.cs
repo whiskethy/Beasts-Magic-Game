@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
-using UnityEngine.Windows;
+//using UnityEngine.Windows;
 
 public class NetOp : NetworkBehaviour
 {

@@ -97,8 +97,8 @@ public class PlayerAttack : NetworkBehaviour {
             attackButton2.onClick.RemoveAllListeners();
             blockButton.onClick.RemoveAllListeners();
 
-            attackButton1.onClick.AddListener(() => CmdAttack1());
-            attackButton2.onClick.AddListener(() => CmdAttack2());
+            attackButton1.onClick.AddListener(() => Attack1());
+            attackButton2.onClick.AddListener(() => Attack2());
             blockButton.onClick.AddListener(() => CmdBlock());
         }
     }
@@ -176,15 +176,7 @@ public class PlayerAttack : NetworkBehaviour {
 
         if (hasProjectileAttack && attack1)
         {
-            GameObject temp = Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-            temp.GetComponent<SpellFire>().setStrongAttack(false);
-
-            //if (isLocalPlayer)
-            //{
-            //    Destroy(temp);
-            //}
-
-            CmdSpawnProjectile(projectilePrefab, projectileSpawn.transform.position, false);
+            CmdSpawnProjectile(projectileSpawn.transform.position, false);
         }
         
         Debug.Log("Attack 1 Stop");
@@ -198,15 +190,7 @@ public class PlayerAttack : NetworkBehaviour {
 
  		if (hasProjectileAttack && attack2)
         {
-            GameObject temp = Instantiate(projectilePrefab2, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-            temp.GetComponent<SpellFire>().setStrongAttack(true);
-
-            //if (isLocalPlayer)
-            //{
-            //    Destroy(temp);
-            //}
-
-            CmdSpawnProjectile(projectilePrefab2, projectileSpawn.transform.position, true);
+            CmdSpawnProjectile2(projectileSpawn.transform.position, true);
         }
         
         this.attack2 = false;
@@ -248,73 +232,23 @@ public class PlayerAttack : NetworkBehaviour {
         }
     }
 
+    //Prefabs needs to be explicitly stated to spawn or else it won't work F*ck UNET
     [Command]
-    private void CmdSpawnProjectile(GameObject prefab, Vector3 pos, bool isStrongAttack)
+    private void CmdSpawnProjectile(Vector3 pos, bool isStrongAttack)
     {
-        GameObject temp = Instantiate(prefab, pos, projectileSpawn.transform.rotation);
+        Debug.Log("Spawn Projectile Fire");
+        GameObject temp = Instantiate(projectilePrefab, pos, projectileSpawn.transform.rotation);
         temp.GetComponent<SpellFire>().setStrongAttack(isStrongAttack);
         NetworkServer.Spawn(temp);
-        //NetworkServer.SpawnWithClientAuthority(temp, connectionToClient);
     }
 
     [Command]
-    private void CmdSpawnProjectileAttack1()
+    private void CmdSpawnProjectile2(Vector3 pos, bool isStrongAttack)
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-
-        GameObject temp = Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-        temp.GetComponent<SpellFire>().setStrongAttack(false);
+        Debug.Log("Spawn Projectile Magic");
+        GameObject temp = Instantiate(projectilePrefab2 ,pos, projectileSpawn.transform.rotation);
+        temp.GetComponent<SpellFire>().setStrongAttack(isStrongAttack);
         NetworkServer.Spawn(temp);
-        //NetworkServer.SpawnWithClientAuthority(temp, connectionToClient);
-    }
-
-    [Command]
-    private void CmdSpawnProjectileAttack2()
-    {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-
-        GameObject temp = Instantiate(projectilePrefab2, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-        temp.GetComponent<SpellFire>().setStrongAttack(true);
-        NetworkServer.Spawn(temp);
-        //NetworkServer.SpawnWithClientAuthority(temp, connectionToClient);
-    }
-
-    [Command]
-    public void CmdAttack1()
-    {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-
-        if (!attack1 && !attack2 && pData.isAlive)
-        {
-            attack1 = true;
-            Debug.Log("Attack 1 Start!");
-            StartCoroutine(DisableAttack1());
-        }
-    }
-
-    [Command]
-    public void CmdAttack2()
-    {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-
-        if (!attack1 && !attack2 && pData.isAlive)
-        {
-            attack2 = true;
-            Debug.Log("Attack 2 Start!");
-            StartCoroutine(DisableAttack2());
-        }
     }
 
     [Command]

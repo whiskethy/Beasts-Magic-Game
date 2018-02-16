@@ -84,13 +84,13 @@ public class PlayerAttack : NetworkBehaviour {
 
         if (mobileMode)
         {
-            attackButton1 = GameObject.Find("/Canvas/Attack 1").GetComponent<Button>();
+            attackButton1 = GameObject.Find("/Canvas MainWorld/AttackButton1").GetComponent<Button>();
             Debug.Assert(attackButton1 != null);
 
-            attackButton2 = GameObject.Find("/Canvas/Attack 2").GetComponent<Button>();
+            attackButton2 = GameObject.Find("/Canvas MainWorld/AttackButton2").GetComponent<Button>();
             Debug.Assert(attackButton2 != null);
 
-            blockButton = GameObject.Find("/Canvas/Block Attack").GetComponent<Button>();
+            blockButton = GameObject.Find("/Canvas MainWorld/BlockButton").GetComponent<Button>();
             Debug.Assert(blockButton != null);
 
             attackButton1.onClick.RemoveAllListeners();

@@ -2789,7 +2789,7 @@ MonoBehaviour:
   projectilePrefab2: {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7,
     type: 2}
   hasProjectileAttack: 1
-  mobileMode: 0
+  mobileMode: 1
 --- !u!114 &114535104396746310
 MonoBehaviour:
   m_ObjectHideFlags: 1

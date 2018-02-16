@@ -87,6 +87,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4867655560188386}
+  - component: {fileID: 114806182190973656}
   m_Layer: 0
   m_Name: BreakingBlockEffect
   m_TagString: Untagged
@@ -163,6 +164,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114806182190973656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1580776923936220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 134
+    i1: 75
+    i2: 92
+    i3: 233
+    i4: 53
+    i5: 174
+    i6: 87
+    i7: 132
+    i8: 186
+    i9: 40
+    i10: 212
+    i11: 135
+    i12: 194
+    i13: 225
+    i14: 91
+    i15: 184
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!198 &198008430997113424
 ParticleSystem:
   m_ObjectHideFlags: 1

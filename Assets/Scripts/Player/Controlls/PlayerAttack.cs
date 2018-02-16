@@ -7,9 +7,6 @@ using UnityEngine.UI;
 [NetworkSettings (channel = 1, sendInterval = 10f) ]
 public class PlayerAttack : NetworkBehaviour {
 	
-    [SerializeField] private GameObject blockingEffect;
-    [SerializeField] private GameObject breakBlockingEffect;
-    [SerializeField] private GameObject breakBlockEffectTrans;
     [SerializeField] private GameObject projectileSpawn;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject projectilePrefab2;
@@ -19,13 +16,10 @@ public class PlayerAttack : NetworkBehaviour {
     private PlayerData pData;
     private Button attackButton1;
     private Button attackButton2;
-    private Button blockButton;
 
     //data
     private bool attack1;
     private bool attack2;
-    private bool canBlock;
-    private bool canSpawnBreakingBlockEffect;
 
     private PlayerAnim anim;
 
@@ -37,34 +31,9 @@ public class PlayerAttack : NetworkBehaviour {
 
         attack1 = false;
         attack2 = false;
-        canBlock = false;
-        canSpawnBreakingBlockEffect = false;
 
         pData = GetComponent<PlayerData>();
         Debug.Assert(pData != null);
-
-		blockingEffect.SetActive(false);
-        Debug.Assert(blockingEffect != null);
-
-        breakBlockingEffect.SetActive(false);
-        Debug.Assert(breakBlockingEffect != null);
-
-        if(mobileMode)
-        {
-            //attackButton1 = GameObject.Find("Attack 1").GetComponent<Button>();
-            //Debug.Assert(attackButton1 != null);
-
-            //attackButton2 = GameObject.Find("Attack 2").GetComponent<Button>();
-            //Debug.Assert(attackButton2 != null);
-
-            //blockButton = GameObject.Find("Block Attack").GetComponent<Button>();
-            //Debug.Assert(blockButton != null);
-            
-            //attackButton1.onClick.AddListener(CmdAttack1);
-            //attackButton2.onClick.AddListener(CmdAttack2);
-            //blockButton.onClick.AddListener(CmdBlock);
-        }
-
 	}
 
     public override void OnStartClient()
@@ -90,16 +59,11 @@ public class PlayerAttack : NetworkBehaviour {
             attackButton2 = GameObject.Find("/Canvas MainWorld/AttackButton2").GetComponent<Button>();
             Debug.Assert(attackButton2 != null);
 
-            blockButton = GameObject.Find("/Canvas MainWorld/BlockButton").GetComponent<Button>();
-            Debug.Assert(blockButton != null);
-
             attackButton1.onClick.RemoveAllListeners();
             attackButton2.onClick.RemoveAllListeners();
-            blockButton.onClick.RemoveAllListeners();
 
             attackButton1.onClick.AddListener(() => Attack1());
             attackButton2.onClick.AddListener(() => Attack2());
-            blockButton.onClick.AddListener(() => CmdBlock());
         }
     }
 
@@ -123,50 +87,12 @@ public class PlayerAttack : NetworkBehaviour {
                     attack2 = true;
                     StartCoroutine(DisableAttack2());
                 }
-
-                if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && pData.isAlive)
-                {
-                    pData.isBlocking = true;
-                    canBlock = true;
-                    blockingEffect.SetActive(true);
-                    //Debug.Log("Blocking Attack");
-                    //anim.blocking();
-                }
-                else
-                {
-                    pData.isBlocking = false;
-                    //Debug.Log("Blocking Attack Stop");
-                    canBlock = false;
-                    //SpawnBreakBlockEffect();
-                    blockingEffect.SetActive(false);
-                    //anim.unBlocking();
-                }
-
-                if (Input.GetKeyUp(KeyCode.Space) && !attack1 && !attack2)
-                {
-                    canSpawnBreakingBlockEffect = true;
-                }
-
-                if (canSpawnBreakingBlockEffect)
-                {
-                    CmdSpawnBreakBlockEffect();
-                    canSpawnBreakingBlockEffect = false;
-                    //anim.blockBreak(); //will play the block Break animation
-                }
             }
         }
         else
         {
             return;
         }
-    }
-
-    [Command]
-    void CmdSpawnBreakBlockEffect()
-    {
-        GameObject temp = Instantiate(breakBlockingEffect, breakBlockEffectTrans.transform);
-        temp.SetActive(true);
-        Destroy(temp, 2.1f);
     }
 
     private IEnumerator DisableAttack1()
@@ -207,11 +133,6 @@ public class PlayerAttack : NetworkBehaviour {
         get { return attack2; }
     }
 
-	public bool getBlock
-    {
-        get { return canBlock; }
-    }
-
     public void Attack1()
     {
         if (!attack1 && !attack2 && pData.isAlive)
@@ -249,35 +170,5 @@ public class PlayerAttack : NetworkBehaviour {
         GameObject temp = Instantiate(projectilePrefab2 ,pos, projectileSpawn.transform.rotation);
         temp.GetComponent<SpellFire>().setStrongAttack(isStrongAttack);
         NetworkServer.Spawn(temp);
-    }
-
-    [Command]
-    public void CmdBlock()
-    {
-        //if (!isLocalPlayer)
-        //{
-        //    return;
-        //}
-
-        canBlock = true;
-        pData.isBlocking = true;
-        blockingEffect.SetActive(true);
-        Debug.Log("Blocking Attack");
-        //anim.blocking();
-    }
-
-    [Command]
-    public void CmdStopBlock()
-    {
-        //if (!isLocalPlayer)
-        //{
-        //    return;
-        //}
-
-        //Debug.Log("Blocking Attack Stop");
-        pData.isBlocking = false;
-        canBlock = false;
-        blockingEffect.SetActive(false);
-        //anim.unBlocking();
     }
 }

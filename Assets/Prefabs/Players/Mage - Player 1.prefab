@@ -1129,6 +1129,7 @@ GameObject:
   - component: {fileID: 114429138587310332}
   - component: {fileID: 114360431068203110}
   - component: {fileID: 114511318225913946}
+  - component: {fileID: 114428407504110920}
   m_Layer: 0
   m_Name: Mage - Player 1
   m_TagString: Player1
@@ -2955,6 +2956,19 @@ MonoBehaviour:
     type: 2}
   breakBlockEffectTrans: {fileID: 1127129268143794}
   mobileMode: 0
+--- !u!114 &114428407504110920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1859721052152444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c4b91d3f5ed6e4186139dd2dfa3f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!114 &114429138587310332
 MonoBehaviour:
   m_ObjectHideFlags: 1

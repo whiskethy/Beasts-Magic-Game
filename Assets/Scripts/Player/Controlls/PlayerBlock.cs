@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.EventSystems;
 
-public class PlayerBlock : NetworkBehaviour {
+public class PlayerBlock : NetworkBehaviour
+{
 
     [SerializeField] private GameObject blockingEffect;
     [SerializeField] private GameObject breakBlockingEffect;
@@ -123,15 +125,47 @@ public class PlayerBlock : NetworkBehaviour {
 
     public void Block()
     {
-        LocalBlock();
+        if (!pAttack.getAttack1 && !pAttack.getAttack2 && pData.isAlive)
+        {
+            anim.blocking();
 
-        if (isServer)
-        {
-            CmdBlock();
+            LocalBlock();
+
+            if (isServer)
+            {
+                RpcBlock();
+            }
+            else
+            {
+                CmdBlock();
+            }
         }
-        else
+    }
+
+    public void StopBlock()
+    {
+        if (!pAttack.getAttack1 && !pAttack.getAttack2 && pData.isAlive)
         {
-            RpcBlock();
+            canSpawnBreakingBlockEffect = true;
+
+            anim.unBlocking();
+
+            LocalStopBlock();
+
+            if (isServer)
+            {
+                RpcStopBlock();
+            }
+            else
+            {
+                CmdStopBlock();
+            }
+        }
+
+        if (canSpawnBreakingBlockEffect)
+        {
+            CmdSpawnBreakBlockEffect();
+            canSpawnBreakingBlockEffect = false;
         }
     }
 

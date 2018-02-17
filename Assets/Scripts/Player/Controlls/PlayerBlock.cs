@@ -76,17 +76,35 @@ public class PlayerBlock : NetworkBehaviour {
             if (Input.GetKey(KeyCode.Space) && !pAttack.getAttack1 && !pAttack.getAttack2 && pData.isAlive)
             {
                 anim.blocking();
-                CmdBlock();
-            }
-            else
-            {
-                anim.unBlocking();
-                CmdStopBlock();
-            }
 
+                LocalBlock();
+
+                if (isServer)
+                {
+                    RpcBlock();             
+                }
+                else
+                {
+                    CmdBlock();
+                }
+            }
+            
             if (Input.GetKeyUp(KeyCode.Space) && !pAttack.getAttack1 && !pAttack.getAttack2 && pData.isAlive)
             {
                 canSpawnBreakingBlockEffect = true;
+
+                anim.unBlocking();
+
+                LocalStopBlock();
+
+                if (isServer)
+                {
+                    RpcStopBlock(); 
+                }
+                else
+                {
+                    CmdStopBlock();
+                }
             }
 
             if (canSpawnBreakingBlockEffect)
@@ -105,7 +123,32 @@ public class PlayerBlock : NetworkBehaviour {
 
     public void Block()
     {
-        CmdBlock();
+        LocalBlock();
+
+        if (isServer)
+        {
+            CmdBlock();
+        }
+        else
+        {
+            RpcBlock();
+        }
+    }
+
+    void LocalBlock()
+    {
+        canBlock = true;
+        pData.isBlocking = true;
+        blockingEffect.SetActive(true);
+        Debug.Log("Blocking Attack");
+    }
+
+    void LocalStopBlock()
+    {
+        canBlock = false;
+        pData.isBlocking = false;
+        blockingEffect.SetActive(false);
+        Debug.Log("Stopping Blocking Attack");
     }
 
     [Command]
@@ -119,28 +162,36 @@ public class PlayerBlock : NetworkBehaviour {
     [Command]
     public void CmdBlock()
     {
-        if (!isLocalPlayer)
+        LocalBlock();
+        RpcBlock();
+    }
+
+    [ClientRpc]
+    public void RpcBlock()
+    {
+        if (isLocalPlayer)
         {
             return;
         }
 
-        canBlock = true;
-        pData.isBlocking = true;
-        blockingEffect.SetActive(true);
-        Debug.Log("Blocking Attack");
+        LocalBlock();
     }
 
     [Command]
     public void CmdStopBlock()
     {
-        if (!isLocalPlayer)
+        LocalStopBlock();
+        RpcStopBlock();
+    }
+
+    [ClientRpc]
+    public void RpcStopBlock()
+    {
+        if (isLocalPlayer)
         {
             return;
         }
 
-        //Debug.Log("Blocking Attack Stop");
-        pData.isBlocking = false;
-        canBlock = false;
-        blockingEffect.SetActive(false);
+        LocalStopBlock();
     }
 }

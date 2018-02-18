@@ -40,6 +40,9 @@ public class BlockButton : EventTrigger {
             pTrigger = GameObject.Find("/Canvas MainWorld/BlockButton").GetComponent<EventTrigger>();
             Debug.Assert(pTrigger != null);
 
+            pBlock = GetComponent<PlayerBlock>();
+            Debug.Assert(pBlock != null);
+
             EventTrigger.Entry entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerDown;
             call = new UnityAction<BaseEventData>(PointerDown);

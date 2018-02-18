@@ -127,6 +127,11 @@ public class PlayerBlock : NetworkBehaviour
     {
         if (!pAttack.getAttack1 && !pAttack.getAttack2 && pData.isAlive)
         {
+            if(!isLocalPlayer)
+            {
+                return;
+            }
+
             anim.blocking();
 
             LocalBlock();
@@ -146,6 +151,11 @@ public class PlayerBlock : NetworkBehaviour
     {
         if (!pAttack.getAttack1 && !pAttack.getAttack2 && pData.isAlive)
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
+
             canSpawnBreakingBlockEffect = true;
 
             anim.unBlocking();

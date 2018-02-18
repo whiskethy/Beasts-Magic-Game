@@ -32,15 +32,6 @@ public class PlayerBlock : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-
-        if (mobileMode)
-        {
-            blockButton = GameObject.Find("/Canvas MainWorld/BlockButton").GetComponent<Button>();
-            Debug.Assert(blockButton != null);
-
-            blockButton.onClick.RemoveAllListeners();
-            blockButton.onClick.AddListener(() => Block());
-        }
     }
 
     // Use this for initialization

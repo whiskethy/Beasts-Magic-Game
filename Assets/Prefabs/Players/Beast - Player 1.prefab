@@ -308,6 +308,8 @@ GameObject:
   - component: {fileID: 114965223924197578}
   - component: {fileID: 114173025602070820}
   - component: {fileID: 114465052443471484}
+  - component: {fileID: 114483775156421520}
+  - component: {fileID: 114348726589447478}
   m_Layer: 0
   m_Name: Beast - Player 1
   m_TagString: Player1
@@ -2138,15 +2140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c0af63292170e499b056665ccb2c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockingEffect: {fileID: 1975697957293112}
-  breakBlockingEffect: {fileID: 1580776923936220, guid: 864b5ce935ae5784ba28d487c2e15bb8,
-    type: 2}
-  breakBlockEffectTrans: {fileID: 1134970528798494}
   projectileSpawn: {fileID: 0}
   projectilePrefab: {fileID: 0}
   projectilePrefab2: {fileID: 0}
   hasProjectileAttack: 0
-  mobileMode: 0
+  mobileMode: 1
 --- !u!114 &114111228184144384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2190,6 +2188,19 @@ MonoBehaviour:
   visualiseInEditor: 1
   closestDistance: 0.5
   dontClipTag: Player
+--- !u!114 &114348726589447478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344688370519928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c4b91d3f5ed6e4186139dd2dfa3f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!114 &114465052443471484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2202,6 +2213,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95967146727117228}
+--- !u!114 &114483775156421520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344688370519928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6cf85e8c72e29d4faa51af650c421ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockingEffect: {fileID: 1975697957293112}
+  breakBlockingEffect: {fileID: 1580776923936220, guid: 864b5ce935ae5784ba28d487c2e15bb8,
+    type: 2}
+  breakBlockEffectTrans: {fileID: 1134970528798494}
+  mobileMode: 0
 --- !u!114 &114516636181764804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2214,7 +2241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player2: 0
-  joyStick: {fileID: 114521514192926366, guid: 1a002c05274b64b4dac69e1d3852b2f2, type: 2}
+  joyStick: {fileID: 0}
 --- !u!114 &114554395587865660
 MonoBehaviour:
   m_ObjectHideFlags: 1

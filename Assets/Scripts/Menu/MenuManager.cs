@@ -57,6 +57,14 @@ public class MenuManager:MonoBehaviour {
         //if(PlayerName!="")
         //    PlayerNameText.text = "You selected game player is "+PlayerName+" now.";
 
+        //Ensure full restart of multiplayer session
+        GameObject lobbyInstance = GameObject.Find("LobbyManager");
+
+        if(lobbyInstance != null)
+        {
+            Destroy(lobbyInstance);
+        }
+
         PlayerPrefs.DeleteKey("Player1");
         PlayerPrefs.DeleteKey("Player2");
     }

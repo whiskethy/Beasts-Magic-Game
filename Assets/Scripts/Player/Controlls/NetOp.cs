@@ -48,6 +48,7 @@ public class NetOp : NetworkBehaviour
     Text winName;
     Button btn;
     GameObject objPlayer;
+
     private void Awake()
     {
     }
@@ -273,10 +274,19 @@ public class NetOp : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         cam.SetActive(true);
-        gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
-        gameObject.transform.Find("PersonalSpace").GetComponent<MeshRenderer>().material.color = Color.blue;
 
-        //Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>().setTarget(gameObject.transform);
-        
+        if (!isServer)
+        {
+            gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
+            gameObject.transform.Find("PersonalSpace").GetComponent<MeshRenderer>().material.color = Color.blue;
+        }
+        else
+        {
+            if (isLocalPlayer && isClient)
+            {
+                gameObject.transform.Find("Player1Icon").GetComponent<MeshRenderer>().material.color = Color.blue;
+                gameObject.transform.Find("PersonalSpace").GetComponent<MeshRenderer>().material.color = Color.blue;
+            }
+        }
     }
 }

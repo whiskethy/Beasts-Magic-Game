@@ -80,8 +80,8 @@ public class NetOp : NetworkBehaviour
 
         slid1 = GameObject.Find("SliderA").GetComponents<Slider>()[0];
         slid2 = GameObject.Find("SliderB").GetComponents<Slider>()[0];
-        slid2.maxValue = 150;
-        slid1.maxValue = 150;
+        slid2.maxValue = 100;
+        slid1.maxValue = 100;
         otherPlayer = null;
 
         Player1Name = PlayerPrefs.GetString("Player1");

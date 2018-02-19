@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Prototype.NetworkLobby;
+using UnityEngine.Networking;
 
 public class MenuManager:MonoBehaviour {
 
@@ -15,7 +17,24 @@ public class MenuManager:MonoBehaviour {
 
 	public void OnClickNetworkButton() {
 		Debug.Log ("Networked Clicked");
-		SceneManager.LoadScene(GameConstants.LEVELS.LobbyScene.ToString());
+        LobbyManager lm = null;
+        //NetworkManager.singleton.StopServer();
+        if (NetworkManager.singleton != null)
+        {
+            if (NetworkManager.singleton.IsClientConnected())
+            {
+                NetworkManager.singleton.StopClient();
+            }
+            NetworkManager.singleton.StopServer();
+        }
+
+        Debug.Log("Networked Clicked");
+        GameObject lobby = GameObject.Find("LobbyManager");
+        if (lobby != null)
+            lm = lobby.GetComponent<LobbyManager>();
+        if (lm != null)
+            lm.GoBackButton();
+        SceneManager.LoadScene(GameConstants.LEVELS.LobbyScene.ToString());
 	}
 
 	public void OnClickCharacterButton() {

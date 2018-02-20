@@ -50,8 +50,8 @@ public class HealthManagerOffline : MonoBehaviour
             return;
         if (mplayerData.currentHealth <= 0)
         {
-            //if (player != null)
-                //player.GetComponent<PlayerAnimation>().death();
+            if (player != null)
+                player.GetComponent<PlayerAnimOffline>().death();
         }
     }
 

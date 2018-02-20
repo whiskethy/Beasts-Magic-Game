@@ -48,13 +48,13 @@ public class PlayerAttackOffline : MonoBehaviour {
 
         if(mobileMode)
         {
-            attackButton1 = GameObject.Find("Attack 1").GetComponent<Button>();
+            attackButton1 = GameObject.Find("AttackButton1").GetComponent<Button>();
             Debug.Assert(attackButton1 != null);
 
-            attackButton2 = GameObject.Find("Attack 2").GetComponent<Button>();
+            attackButton2 = GameObject.Find("AttackButton2").GetComponent<Button>();
             Debug.Assert(attackButton2 != null);
 
-            blockButton = GameObject.Find("Block Attack").GetComponent<Button>();
+            blockButton = GameObject.Find("BlockButton").GetComponent<Button>();
             Debug.Assert(blockButton != null);
 
             attackButton1.onClick.AddListener(Attack1);
@@ -168,13 +168,13 @@ public class PlayerAttackOffline : MonoBehaviour {
     private void SpawnProjectileAttack1()
     {
         GameObject temp = Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-        temp.GetComponent<SpellFire>().setStrongAttack(false);
+        temp.GetComponent<ProjectileOffline>().setStrongAttack(false);
     }
 
     private void SpawnProjectileAttack2()
     {
         GameObject temp = Instantiate(projectilePrefab2, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-        temp.GetComponent<SpellFire>().setStrongAttack(true);
+        temp.GetComponent<ProjectileOffline>().setStrongAttack(true);
     }
 
     public bool getAttack1

@@ -3055,9 +3055,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c4d240c021b48bf90f3fd13835ca49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 3
   currentHealth: 100
-  characterHealthPool: 100
+  characterHealthPool: 150
   attack1CoolDown: 0.5
   attack2CoolDown: 1.5
   strength: 10

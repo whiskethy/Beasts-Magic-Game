@@ -156,6 +156,7 @@ public class GameTime : NetworkBehaviour
                 if (isServer)
                 {
                     RpcExit(WinnerName);
+                    StopServer();
                 }
                 else
                 {
@@ -180,6 +181,16 @@ public class GameTime : NetworkBehaviour
 
         }
 
+    }
+    private void StopServer()
+    {
+        LobbyManager lm = null;
+
+        if (NetworkManager.singleton != null)
+        {
+
+            NetworkManager.singleton.StopMatchMaker();
+        }
     }
     [ClientRpc]
     public void RpcExit(string name)

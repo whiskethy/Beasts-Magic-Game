@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 //using UnityEngine.Windows;
+using Prototype.NetworkLobby;
 
 public class NetOp : NetworkBehaviour
 {
@@ -199,7 +200,7 @@ public class NetOp : NetworkBehaviour
         {
 
             healthText2.text = goClient.GetComponent<PlayerData>().currentHealth.ToString();
-            Debug.Log("Health2="+healthText2.text);
+            //Debug.Log("Health2="+healthText2.text);
             if (slid1 != null)
                 slid2.value = goClient.GetComponent<PlayerData>().currentHealth;
 
@@ -209,7 +210,7 @@ public class NetOp : NetworkBehaviour
         {
 
             healthText1.text = goServer.GetComponent<PlayerData>().currentHealth.ToString();
-            Debug.Log("Health1=" + healthText1.text);
+            //Debug.Log("Health1=" + healthText1.text);
             if (slid1 != null)
                 slid1.value = goServer.GetComponent<PlayerData>().currentHealth;
 
@@ -257,7 +258,7 @@ public class NetOp : NetworkBehaviour
                 PlayerPrefs.SetString("Winner", WinnerName);
                 winName.text = WinnerName;
                 go.SetActive(true);
-
+                StopServer();
                 //SceneManager.LoadScene("RecordScene");
             }
             if (goClient == null) return;
@@ -271,13 +272,22 @@ public class NetOp : NetworkBehaviour
                 winName.text = WinnerName;
                 go.SetActive(true);
                 //SceneManager.LoadScene("RecordScene");
-                ;
+                StopServer();
             }
 
 
         }
     }
+    private void StopServer()
+    {
+        LobbyManager lm = null;
 
+        if (NetworkManager.singleton != null)
+        {
+ 
+            NetworkManager.singleton.StopMatchMaker();
+        }
+    }
     public override void OnStartLocalPlayer()
     {
         cam.SetActive(true);

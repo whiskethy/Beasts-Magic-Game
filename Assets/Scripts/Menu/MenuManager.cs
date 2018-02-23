@@ -36,7 +36,7 @@ public class MenuManager:MonoBehaviour {
             lm.GoBackButton();
         SceneManager.LoadScene(GameConstants.LEVELS.LobbyScene.ToString());
 	}
-
+    
 	public void OnClickCharacterButton() {
         Debug.Log ("CharacterClicked");
         SceneManager.LoadScene(GameConstants.LEVELS.CharacterScene.ToString());

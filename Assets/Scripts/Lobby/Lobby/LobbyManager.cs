@@ -273,9 +273,10 @@ namespace Prototype.NetworkLobby
         {
             if (_isMatchmaking)
             {
-				matchMaker.DestroyMatch((NetworkID)_currentMatchID, 0, OnDestroyMatch);
 				_disconnectServer = true;
-            }
+                SceneManager.LoadScene("MenuScene");
+ 				//matchMaker.DestroyMatch((NetworkID)_currentMatchID, 0, OnDestroyMatch);
+           }
             else
             {
                 StopHost();
@@ -513,6 +514,8 @@ namespace Prototype.NetworkLobby
         public override void OnClientDisconnect(NetworkConnection conn)
         {
             base.OnClientDisconnect(conn);
+            //myadd
+            SceneManager.LoadScene("MenuScene");
             ChangeTo(mainMenuPanel);
         }
 

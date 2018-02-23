@@ -80,8 +80,12 @@ public class NetOp : NetworkBehaviour
 
         slid1 = GameObject.Find("SliderA").GetComponents<Slider>()[0];
         slid2 = GameObject.Find("SliderB").GetComponents<Slider>()[0];
-        slid2.maxValue = 100;
-        slid1.maxValue = 100;
+        int healthValue1 = GetComponent<PlayerData>().currentHealth;
+        int healthValue2 = GetComponent<PlayerData>().currentHealth;
+        healthText1.text = healthValue1.ToString();
+        healthText2.text = healthValue2.ToString();
+        slid2.maxValue = healthValue2;
+        slid1.maxValue = healthValue1;
         otherPlayer = null;
 
         Player1Name = PlayerPrefs.GetString("Player1");
@@ -195,6 +199,7 @@ public class NetOp : NetworkBehaviour
         {
 
             healthText2.text = goClient.GetComponent<PlayerData>().currentHealth.ToString();
+            Debug.Log("Health2="+healthText2.text);
             if (slid1 != null)
                 slid2.value = goClient.GetComponent<PlayerData>().currentHealth;
 
@@ -204,6 +209,7 @@ public class NetOp : NetworkBehaviour
         {
 
             healthText1.text = goServer.GetComponent<PlayerData>().currentHealth.ToString();
+            Debug.Log("Health1=" + healthText1.text);
             if (slid1 != null)
                 slid1.value = goServer.GetComponent<PlayerData>().currentHealth;
 
@@ -254,6 +260,7 @@ public class NetOp : NetworkBehaviour
 
                 //SceneManager.LoadScene("RecordScene");
             }
+            if (goClient == null) return;
             int ClientHealthValue = goClient.GetComponent<PlayerData>().currentHealth;
             if (ClientHealthValue < 1)
             {

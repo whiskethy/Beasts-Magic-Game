@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+using Prototype.NetworkLobby;
 
 public class EndWndManager : MonoBehaviour {
 
@@ -16,6 +18,23 @@ public class EndWndManager : MonoBehaviour {
 	}
     public void OnClickexit()
     {
+        LobbyManager lm = null;
+
+        if (NetworkManager.singleton != null)
+        {
+            if (NetworkManager.singleton.IsClientConnected())
+            {
+                NetworkManager.singleton.StopClient();
+            }
+            NetworkManager.singleton.StopServer();
+        }
+
+        Debug.Log("Networked Clicked");
+        GameObject lobby = GameObject.Find("LobbyManager");
+        if (lobby != null)
+            lm = lobby.GetComponent<LobbyManager>();
+        if (lm != null)
+            lm.GoBackButton();
         SceneManager.LoadScene("menuScene");
     }
 }

@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System;
 
-public class SelectPlayer : MonoBehaviour {
+public class SelectPlayer : MonoBehaviour
+{
 
 
     string strSelectedPlayer;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         //PlayerPrefs.SetString("SelectedPlayer", "PlayerA");
-        
-        strSelectedPlayer= GenSelectPlayer();
-        
+
+        strSelectedPlayer = GenSelectPlayer();
+
     }
     private string GenSelectPlayer()
     {
@@ -28,24 +30,42 @@ public class SelectPlayer : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+
+    }
     public void SelectPlayerA()
     {
-         Debug.Log("A slected.");
-       PlayerPrefs.SetString(strSelectedPlayer, "Beast");
-//        PlayerPrefs.SetString("SelectedPlayer", "Beast");
+        Debug.Log("A slected.");
+        PlayerPrefs.SetString(strSelectedPlayer, "Beast");
+        //        PlayerPrefs.SetString("SelectedPlayer", "Beast");
 
         SceneManager.LoadScene(GameConstants.LEVELS.MenuScene.ToString());
     }
     public void SelectPlayerB()
     {
-         Debug.Log("B slected.");
-       PlayerPrefs.SetString(strSelectedPlayer, "Mage");
- //       PlayerPrefs.SetString("SelectedPlayer", "Mage");
+        Debug.Log("B slected.");
+        PlayerPrefs.SetString(strSelectedPlayer, "Mage");
+        //       PlayerPrefs.SetString("SelectedPlayer", "Mage");
 
         SceneManager.LoadScene(GameConstants.LEVELS.MenuScene.ToString());
-        
     }
-}
+        public void SelectPlayerAToLobby()
+        {
+            Debug.Log("A slected.");
+            PlayerPrefs.SetString(strSelectedPlayer, "Beast");
+            //        PlayerPrefs.SetString("SelectedPlayer", "Beast");
+
+            SceneManager.LoadScene(GameConstants.LEVELS.LobbyScene.ToString());
+        }
+
+        public void SelectPlayerBToLobby()
+        {
+            Debug.Log("B slected.");
+            PlayerPrefs.SetString(strSelectedPlayer, "Mage");
+            //       PlayerPrefs.SetString("SelectedPlayer", "Mage");
+
+            SceneManager.LoadScene(GameConstants.LEVELS.LobbyScene.ToString());
+
+        }
+    }

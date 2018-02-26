@@ -17,7 +17,8 @@ public class MenuManager:MonoBehaviour {
 
 	public void OnClickNetworkButton() {
 		Debug.Log ("Networked Clicked");
-        LobbyManager lm = null;
+         SceneManager.LoadScene(GameConstants.LEVELS.CharacterMainWorldScene.ToString());
+       LobbyManager lm = null;
         //NetworkManager.singleton.StopServer();
         if (NetworkManager.singleton != null)
         {
@@ -34,7 +35,6 @@ public class MenuManager:MonoBehaviour {
             lm = lobby.GetComponent<LobbyManager>();
         if (lm != null)
             lm.GoBackButton();
-        SceneManager.LoadScene(GameConstants.LEVELS.LobbyScene.ToString());
 	}
     
 	public void OnClickCharacterButton() {

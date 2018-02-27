@@ -16,6 +16,7 @@ public class Movement : NetworkBehaviour
     private NetOp netOp;
     
     private PlayerAnim anim;
+    private PlayerAttack pAttack;
     private GameObject otherPlayer;
     private float movementDirTemp;
 
@@ -31,6 +32,7 @@ public class Movement : NetworkBehaviour
 
         anim = GetComponent<PlayerAnim>();
         playerData = GetComponent<PlayerData>();
+        pAttack = GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class Movement : NetworkBehaviour
             }
         if (otherPlayer == null) return;
         //////////////////////////////////////////
-        if ((!player2) && (playerData.isBlocking == false) && (playerData.isAlive == true))
+        if ((!player2) && (playerData.isBlocking == false) && (playerData.isAlive == true) && !pAttack.getAttack1 && !pAttack.getAttack2)
         {
             if (Input.GetKey(KeyCode.W))
             {

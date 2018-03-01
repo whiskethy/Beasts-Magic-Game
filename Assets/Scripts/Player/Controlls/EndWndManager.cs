@@ -34,7 +34,7 @@ public class EndWndManager : MonoBehaviour {
         if (lobby != null)
             lm = lobby.GetComponent<LobbyManager>();
         if (lm != null)
-            lm.GoBackButton();
+            lm.StopAndExit();
         SceneManager.LoadScene("menuScene");
     }
 }

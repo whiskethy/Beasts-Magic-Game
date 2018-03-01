@@ -156,7 +156,7 @@ public class GameTime : NetworkBehaviour
                 if (isServer)
                 {
                     RpcExit(WinnerName);
-                    StopServer();
+                    //StopServer();
                 }
                 else
                 {

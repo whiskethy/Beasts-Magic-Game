@@ -258,9 +258,10 @@ public class NetOp : NetworkBehaviour
                 PlayerPrefs.SetString("Winner", WinnerName);
                 winName.text = WinnerName;
                 go.SetActive(true);
-                StopServer();
+                //StopServer();
                 //SceneManager.LoadScene("RecordScene");
             }
+            
             if (goClient == null) return;
             int ClientHealthValue = goClient.GetComponent<PlayerData>().currentHealth;
             if (ClientHealthValue < 1)
@@ -272,7 +273,7 @@ public class NetOp : NetworkBehaviour
                 winName.text = WinnerName;
                 go.SetActive(true);
                 //SceneManager.LoadScene("RecordScene");
-                StopServer();
+                //StopServer();
             }
 
 

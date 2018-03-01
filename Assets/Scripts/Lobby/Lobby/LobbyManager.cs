@@ -106,37 +106,40 @@ namespace Prototype.NetworkLobby
             currentPlayers.Clear();
             serverGamePlayer = PlayerPrefs.GetString("ServerGamePlayer");
             Debug.Log("Server player to " + serverGamePlayer);
-            if (serverGamePlayer == "Beast")
-            {
-                Debug.Log("Server:beast");
-                if (!currentPlayers.ContainsKey(0))
-                    currentPlayers.Add(0, 0);
-            }
-            else
-            {
-                if (serverGamePlayer == "Mage")
-                {
-                    Debug.Log("Server:Mage");
 
+            switch (serverGamePlayer)
+            {
+                case "Beast":
+                    if (!currentPlayers.ContainsKey(0))
+                        currentPlayers.Add(0, 0);
+                    break;
+                case "Mage":
                     if (!currentPlayers.ContainsKey(0))
                         currentPlayers.Add(0, 1);
-                }
-
+                    break;
+                case "Paladin":
+                    if (!currentPlayers.ContainsKey(0))
+                        currentPlayers.Add(0, 2);
+                    break;
             }
+ 
             clientGamePlayer = PlayerPrefs.GetString("ClientGamePlayer");
-            if (clientGamePlayer == "Beast")
+            switch (clientGamePlayer)
             {
-                Debug.Log("Client:mage");
-                if (!currentPlayers.ContainsKey(1))
-                    currentPlayers.Add(1, 0);
+                case "Beast":
+                    if (!currentPlayers.ContainsKey(1))
+                        currentPlayers.Add(1, 0);
+                    break;
+                case "Mage":
+                    if (!currentPlayers.ContainsKey(1))
+                        currentPlayers.Add(1, 1);
+                    break;
+                case "Paladin":
+                    if (!currentPlayers.ContainsKey(1))
+                        currentPlayers.Add(1, 2);
+                    break;
             }
-            else
-            {
-                if (!currentPlayers.ContainsKey(1))
-                    currentPlayers.Add(1, 1);
-
-            }
-
+ 
         }
         //My Add
 
@@ -274,8 +277,9 @@ namespace Prototype.NetworkLobby
             if (_isMatchmaking)
             {
 				_disconnectServer = true;
-                SceneManager.LoadScene("MenuScene");
- 				//matchMaker.DestroyMatch((NetworkID)_currentMatchID, 0, OnDestroyMatch);
+ 				matchMaker.DestroyMatch((NetworkID)_currentMatchID, 0, OnDestroyMatch);
+//                 SceneManager.LoadScene("MenuScene");
+               
            }
             else
             {
@@ -285,7 +289,21 @@ namespace Prototype.NetworkLobby
             
             ChangeTo(mainMenuPanel);
         }
+        public void StopAndExit()
+        {
+            if (_isMatchmaking)
+            {
+                _disconnectServer = true;
+                //matchMaker.DestroyMatch((NetworkID)_currentMatchID, 0, OnDestroyMatch);
 
+            }
+            else
+            {
+                StopHost();
+            }
+            SceneManager.LoadScene("MenuScene");
+
+        }
         public void StopClientClbk()
         {
             StopClient();

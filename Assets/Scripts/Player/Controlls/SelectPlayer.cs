@@ -50,7 +50,15 @@ public class SelectPlayer : MonoBehaviour
 
         SceneManager.LoadScene(GameConstants.LEVELS.MenuScene.ToString());
     }
-        public void SelectPlayerAToLobby()
+    public void SelectPlayerC()
+    {
+        Debug.Log("C slected.");
+        PlayerPrefs.SetString(strSelectedPlayer, "paladin");
+        
+
+        SceneManager.LoadScene(GameConstants.LEVELS.MenuScene.ToString());
+    }
+    public void SelectPlayerAToLobby()
         {
             Debug.Log("A slected.");
             PlayerPrefs.SetString(strSelectedPlayer, "Beast");
@@ -68,4 +76,14 @@ public class SelectPlayer : MonoBehaviour
             SceneManager.LoadScene(GameConstants.LEVELS.LobbyScene.ToString());
 
         }
+    public void SelectPlayerCToLobby()
+    {
+        Debug.Log("C slected.");
+        PlayerPrefs.SetString(strSelectedPlayer, "Paladin");
+        //       PlayerPrefs.SetString("SelectedPlayer", "Mage");
+
+        SceneManager.LoadScene(GameConstants.LEVELS.LobbyScene.ToString());
+
     }
+
+}

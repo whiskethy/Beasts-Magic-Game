@@ -29,4 +29,12 @@ public class PlayerData : NetworkBehaviour
     {
         currentHealth = characterHealthPool;
     }
+
+    private void Update()
+    {
+        if(currentHealth <= 0)
+        {
+            currentHealth = 0;
+        }
+    }
 }

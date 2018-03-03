@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 public class SpellFire : NetworkBehaviour {
 
     [SerializeField] private float projectileSpeed = 10.0f;
+    [SerializeField] private bool destroyOnStart = false;
 
     private Rigidbody bulletRigidBody;
     private bool strongAttack;
@@ -16,6 +17,11 @@ public class SpellFire : NetworkBehaviour {
         bulletRigidBody = gameObject.GetComponent<Rigidbody>();
         Debug.Assert(bulletRigidBody != null);
         strongAttack = false;
+
+        if(destroyOnStart)
+        {
+            Destroy(gameObject);
+        }
 	}
 	
 	// Update is called once per frame

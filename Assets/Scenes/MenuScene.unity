@@ -171,18 +171,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6a27e494eb75828409861effa143c9fb, type: 3}
-    m_FontSize: 61
+    m_FontSize: 58
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 63
+    m_MaxSize: 96
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 0.01
-  m_Text: Beasts and Magic Brawl
+  m_Text: Beasts & Magic
 --- !u!222 &113583596
 CanvasRenderer:
   m_ObjectHideFlags: 0

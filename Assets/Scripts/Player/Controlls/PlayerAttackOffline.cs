@@ -26,10 +26,14 @@ public class PlayerAttackOffline : MonoBehaviour {
     private bool canSpawnBreakingBlockEffect;
 
     private PlayerAnimOffline anim;
+    private OfflineGameController pController;
 
     // Use this for initialization
     void Start()
     {
+        pController = GameObject.Find("GameManager").GetComponent<OfflineGameController>();
+        Debug.Assert(pController != null);
+
         anim = GetComponent<PlayerAnimOffline>();
         Debug.Assert(anim != null);
         attack1 = false;
@@ -54,12 +58,9 @@ public class PlayerAttackOffline : MonoBehaviour {
             attackButton2 = GameObject.Find("AttackButton2").GetComponent<Button>();
             Debug.Assert(attackButton2 != null);
 
-            blockButton = GameObject.Find("BlockButton").GetComponent<Button>();
-            Debug.Assert(blockButton != null);
-
             attackButton1.onClick.AddListener(Attack1);
             attackButton2.onClick.AddListener(Attack2);
-            blockButton.onClick.AddListener(Block);
+           
         }
     }
 
@@ -82,7 +83,7 @@ public class PlayerAttackOffline : MonoBehaviour {
         }
         else
         {
-            if (Input.GetMouseButtonDown(0) && !attack1 && !attack2)
+            if (Input.GetMouseButtonDown(0) && !attack1 && !attack2 && !pController.getGameOver)
             {
                 Debug.Log("Attack 1 Start!");
                 attack1 = true;
@@ -90,14 +91,14 @@ public class PlayerAttackOffline : MonoBehaviour {
                 StartCoroutine(DisableAttack1());
             }
 
-            if (Input.GetMouseButtonDown(1) && !attack1 && !attack2)
+            if (Input.GetMouseButtonDown(1) && !attack1 && !attack2 && !pController.getGameOver)
             {
                 attack2 = true;
                 Debug.Log("Attack 2 Start");
                 StartCoroutine(DisableAttack2());
             }
         }
-        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2)
+        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && !pController.getGameOver)
 
         {
             canBlock = true;
@@ -194,7 +195,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
     public void Attack1()
     {
-        if (!attack1 && !attack2)
+        if (!attack1 && !attack2 && !pController.getGameOver)
         {
             attack1 = true;
             Debug.Log("Attack 1 Start!");
@@ -204,7 +205,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
     public void Attack2()
     {
-        if (!attack1 && !attack2)
+        if (!attack1 && !attack2 && !pController.getGameOver)
         {
             attack2 = true;
             Debug.Log("Attack 2 Start!");
@@ -214,9 +215,20 @@ public class PlayerAttackOffline : MonoBehaviour {
 
     public void Block()
     {
-        canBlock = true;
-        blockingEffect.SetActive(true);
-        //Debug.Log("Blocking Attack");
-        anim.blocking();
+        if (!attack1 && !attack2 && !pController.getGameOver)
+        {
+            canBlock = true;
+            blockingEffect.SetActive(true);
+            Debug.Log("Blocking Attack");
+            anim.blocking();
+        }
+    }
+
+    public void StopBlock()
+    {
+        canBlock = false;
+        pData.isBlocking = false;
+        blockingEffect.SetActive(false);
+        Debug.Log("Stopping Blocking Attack");
     }
 }

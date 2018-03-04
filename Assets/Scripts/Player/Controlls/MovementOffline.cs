@@ -15,6 +15,8 @@ public class MovementOffline : MonoBehaviour {
     private PlayerAttackOffline pAttack;
     private float movementDirTemp;
 
+    private OfflineGameController pController;
+
     // Use this for initialization
     void Start()
     {
@@ -26,6 +28,9 @@ public class MovementOffline : MonoBehaviour {
 
         pAttack = GetComponent<PlayerAttackOffline>();
         Debug.Assert(pAttack != null);
+
+        pController = GameObject.Find("GameManager").GetComponent<OfflineGameController>();
+        Debug.Assert(pController != null);
     }
 
     // Update is called once per frame
@@ -33,7 +38,7 @@ public class MovementOffline : MonoBehaviour {
     {
         if (!player2)
         {
-            if (Input.GetKey(KeyCode.W) && !pAttack.getBlock && !pAttack.getAttack2)
+            if (Input.GetKey(KeyCode.W) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;
 
@@ -42,7 +47,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkForward();
             }
 
-            else if (Input.GetKey(KeyCode.S) && !pAttack.getBlock && !pAttack.getAttack2)
+            else if (Input.GetKey(KeyCode.S) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
             {
                 movementDirTemp = -playerData.movementSpeed * Time.deltaTime;
 
@@ -51,7 +56,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkBackward();
             }
 
-            else if (Input.GetKey(KeyCode.D) && !pAttack.getBlock && !pAttack.getAttack2)
+            else if (Input.GetKey(KeyCode.D) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;
 
@@ -60,7 +65,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkRight();
             }
 
-            else if (Input.GetKey(KeyCode.A) && !pAttack.getBlock && !pAttack.getAttack2)
+            else if (Input.GetKey(KeyCode.A) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
             {
                 movementDirTemp = -playerData.movementSpeed * Time.deltaTime;
 
@@ -75,9 +80,12 @@ public class MovementOffline : MonoBehaviour {
             }
             else
             {
-                transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
-                transform.LookAt(otherPlayer.transform);
-                //anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
+                if (!pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
+                {
+                    transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
+                    transform.LookAt(otherPlayer.transform);
+                    //anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
+                }
             }
 
         }

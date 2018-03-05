@@ -43,5 +43,9 @@ public class ProjectileCollisionOffline : MonoBehaviour {
 
             Destroy(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

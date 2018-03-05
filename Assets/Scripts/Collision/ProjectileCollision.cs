@@ -42,6 +42,10 @@ public class ProjectileCollision : MonoBehaviour
             }
 
             Destroy(gameObject);
-        }   
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -43,8 +43,14 @@ public class MeleeCollision : MonoBehaviour {
             //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
             PlayerAttack pAttack = GetComponent<PlayerAttack>();
             PlayerData pData = other.GetComponent<PlayerData>();
-            if (pAttack == null) return;
-            if (pData == null) return;
+            if (pAttack == null)
+            {
+                pAttack = playerObj.GetComponent<PlayerAttack>();
+            }
+            if (pData == null)
+            {
+                return;
+            }
             if (pData.currentHealth <= 0) return;
             if (pAttack.getAttack1)
             {

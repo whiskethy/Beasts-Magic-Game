@@ -310,30 +310,14 @@ GameObject:
   - component: {fileID: 114465052443471484}
   - component: {fileID: 114483775156421520}
   - component: {fileID: 114348726589447478}
+  - component: {fileID: 114377162100711064}
+  - component: {fileID: 82726606939050644}
   m_Layer: 0
   m_Name: Beast - Player 1
   m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
-  m_IsActive: 1
---- !u!1 &1357692051562314
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4881576535588640}
-  - component: {fileID: 82305562226409436}
-  - component: {fileID: 114844169139152030}
-  - component: {fileID: 114377834001478310}
-  m_Layer: 0
-  m_Name: AudioThing
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1372117529286540
 GameObject:
@@ -991,7 +975,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344688370519928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.675309, y: -8.239741e-17, z: 6.8216987}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4323134482858508}
@@ -1001,7 +985,6 @@ Transform:
   - {fileID: 4618382770308704}
   - {fileID: 4176716805474082}
   - {fileID: 4415698186996036}
-  - {fileID: 4881576535588640}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1547,19 +1530,6 @@ Transform:
   m_Father: {fileID: 4244403595875098}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4881576535588640
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1357692051562314}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.08, y: 0.7899999, z: 0.49}
-  m_LocalScale: {x: 0.71428597, y: 0.7142857, z: 0.71428597}
-  m_Children: []
-  m_Father: {fileID: 4244403595875098}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4900939523612114
 Transform:
   m_ObjectHideFlags: 1
@@ -1828,12 +1798,12 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483911217770022}
   m_Enabled: 1
---- !u!82 &82305562226409436
+--- !u!82 &82726606939050644
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1357692051562314}
+  m_GameObject: {fileID: 1344688370519928}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -2315,12 +2285,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Delegates: []
   delegates: []
---- !u!114 &114377834001478310
+--- !u!114 &114377162100711064
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1357692051562314}
+  m_GameObject: {fileID: 1344688370519928}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e43d10adf86998d4096b21f3f65c0ec4, type: 3}
@@ -2459,38 +2429,6 @@ MonoBehaviour:
   playerObj: {fileID: 1344688370519928}
   healthManager: {fileID: 0}
   offlineMode: 0
---- !u!114 &114844169139152030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1357692051562314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 151
-    i1: 220
-    i2: 248
-    i3: 210
-    i4: 219
-    i5: 168
-    i6: 138
-    i7: 20
-    i8: 137
-    i9: 158
-    i10: 42
-    i11: 117
-    i12: 209
-    i13: 155
-    i14: 101
-    i15: 105
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114937662280251734
 MonoBehaviour:
   m_ObjectHideFlags: 1

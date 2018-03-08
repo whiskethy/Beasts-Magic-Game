@@ -435,24 +435,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1291409112415328
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4183402231203082}
-  - component: {fileID: 82501658652020992}
-  - component: {fileID: 114545729813683870}
-  - component: {fileID: 114575176655851918}
-  m_Layer: 0
-  m_Name: AudioThing
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1298945646586334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1130,8 @@ GameObject:
   - component: {fileID: 114360431068203110}
   - component: {fileID: 114511318225913946}
   - component: {fileID: 114428407504110920}
+  - component: {fileID: 114254028218293424}
+  - component: {fileID: 82462160533492166}
   m_Layer: 0
   m_Name: Mage - Player 1
   m_TagString: Player1
@@ -1546,19 +1530,6 @@ Transform:
   m_Father: {fileID: 4560947336163964}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4183402231203082
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291409112415328}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.12112883, y: 1.2288889, z: -0.34026942}
-  m_LocalScale: {x: 1.1111116, y: 1.1111112, z: 1.1111116}
-  m_Children: []
-  m_Father: {fileID: 4323907277706784}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4187059222519968
 Transform:
   m_ObjectHideFlags: 1
@@ -1759,7 +1730,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1859721052152444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4150159, y: -1.0061313e-17, z: 0.30624247}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 4884380009745782}
@@ -1770,7 +1741,6 @@ Transform:
   - {fileID: 4785101865472090}
   - {fileID: 4560947336163964}
   - {fileID: 4884555872556730}
-  - {fileID: 4183402231203082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2712,12 +2682,12 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1570365171881050}
   m_Enabled: 1
---- !u!82 &82501658652020992
+--- !u!82 &82462160533492166
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291409112415328}
+  m_GameObject: {fileID: 1859721052152444}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -3031,6 +3001,21 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!114 &114254028218293424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1859721052152444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43d10adf86998d4096b21f3f65c0ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightAttack: {fileID: 8300000, guid: 4efc934edaeb26a4aa0bd66a0a0223d1, type: 3}
+  heavyAttack: {fileID: 8300000, guid: a9fece4ed7ea4a649b8978c6556bd67a, type: 3}
+  hit: {fileID: 8300000, guid: 58c7bb3c6e2d7ab4fa3caf53cda142a9, type: 3}
+  blockHit: {fileID: 8300000, guid: 8ba4fdf66594842489d31da15d72c4b9, type: 3}
 --- !u!114 &114281438581106250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3158,53 +3143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2: 0
   joyStick: {fileID: 0}
---- !u!114 &114545729813683870
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291409112415328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 201
-    i1: 233
-    i2: 212
-    i3: 198
-    i4: 204
-    i5: 183
-    i6: 30
-    i7: 196
-    i8: 235
-    i9: 39
-    i10: 5
-    i11: 167
-    i12: 133
-    i13: 10
-    i14: 4
-    i15: 87
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &114575176655851918
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291409112415328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43d10adf86998d4096b21f3f65c0ec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightAttack: {fileID: 8300000, guid: 4efc934edaeb26a4aa0bd66a0a0223d1, type: 3}
-  heavyAttack: {fileID: 8300000, guid: a9fece4ed7ea4a649b8978c6556bd67a, type: 3}
-  hit: {fileID: 8300000, guid: 58c7bb3c6e2d7ab4fa3caf53cda142a9, type: 3}
-  blockHit: {fileID: 8300000, guid: 8ba4fdf66594842489d31da15d72c4b9, type: 3}
 --- !u!114 &114809660656964916
 MonoBehaviour:
   m_ObjectHideFlags: 1

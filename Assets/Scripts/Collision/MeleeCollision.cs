@@ -39,44 +39,49 @@ public class MeleeCollision : MonoBehaviour {
     {
         if (!offlineMode)
         {
-            if (other.gameObject == null) return;
-            //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
-            PlayerAttack pAttack = GetComponent<PlayerAttack>();
-            PlayerData pData = other.GetComponent<PlayerData>();
-            if (pAttack == null)
-            {
-                pAttack = playerObj.GetComponent<PlayerAttack>();
-            }
-            if (pData == null)
+            if (other.gameObject == null)
             {
                 return;
             }
-            if (pData.currentHealth <= 0) return;
-            if (pAttack.getAttack1)
+
+            if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2")
             {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 1: " + pAttack.getAttack1);
+                PlayerAnim panim = other.gameObject.GetComponent<PlayerAnim>();
+                PlayerAttack pAttack = GetComponent<PlayerAttack>();
+                PlayerData pData = other.GetComponent<PlayerData>();
 
-                // if (other.gameObject == null) return;
-                //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
-                //                if (pa == null) return;
-                //panim.lightHit();
-                healthManager.takeDamage(other.gameObject, 10);
+                if (pAttack == null)
+                {
+                    pAttack = playerObj.GetComponent<PlayerAttack>();
+                }
+
+                if (pData == null)
+                {
+                    return;
+                }
+                if (pData.currentHealth <= 0)
+                {
+                    return;
+                }
+
+                if (pAttack.getAttack1)
+                {
+                    Debug.Log("Collided with: " + other.gameObject.name);
+                    Debug.Log("Player Attack 1: " + pAttack.getAttack1);
+
+                    panim.lightHit();
+                    healthManager.takeDamage(other.gameObject, 10);
+                }
+
+                if (pAttack.getAttack2)
+                {
+                    Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
+                    Debug.Log("Player Attack 2: " + pAttack.getAttack2);
+
+                    panim.lightHit();
+                    healthManager.takeDamage(other.gameObject, 20);
+                }
             }
-
-            if (pAttack.getAttack2)
-            {
-                Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
-                Debug.Log("Player Attack 2: " + pAttack.getAttack2);
-
-                //if (other.gameObject == null) return;
-                //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
-                //                if (pa == null) return;
-                //panim.lightHit();
-                healthManager.takeDamage(other.gameObject, 20);
-            }
-
-
         }
         else
         {

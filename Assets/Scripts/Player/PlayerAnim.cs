@@ -16,6 +16,8 @@ public class PlayerAnim : NetworkBehaviour {
 
     public void walk(Vector3 InputDirection, float speed)
     {
+        //Debug.Log(InputDirection.z);
+
         if (Equals(InputDirection.x, 0.0f) && Equals(InputDirection.y, 0.0f) && Equals(InputDirection.z, 0.0f))
         {
             stopWalking();
@@ -26,7 +28,7 @@ public class PlayerAnim : NetworkBehaviour {
         }
         if (InputDirection.z < 0.0f)
         {
-            walkForward();
+            walkBackward();
         }
 
     }

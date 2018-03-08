@@ -7,7 +7,7 @@ public class ProjectileCollisionOffline : MonoBehaviour {
     [SerializeField] private HealthManagerOffline healthManager;
     [SerializeField] private int blockDurabilityNum = 4;
 
-    private int tempBlockDurability;
+    //private int tempBlockDurability;
 
     // Use this for initialization
     void Start()
@@ -15,7 +15,7 @@ public class ProjectileCollisionOffline : MonoBehaviour {
         healthManager = FindObjectOfType<HealthManagerOffline>();
         Debug.Assert(healthManager != null);
 
-        tempBlockDurability = blockDurabilityNum;
+        //tempBlockDurability = blockDurabilityNum;
     }
 
     void OnCollisionEnter(Collision other)

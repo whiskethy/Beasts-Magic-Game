@@ -15,7 +15,7 @@ public class NetOp : NetworkBehaviour
     //private bool player2 = false;
     //private PlayerData playerData;
     public GameObject cam;
-    private UnityStandardAssets.Cameras.AutoCam theCamera;
+    //private UnityStandardAssets.Cameras.AutoCam theCamera;
 
     //public AndroidJoystick joyStick;
     //private PlayerAnimation anim;
@@ -66,7 +66,7 @@ public class NetOp : NetworkBehaviour
         isEnd = false;
         //theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
-        theCamera = cam.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
+        //theCamera = cam.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
 
         //theCamera = Camera.main.GetComponentInParent<UnityStandardAssets.Cameras.AutoCam>();
 

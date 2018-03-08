@@ -1896,7 +1896,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1348778346330372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2890499, y: 0, z: -0.3220105}
+  m_LocalPosition: {x: -1.9561372, y: -1.3101988e-17, z: 0.58012223}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4749581172397656}
@@ -2521,7 +2521,7 @@ Transform:
   m_GameObject: {fileID: 1518926701101906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.024, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.15, y: 0.00389483, z: 0.15}
   m_Children: []
   m_Father: {fileID: 4406806010940166}
   m_RootOrder: 5
@@ -3211,12 +3211,12 @@ MonoBehaviour:
   currentHealth: 100
   characterHealthPool: 100
   attack1CoolDown: 0.5
-  attack2CoolDown: 1.5
+  attack2CoolDown: 0.5
   strength: 40
   agility: 30
   wisdom: 0
   lightAttackDamage: 10
-  heavyAttackDamage: 20
+  heavyAttackDamage: 10
   isAlive: 1
   isBlocking: 0
 --- !u!114 &114827845613702424
@@ -3328,7 +3328,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518926701101906}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 4.079875
   m_Height: 8.15975

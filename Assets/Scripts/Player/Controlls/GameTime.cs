@@ -184,7 +184,7 @@ public class GameTime : NetworkBehaviour
     }
     private void StopServer()
     {
-        LobbyManager lm = null;
+        //LobbyManager lm = null;
 
         if (NetworkManager.singleton != null)
         {

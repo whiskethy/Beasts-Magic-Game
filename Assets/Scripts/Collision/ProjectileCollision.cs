@@ -7,7 +7,7 @@ public class ProjectileCollision : MonoBehaviour
     [SerializeField] private HealthManager healthManager;
     [SerializeField] private int blockDurabilityNum = 4;
 
-    private int tempBlockDurability;
+    //private int tempBlockDurability;
 
     // Use this for initialization
     void Start()
@@ -15,7 +15,7 @@ public class ProjectileCollision : MonoBehaviour
         healthManager = FindObjectOfType<HealthManager>();
         Debug.Assert(healthManager != null);
 
-        tempBlockDurability = blockDurabilityNum;
+        //tempBlockDurability = blockDurabilityNum;
     }
 
     void OnCollisionEnter(Collision other)

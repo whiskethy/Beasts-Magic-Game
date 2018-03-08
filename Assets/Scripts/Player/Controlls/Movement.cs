@@ -88,9 +88,10 @@ public class Movement : NetworkBehaviour
             }
             else
             {
+                //Debug.Log("yo");
                 transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
                 transform.LookAt(otherPlayer.transform);
-                //anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
+                anim.walk(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime, playerData.movementSpeed);
             }
 
         }

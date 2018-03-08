@@ -458,6 +458,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1313369729147348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4062405909145824}
+  - component: {fileID: 82298662512824478}
+  - component: {fileID: 114420498711169724}
+  - component: {fileID: 114331048993825038}
+  m_Layer: 0
+  m_Name: AudioThing
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1348778346330372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,6 +1414,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4062405909145824
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313369729147348}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.025, y: 0.92166644, z: 0.312}
+  m_LocalScale: {x: 0.8333337, y: 0.83333325, z: 0.8333337}
+  m_Children: []
+  m_Father: {fileID: 4406806010940166}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4062769578359462
 Transform:
   m_ObjectHideFlags: 1
@@ -1896,7 +1927,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1348778346330372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9561372, y: -1.3101988e-17, z: 0.58012223}
+  m_LocalPosition: {x: -8.466925, y: -1.3660978e-16, z: 11.704715}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4749581172397656}
@@ -1907,6 +1938,7 @@ Transform:
   - {fileID: 4877317760044616}
   - {fileID: 4964239948616454}
   - {fileID: 4241846985702144}
+  - {fileID: 4062405909145824}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2862,6 +2894,86 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1174457810350758}
   m_Enabled: 1
+--- !u!82 &82298662512824478
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313369729147348}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!92 &92812713063616346
 Behaviour:
   m_ObjectHideFlags: 1
@@ -3106,6 +3218,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2: 0
   joyStick: {fileID: 0}
+--- !u!114 &114331048993825038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313369729147348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43d10adf86998d4096b21f3f65c0ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightAttack: {fileID: 8300000, guid: c680e10070ad97c4095b05d0d1f38e0a, type: 3}
+  heavyAttack: {fileID: 8300000, guid: a9fece4ed7ea4a649b8978c6556bd67a, type: 3}
+  hit: {fileID: 8300000, guid: 4496f47256f57864dba1a6fc4b6bf5e1, type: 3}
+  blockHit: {fileID: 8300000, guid: 280ac0755fa9f1e44be39b8da11c880a, type: 3}
 --- !u!114 &114349298705852422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3170,6 +3297,38 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!114 &114420498711169724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313369729147348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 253
+    i1: 48
+    i2: 171
+    i3: 155
+    i4: 113
+    i5: 14
+    i6: 29
+    i7: 36
+    i8: 137
+    i9: 8
+    i10: 114
+    i11: 180
+    i12: 98
+    i13: 192
+    i14: 132
+    i15: 53
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114466815728082924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3209,16 +3368,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   currentHealth: 100
-  characterHealthPool: 100
+  characterHealthPool: 200
   attack1CoolDown: 0.5
   attack2CoolDown: 0.5
   strength: 40
   agility: 30
   wisdom: 0
-  lightAttackDamage: 10
-  heavyAttackDamage: 10
+  lightAttackDamage: 15
+  heavyAttackDamage: 15
   isAlive: 1
-  isBlocking: 0
+  isBlocking: 1
 --- !u!114 &114827845613702424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3297,6 +3456,8 @@ MonoBehaviour:
     type: 2}
   hasProjectileAttack: 1
   mobileMode: 1
+  sound: {fileID: 0}
+  soundThing: {fileID: 0}
 --- !u!114 &114965786919537592
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -694,6 +694,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114623914323195636, guid: 7d093dafcb529764facc717f9a62e58b,
+        type: 2}
+      propertyPath: Player2
+      value: 
+      objectReference: {fileID: 2146011318}
     - target: {fileID: 114698603835337944, guid: 7d093dafcb529764facc717f9a62e58b,
         type: 2}
       propertyPath: joyStick
@@ -708,11 +713,6 @@ Prefab:
       propertyPath: m_Name
       value: Mage - Player 1 Offline
       objectReference: {fileID: 0}
-    - target: {fileID: 114623914323195636, guid: 7d093dafcb529764facc717f9a62e58b,
-        type: 2}
-      propertyPath: Player2
-      value: 
-      objectReference: {fileID: 2146011318}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d093dafcb529764facc717f9a62e58b, type: 2}
   m_IsPrefabParent: 0
@@ -2117,6 +2117,17 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2a5aa6291b3c7942bec7e90743c703c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1992384878 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
+  m_PrefabInternal: {fileID: 928016101}
+--- !u!81 &1992384879
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992384878}
+  m_Enabled: 1
 --- !u!1 &1994225932
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ public class PlayerAttackOffline : MonoBehaviour {
     private Button attackButton2;
     private Button blockButton;
 
+    public SoundOffline sound;
+
     //data
     private bool attack1;
     private bool attack2;
@@ -197,6 +199,7 @@ public class PlayerAttackOffline : MonoBehaviour {
     {
         if (!attack1 && !attack2 && !pController.getGameOver)
         {
+            sound.lightAttackSound();
             attack1 = true;
             Debug.Log("Attack 1 Start!");
             StartCoroutine(DisableAttack1());
@@ -207,6 +210,8 @@ public class PlayerAttackOffline : MonoBehaviour {
     {
         if (!attack1 && !attack2 && !pController.getGameOver)
         {
+            sound.heavyAttackSound();
+            //sound.hitSound();
             attack2 = true;
             Debug.Log("Attack 2 Start!");
             StartCoroutine(DisableAttack2());

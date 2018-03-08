@@ -17,6 +17,9 @@ public class PlayerAttack : NetworkBehaviour {
     private Button attackButton1;
     private Button attackButton2;
 
+    public SoundOnline sound;
+    public GameObject soundThing;
+
     //data
     private bool attack1;
     private bool attack2;
@@ -25,7 +28,7 @@ public class PlayerAttack : NetworkBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        sound = GetComponentInChildren<SoundOnline>();
         anim = GetComponent<PlayerAnim>();
         Debug.Assert(anim != null);
 
@@ -98,6 +101,7 @@ public class PlayerAttack : NetworkBehaviour {
     private IEnumerator DisableAttack1()
     {
         anim.attackOne(attack1);
+        sound.lightAttackSound();
         yield return new WaitForSeconds(pData.attack1CoolDown);
 
         if (hasProjectileAttack && attack1)
@@ -112,9 +116,10 @@ public class PlayerAttack : NetworkBehaviour {
     private IEnumerator DisableAttack2()
     {
         anim.attackTwo(attack2);
+        
         yield return new WaitForSeconds(pData.attack2CoolDown);
-
- 		if (hasProjectileAttack && attack2)
+        sound.heavyAttackSound();
+        if (hasProjectileAttack && attack2)
         {
             CmdSpawnProjectile2(projectileSpawn.transform.position, true);
         }

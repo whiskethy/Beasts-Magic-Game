@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class ProjectileCollision : MonoBehaviour
+public class ProjectileCollision : NetworkBehaviour
 {
     [SerializeField] private HealthManager healthManager;
     [SerializeField] private int blockDurabilityNum = 4;
 
     //private int tempBlockDurability;
+    public SoundOnline sound;
 
-    // Use this for initialization
+    private void Awake()
+    {
+
+        sound = GetComponentInChildren<SoundOnline>();
+
+    }   // Use this for initialization
     void Start()
     {
         healthManager = FindObjectOfType<HealthManager>();
@@ -34,11 +41,29 @@ public class ProjectileCollision : MonoBehaviour
             {
                 healthManager.takeDamage(other.gameObject, pData.lightAttackDamage);
                 //panim.lightHit();
+                if (isServer)
+                {
+                    RpcPlayLight();
+                }
+                else
+                {
+                    CmdPlayLight();
+                }
+                sound.lightAttackedSound();
             }
             else
             {
                 healthManager.takeDamage(other.gameObject, pData.heavyAttackDamage);
                 //panim.lightHit();
+                if (isServer)
+                {
+                    RpcPlayHeavy();
+                }
+                else
+                {
+                    CmdPlayHeavy();
+                }
+                sound.heavyAttackedSound();
             }
 
             Destroy(gameObject);
@@ -47,5 +72,27 @@ public class ProjectileCollision : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    [ClientRpc]
+    public void RpcPlayLight()
+    {
+        sound.lightAttackedSound();
+    }
+    [Command]
+    public void CmdPlayLight()
+    {
+        sound.lightAttackedSound();
+
+    }
+    [ClientRpc]
+    public void RpcPlayHeavy()
+    {
+        sound.heavyAttackedSound();
+    }
+    [Command]
+    public void CmdPlayHeavy()
+    {
+        sound.heavyAttackedSound();
+
     }
 }

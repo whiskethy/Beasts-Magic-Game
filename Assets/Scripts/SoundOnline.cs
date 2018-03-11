@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 
-public class SoundOnline : NetworkBehaviour{
+public class SoundOnline : MonoBehaviour{
 
     private AudioSource source;
     public AudioClip lightAttack;
     public AudioClip heavyAttack;
+
+    public AudioClip lightAttacked;
+    public AudioClip heavyAttacked;
 
     public AudioClip hit;
     public AudioClip blockHit;
@@ -36,5 +39,17 @@ public class SoundOnline : NetworkBehaviour{
     public void blockHitSound()
     {
         source.PlayOneShot(blockHit, 1.0f);
+    }
+    public void HitedSound()
+    {
+        source.PlayOneShot(blockHit, 1.0f);
+    }
+    public void lightAttackedSound()
+    {
+        source.PlayOneShot(lightAttack, 1.0f);
+    }
+    public void heavyAttackedSound()
+    {
+        source.PlayOneShot(heavyAttack, 1.0f);
     }
 }

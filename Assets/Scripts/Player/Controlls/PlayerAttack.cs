@@ -82,6 +82,16 @@ public class PlayerAttack : NetworkBehaviour {
                     Debug.Log("Attack 1 Start!");
                     attack1 = true;
                     StartCoroutine(DisableAttack1());
+                    if (isServer)
+                    {
+                        RpcPlayLight();
+                    }
+                    else
+                    {
+                        CmdPlayLight();
+                    }
+                    sound.lightAttackSound();
+
                 }
 
                 if (Input.GetMouseButtonDown(1) && !attack1 && !attack2 && pData.isAlive)
@@ -89,6 +99,15 @@ public class PlayerAttack : NetworkBehaviour {
                     Debug.Log("Attack 2 Start");
                     attack2 = true;
                     StartCoroutine(DisableAttack2());
+                    if (isServer)
+                    {
+                        RpcPlayHeavy();
+                    }
+                    else
+                    {
+                        CmdPlayHeavy();
+                    }
+                    sound.heavyAttackSound();
                 }
             }
         }
@@ -101,7 +120,7 @@ public class PlayerAttack : NetworkBehaviour {
     private IEnumerator DisableAttack1()
     {
         anim.attackOne(attack1);
-        sound.lightAttackSound();
+
         yield return new WaitForSeconds(pData.attack1CoolDown);
 
         if (hasProjectileAttack && attack1)
@@ -118,7 +137,7 @@ public class PlayerAttack : NetworkBehaviour {
         anim.attackTwo(attack2);
         
         yield return new WaitForSeconds(pData.attack2CoolDown);
-        sound.heavyAttackSound();
+
         if (hasProjectileAttack && attack2)
         {
             CmdSpawnProjectile2(projectileSpawn.transform.position, true);
@@ -137,7 +156,28 @@ public class PlayerAttack : NetworkBehaviour {
     {
         get { return attack2; }
     }
+    [ClientRpc]
+    public void RpcPlayLight()
+    {
+        sound.lightAttackedSound();
+    }
+    [Command]
+    public void CmdPlayLight()
+    {
+        sound.lightAttackedSound();
 
+    }
+    [ClientRpc]
+    public void RpcPlayHeavy()
+    {
+        sound.heavyAttackedSound();
+    }
+    [Command]
+    public void CmdPlayHeavy()
+    {
+        sound.heavyAttackedSound();
+
+    }
     public void Attack1()
     {
         if (!attack1 && !attack2 && pData.isAlive)
@@ -145,6 +185,16 @@ public class PlayerAttack : NetworkBehaviour {
             Debug.Log("Attack 2 Start");
             attack1 = true;
             StartCoroutine(DisableAttack1());
+            if (isServer)
+            {
+                RpcPlayLight();
+            }
+            else
+            {
+                CmdPlayLight();
+            }
+
+            sound.lightAttackSound();
         }
     }
 
@@ -155,6 +205,15 @@ public class PlayerAttack : NetworkBehaviour {
             Debug.Log("Attack 2 Start");
             attack2 = true;
             StartCoroutine(DisableAttack2());
+            if (isServer)
+            {
+                RpcPlayHeavy();
+            }
+            else
+            {
+                CmdPlayHeavy();
+            }
+            sound.heavyAttackSound();
         }
     }
 

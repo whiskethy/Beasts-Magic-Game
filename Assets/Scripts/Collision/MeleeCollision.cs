@@ -14,12 +14,6 @@ public class MeleeCollision : NetworkBehaviour {
     private PlayerData pData;
     private bool hasCollided;
 
-    public SoundOnline sound;
-    private void Awake()
-    {
-        sound = GetComponentInChildren<SoundOnline>();
-
-    }
     // Use this for initialization
     void Start () {
 
@@ -56,7 +50,7 @@ public class MeleeCollision : NetworkBehaviour {
                 }
 
                 //if (other.gameObject == null) return;
-                //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
+                PlayerAnim panim = other.gameObject.GetComponent<PlayerAnim>();
                 PlayerAttack pAttack = GetComponent<PlayerAttack>();
                 PlayerData pData = other.GetComponent<PlayerData>();
                 if (pAttack == null)
@@ -70,14 +64,6 @@ public class MeleeCollision : NetworkBehaviour {
                 if (pData.currentHealth <= 0) return;
                 if (pAttack.getAttack1)
                 {
-                    //if (isServer)
-                    //{
-                    //    //RpcPlayLight();
-                    //}
-                    //else
-                    //{
-                    //    // CmdPlayLight();
-                    //}
                     //sound.lightAttackedSound();
                     Debug.Log("Collided with: " + other.gameObject.name);
                     Debug.Log("Player Attack 1: " + pAttack.getAttack1);
@@ -85,28 +71,19 @@ public class MeleeCollision : NetworkBehaviour {
                     // if (other.gameObject == null) return;
                     //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
                     //                if (pa == null) return;
-                    //panim.lightHit();
+                    panim.lightHit();
                     healthManager.takeDamage(other.gameObject, 10);
                 }
 
                 if (pAttack.getAttack2)
                 {
-                    //if (isServer)
-                    //{
-                    //    // RpcPlayHeavy();
-                    //}
-                    //else
-                    //{
-                    //    // CmdPlayHeavy();
-                    //}
-                    //sound.heavyAttackedSound();
                     Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
                     Debug.Log("Player Attack 2: " + pAttack.getAttack2);
 
                     //if (other.gameObject == null) return;
                     //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
                     //                if (pa == null) return;
-                    //panim.lightHit();
+                    panim.lightHit();
                     healthManager.takeDamage(other.gameObject, 20);
                 }
 
@@ -120,28 +97,5 @@ public class MeleeCollision : NetworkBehaviour {
     {
        yield return new WaitForSeconds(1.5f);
        hasCollided = false;
-    }
-
-    [ClientRpc]
-    public void RpcPlayLight()
-    {
-        sound.lightAttackedSound();
-    }
-    [Command]
-    public void CmdPlayLight()
-    {
-        sound.lightAttackedSound();
-
-    }
-    [ClientRpc]
-    public void RpcPlayHeavy()
-    {
-        sound.heavyAttackedSound();
-    }
-    [Command]
-    public void CmdPlayHeavy()
-    {
-        sound.heavyAttackedSound();
-
     }
 }

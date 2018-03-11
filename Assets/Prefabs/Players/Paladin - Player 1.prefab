@@ -3347,7 +3347,7 @@ MonoBehaviour:
   lightAttackDamage: 15
   heavyAttackDamage: 15
   isAlive: 1
-  isBlocking: 1
+  isBlocking: 0
 --- !u!114 &114827845613702424
 MonoBehaviour:
   m_ObjectHideFlags: 1

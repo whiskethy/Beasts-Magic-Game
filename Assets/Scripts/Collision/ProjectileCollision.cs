@@ -9,14 +9,6 @@ public class ProjectileCollision : NetworkBehaviour
     [SerializeField] private int blockDurabilityNum = 4;
 
     //private int tempBlockDurability;
-    public SoundOnline sound;
-
-    private void Awake()
-    {
-
-        sound = GetComponentInChildren<SoundOnline>();
-
-    }   
     
     // Use this for initialization
     void Start()
@@ -34,41 +26,21 @@ public class ProjectileCollision : NetworkBehaviour
 
         if (other.gameObject.tag == "Player2" || other.gameObject.tag == "Player1")
         {
-            //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
+            PlayerAnim panim = other.gameObject.GetComponent<PlayerAnim>();
             PlayerData pData = other.gameObject.GetComponent<PlayerData>();
 
             Debug.Log("Collided with: " + other.gameObject.name);
             //Debug.Log("Player Attack 1: " + pAttack.getAttack1);
 
-            //panim.lightHit();
-
             if (!gameObject.GetComponent<SpellFire>().getStrongAttack)
             {
                 healthManager.takeDamage(other.gameObject, pData.lightAttackDamage);
-                //panim.lightHit();
-                if (isServer)
-                {
-                    RpcPlayLight();
-                }
-                else
-                {
-                    CmdPlayLight();
-                }
-                sound.lightAttackedSound();
+                panim.lightHit();
             }
             else
             {
                 healthManager.takeDamage(other.gameObject, pData.heavyAttackDamage);
-                //panim.lightHit();
-                if (isServer)
-                {
-                    RpcPlayHeavy();
-                }
-                else
-                {
-                    CmdPlayHeavy();
-                }
-                sound.heavyAttackedSound();
+                panim.lightHit();
             }
 
             Destroy(gameObject);
@@ -77,28 +49,5 @@ public class ProjectileCollision : NetworkBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    [ClientRpc]
-    public void RpcPlayLight()
-    {
-        sound.lightAttackedSound();
-    }
-    [Command]
-    public void CmdPlayLight()
-    {
-        sound.lightAttackedSound();
-
-    }
-    [ClientRpc]
-    public void RpcPlayHeavy()
-    {
-        sound.heavyAttackedSound();
-    }
-    [Command]
-    public void CmdPlayHeavy()
-    {
-        sound.heavyAttackedSound();
-
     }
 }

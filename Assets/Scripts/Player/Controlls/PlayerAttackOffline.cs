@@ -85,7 +85,7 @@ public class PlayerAttackOffline : MonoBehaviour {
         }
         else
         {
-            if (Input.GetMouseButtonDown(0) && !attack1 && !attack2 && !pController.getGameOver && !pController.getIsPaused)
+            if (Input.GetMouseButtonDown(0) && !attack1 && !attack2 && !pController.getGameOver)
             {
                 Debug.Log("Attack 1 Start!");
                 attack1 = true;
@@ -93,14 +93,14 @@ public class PlayerAttackOffline : MonoBehaviour {
                 StartCoroutine(DisableAttack1());
             }
 
-            if (Input.GetMouseButtonDown(1) && !attack1 && !attack2 && !pController.getGameOver && !pController.getIsPaused)
+            if (Input.GetMouseButtonDown(1) && !attack1 && !attack2 && !pController.getGameOver)
             {
                 attack2 = true;
                 Debug.Log("Attack 2 Start");
                 StartCoroutine(DisableAttack2());
             }
         }
-        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && !pController.getGameOver && !pController.getIsPaused)
+        if (Input.GetKey(KeyCode.Space) && !attack1 && !attack2 && !pController.getGameOver)
 
         {
             canBlock = true;
@@ -197,7 +197,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
     public void Attack1()
     {
-        if (!attack1 && !attack2 && !pController.getGameOver && !pController.getIsPaused)
+        if (!attack1 && !attack2 && !pController.getGameOver)
         {
             sound.lightAttackSound();
             attack1 = true;
@@ -208,7 +208,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
     public void Attack2()
     {
-        if (!attack1 && !attack2 && !pController.getGameOver && !pController.getIsPaused)
+        if (!attack1 && !attack2 && !pController.getGameOver)
         {
             sound.heavyAttackSound();
             //sound.hitSound();
@@ -220,7 +220,7 @@ public class PlayerAttackOffline : MonoBehaviour {
 
     public void Block()
     {
-        if (!attack1 && !attack2 && !pController.getGameOver && !pController.getIsPaused)
+        if (!attack1 && !attack2 && !pController.getGameOver)
         {
             canBlock = true;
             blockingEffect.SetActive(true);

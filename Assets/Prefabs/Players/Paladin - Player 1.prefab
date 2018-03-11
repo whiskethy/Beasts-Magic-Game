@@ -3217,7 +3217,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2: 0
   joyStick: {fileID: 0}
-  otherPlayer: {fileID: 0}
 --- !u!114 &114349298705852422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3348,7 +3347,7 @@ MonoBehaviour:
   lightAttackDamage: 15
   heavyAttackDamage: 15
   isAlive: 1
-  isBlocking: 0
+  isBlocking: 1
 --- !u!114 &114827845613702424
 MonoBehaviour:
   m_ObjectHideFlags: 1

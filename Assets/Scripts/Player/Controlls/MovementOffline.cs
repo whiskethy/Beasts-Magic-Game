@@ -38,7 +38,7 @@ public class MovementOffline : MonoBehaviour {
     {
         if (!player2)
         {
-            if (Input.GetKey(KeyCode.W) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver && !pController.getIsPaused)
+            if (Input.GetKey(KeyCode.W) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;
 
@@ -47,7 +47,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkForward();
             }
 
-            else if (Input.GetKey(KeyCode.S) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver && !pController.getIsPaused)
+            else if (Input.GetKey(KeyCode.S) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
             {
                 movementDirTemp = -playerData.movementSpeed * Time.deltaTime;
 
@@ -56,7 +56,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkBackward();
             }
 
-            else if (Input.GetKey(KeyCode.D) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver && !pController.getIsPaused)
+            else if (Input.GetKey(KeyCode.D) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
             {
                 movementDirTemp = playerData.movementSpeed * Time.deltaTime;
 
@@ -65,7 +65,7 @@ public class MovementOffline : MonoBehaviour {
                 anim.walkRight();
             }
 
-            else if (Input.GetKey(KeyCode.A) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver && !pController.getIsPaused)
+            else if (Input.GetKey(KeyCode.A) && !pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
             {
                 movementDirTemp = -playerData.movementSpeed * Time.deltaTime;
 
@@ -80,7 +80,7 @@ public class MovementOffline : MonoBehaviour {
             }
             else
             {
-                if (!pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver && !pController.getIsPaused)
+                if (!pAttack.getBlock && !pAttack.getAttack2 && !pController.getGameOver)
                 {
                     transform.Translate(joyStick.InputDirection * playerData.movementSpeed * Time.deltaTime);
                     transform.LookAt(otherPlayer.transform);

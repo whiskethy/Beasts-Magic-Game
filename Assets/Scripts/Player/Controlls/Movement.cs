@@ -17,7 +17,7 @@ public class Movement : NetworkBehaviour
     
     private PlayerAnim anim;
     private PlayerAttack pAttack;
-    [SerializeField] private GameObject otherPlayer;
+    private GameObject otherPlayer;
     private float movementDirTemp;
 
     // Use this for initialization

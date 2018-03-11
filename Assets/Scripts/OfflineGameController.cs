@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 public class OfflineGameController : MonoBehaviour {
 
     [SerializeField] private GameObject endGameWindow;
-    [SerializeField] private GameObject pauseGameWindow;
 
     private bool gameOver;
-    private bool isPaused;
     private int playerHealth1;
     private int playerHealth2;
 
@@ -17,12 +15,9 @@ public class OfflineGameController : MonoBehaviour {
 	void Start () {
 
         gameOver = false;
-        isPaused = false;
 
-        Debug.Assert(pauseGameWindow != null);
         Debug.Assert(endGameWindow != null);
         endGameWindow.SetActive(false);
-        pauseGameWindow.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -39,16 +34,12 @@ public class OfflineGameController : MonoBehaviour {
                 gameOver = true;
             }
         }
+		
 	}
 
     public bool getGameOver
     {
         get { return gameOver; }
-    }
-
-    public bool getIsPaused
-    {
-        get { return isPaused; }
     }
 
     public void RestartLevel()
@@ -59,17 +50,5 @@ public class OfflineGameController : MonoBehaviour {
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(GameConstants.LEVELS.MenuScene.ToString());
-    }
-
-    public void PauseGame()
-    {
-        isPaused = true;
-        pauseGameWindow.SetActive(true);
-    }
-
-    public void UnPauseGame()
-    {
-        isPaused = false;
-        pauseGameWindow.SetActive(false);
     }
 }

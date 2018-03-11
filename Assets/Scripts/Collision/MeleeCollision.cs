@@ -12,6 +12,7 @@ public class MeleeCollision : NetworkBehaviour {
     private PlayerAttack pAttack;
     private PlayerAttackOffline pAttackO;
     private PlayerData pData;
+    private bool hasCollided;
 
     public SoundOnline sound;
     private void Awake()
@@ -22,7 +23,7 @@ public class MeleeCollision : NetworkBehaviour {
     // Use this for initialization
     void Start () {
 
-
+        hasCollided = false;
         healthManager = FindObjectOfType<HealthManager>();
         Debug.Assert(healthManager != null);
 
@@ -47,105 +48,80 @@ public class MeleeCollision : NetworkBehaviour {
     {
         if (!offlineMode)
         {
-            if (other.gameObject == null) return;
-            //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
-            PlayerAttack pAttack = GetComponent<PlayerAttack>();
-            PlayerData pData = other.GetComponent<PlayerData>();
-            if (pAttack == null)
+            if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2" && !hasCollided)
             {
-                pAttack = playerObj.GetComponent<PlayerAttack>();
-            }
-            if (pData == null)
-            {
-                return;
-            }
-            if (pData.currentHealth <= 0) return;
-            if (pAttack.getAttack1)
-            {
-                if (isServer)
+                if (hasCollided)
                 {
-                    //RpcPlayLight();
+                    return;
                 }
-                else
-                {
-                   // CmdPlayLight();
-                }
-                //sound.lightAttackedSound();
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 1: " + pAttack.getAttack1);
-
-                // if (other.gameObject == null) return;
-                //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
-                //                if (pa == null) return;
-                //panim.lightHit();
-                healthManager.takeDamage(other.gameObject, 10);
-            }
-
-            if (pAttack.getAttack2)
-            {
-                if (isServer)
-                {
-                   // RpcPlayHeavy();
-                }
-                else
-                {
-                   // CmdPlayHeavy();
-                }
-                //sound.heavyAttackedSound();
-                Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
-                Debug.Log("Player Attack 2: " + pAttack.getAttack2);
 
                 //if (other.gameObject == null) return;
-                //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
-                //                if (pa == null) return;
-                //panim.lightHit();
-                healthManager.takeDamage(other.gameObject, 20);
+                //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
+                PlayerAttack pAttack = GetComponent<PlayerAttack>();
+                PlayerData pData = other.GetComponent<PlayerData>();
+                if (pAttack == null)
+                {
+                    pAttack = playerObj.GetComponent<PlayerAttack>();
+                }
+                if (pData == null)
+                {
+                    return;
+                }
+                if (pData.currentHealth <= 0) return;
+                if (pAttack.getAttack1)
+                {
+                    //if (isServer)
+                    //{
+                    //    //RpcPlayLight();
+                    //}
+                    //else
+                    //{
+                    //    // CmdPlayLight();
+                    //}
+                    //sound.lightAttackedSound();
+                    Debug.Log("Collided with: " + other.gameObject.name);
+                    Debug.Log("Player Attack 1: " + pAttack.getAttack1);
+
+                    // if (other.gameObject == null) return;
+                    //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
+                    //                if (pa == null) return;
+                    //panim.lightHit();
+                    healthManager.takeDamage(other.gameObject, 10);
+                }
+
+                if (pAttack.getAttack2)
+                {
+                    //if (isServer)
+                    //{
+                    //    // RpcPlayHeavy();
+                    //}
+                    //else
+                    //{
+                    //    // CmdPlayHeavy();
+                    //}
+                    //sound.heavyAttackedSound();
+                    Debug.Log("Collided with: " + other.gameObject.tag + "  name:" + other.gameObject.name);
+                    Debug.Log("Player Attack 2: " + pAttack.getAttack2);
+
+                    //if (other.gameObject == null) return;
+                    //                PlayerAnimation pa = other.gameObject.GetComponent<PlayerAnimation>();
+                    //                if (pa == null) return;
+                    //panim.lightHit();
+                    healthManager.takeDamage(other.gameObject, 20);
+                }
+
+                hasCollided = true;
+                StartCoroutine(EnableCollision());
             }
-
-
         }
-        else
-        {
-            //return;
-            if (other.gameObject.tag == "Player2" && pAttackO.getAttack1)
-            {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 1: " + pAttackO.getAttack1);
-
-                //other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-                healthManager.takeDamage(other.gameObject, 10);
-            }
-
-            if (other.gameObject.tag == "Player2" && pAttackO.getAttack2)
-            {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 2: " + pAttackO.getAttack2);
-
-                //other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-                healthManager.takeDamage(other.gameObject, 20);
-            }
-
-            if (other.gameObject.tag == "Player1" && pAttackO.getAttack1)
-            {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 1: " + pAttackO.getAttack1);
-
-                //other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-                healthManager.takeDamage(other.gameObject, 10);
-            }
-
-            if (other.gameObject.tag == "Player1" && pAttackO.getAttack2)
-            {
-                Debug.Log("Collided with: " + other.gameObject.name);
-                Debug.Log("Player Attack 2: " + pAttackO.getAttack2);
-
-                //other.gameObject.GetComponent<PlayerAnimation>().lightHit();
-                healthManager.takeDamage(other.gameObject, 20);
-            }
-        }
-
-
     }
+
+    private IEnumerator EnableCollision()
+    {
+       yield return new WaitForSeconds(1.5f);
+       hasCollided = false;
+    }
+
     [ClientRpc]
     public void RpcPlayLight()
     {

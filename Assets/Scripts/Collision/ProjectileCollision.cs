@@ -16,17 +16,22 @@ public class ProjectileCollision : NetworkBehaviour
 
         sound = GetComponentInChildren<SoundOnline>();
 
-    }   // Use this for initialization
+    }   
+    
+    // Use this for initialization
     void Start()
     {
         healthManager = FindObjectOfType<HealthManager>();
         Debug.Assert(healthManager != null);
 
+        
         //tempBlockDurability = blockDurabilityNum;
     }
 
     void OnCollisionEnter(Collision other)
     {
+        
+
         if (other.gameObject.tag == "Player2" || other.gameObject.tag == "Player1")
         {
             //PlayerAnimation panim = other.gameObject.GetComponent<PlayerAnimation>();
@@ -73,6 +78,7 @@ public class ProjectileCollision : NetworkBehaviour
             Destroy(gameObject);
         }
     }
+
     [ClientRpc]
     public void RpcPlayLight()
     {

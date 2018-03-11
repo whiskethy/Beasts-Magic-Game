@@ -1900,7 +1900,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1348778346330372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.466925, y: -1.3660978e-16, z: 11.704715}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4749581172397656}
@@ -2483,7 +2483,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125034469620988}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.306, y: 1.106, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4406806010940166}
@@ -3217,6 +3217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2: 0
   joyStick: {fileID: 0}
+  otherPlayer: {fileID: 0}
 --- !u!114 &114349298705852422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3307,7 +3308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43d10adf86998d4096b21f3f65c0ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightAttack: {fileID: 8300000, guid: 4efc934edaeb26a4aa0bd66a0a0223d1, type: 3}
+  lightAttack: {fileID: 8300000, guid: 4f9dab83cd88d5f4687b9fac1797d1d0, type: 3}
   heavyAttack: {fileID: 8300000, guid: a9fece4ed7ea4a649b8978c6556bd67a, type: 3}
   lightAttacked: {fileID: 8300000, guid: 0513a2814d1e03a4599fca173658c27e, type: 3}
   heavyAttacked: {fileID: 8300000, guid: a52691b298843cb4cba6ef4f9cc66f90, type: 3}
@@ -3339,7 +3340,7 @@ MonoBehaviour:
   movementSpeed: 3
   currentHealth: 100
   characterHealthPool: 200
-  attack1CoolDown: 0.5
+  attack1CoolDown: 1.5
   attack2CoolDown: 0.5
   strength: 40
   agility: 30
@@ -3420,11 +3421,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c0af63292170e499b056665ccb2c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpawn: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  projectileSpawn: {fileID: 1136130304400714}
+  projectilePrefab: {fileID: 1969925006467858, guid: d8d71bc33e9422d46ae83c51aeb32c98,
+    type: 2}
   projectilePrefab2: {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7,
     type: 2}
-  hasProjectileAttack: 0
+  hasProjectileAttack: 1
   mobileMode: 1
   sound: {fileID: 0}
   soundThing: {fileID: 0}

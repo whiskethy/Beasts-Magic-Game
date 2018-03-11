@@ -1743,7 +1743,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1859721052152444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 563.80347, y: 107.10708, z: -258.32828}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4209964253547720}
@@ -3065,12 +3065,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 1138978288486796}
-  projectilePrefab: {fileID: 1941163728815978, guid: 3b4f0e50ab13279488f8bd78f37896d4,
+  projectilePrefab: {fileID: 1486166823927332, guid: 3b4f0e50ab13279488f8bd78f37896d4,
     type: 2}
-  projectilePrefab2: {fileID: 1044721685392180, guid: 842aff2e7e590044d86b66109e53f8c7,
+  projectilePrefab2: {fileID: 1486166823927332, guid: 842aff2e7e590044d86b66109e53f8c7,
     type: 2}
   hasProjectileAttack: 1
-  mobileMode: 0
+  mobileMode: 1
   sound: {fileID: 0}
   soundThing: {fileID: 0}
 --- !u!114 &114535104396746310

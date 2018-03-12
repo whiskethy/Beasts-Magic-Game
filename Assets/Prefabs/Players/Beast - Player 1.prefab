@@ -2240,7 +2240,6 @@ MonoBehaviour:
   playerObj: {fileID: 1344688370519928}
   healthManager: {fileID: 0}
   offlineMode: 0
-  sound: {fileID: 0}
 --- !u!114 &114098358212597542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2286,7 +2285,6 @@ MonoBehaviour:
   playerObj: {fileID: 1344688370519928}
   healthManager: {fileID: 0}
   offlineMode: 0
-  sound: {fileID: 0}
 --- !u!114 &114275591487563552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2315,8 +2313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43d10adf86998d4096b21f3f65c0ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightAttack: {fileID: 8300000, guid: 0513a2814d1e03a4599fca173658c27e, type: 3}
-  heavyAttack: {fileID: 8300000, guid: b9ca85de1fa4b2242892508a8236deb5, type: 3}
+  lightAttack: {fileID: 8300000, guid: d637b89f4cbc5044d9cbe633ffbeab73, type: 3}
+  heavyAttack: {fileID: 8300000, guid: 4f9dab83cd88d5f4687b9fac1797d1d0, type: 3}
   lightAttacked: {fileID: 8300000, guid: 485afde4d0a1b68458d251f6c212aba7, type: 3}
   heavyAttacked: {fileID: 8300000, guid: 64f8fa366b57a0244b2a4733c20f7241, type: 3}
   hit: {fileID: 8300000, guid: b9ca85de1fa4b2242892508a8236deb5, type: 3}
@@ -2375,7 +2373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2: 0
   joyStick: {fileID: 0}
-  otherPlayer: {fileID: 0}
 --- !u!114 &114554395587865660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2464,7 +2461,6 @@ MonoBehaviour:
   playerObj: {fileID: 1344688370519928}
   healthManager: {fileID: 0}
   offlineMode: 0
-  sound: {fileID: 0}
 --- !u!114 &114937662280251734
 MonoBehaviour:
   m_ObjectHideFlags: 1

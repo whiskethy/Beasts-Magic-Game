@@ -9,6 +9,7 @@ public class ProjectileCollision : NetworkBehaviour
     [SerializeField] private int blockDurabilityNum = 4;
 
     //private int tempBlockDurability;
+    private AudioSource explosionSound;
     
     // Use this for initialization
     void Start()
@@ -16,13 +17,15 @@ public class ProjectileCollision : NetworkBehaviour
         healthManager = FindObjectOfType<HealthManager>();
         Debug.Assert(healthManager != null);
 
-        
+        explosionSound = GetComponent<AudioSource>();
+
         //tempBlockDurability = blockDurabilityNum;
     }
 
     void OnCollisionEnter(Collision other)
     {
-        
+
+        explosionSound.Play();
 
         if (other.gameObject.tag == "Player2" || other.gameObject.tag == "Player1")
         {
